@@ -344,7 +344,47 @@ a{color:inherit}
 .px-who h3{margin:14px 0 8px}.px-who p{color:var(--mute)}
 .px-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--solid);color:var(--onsolid)}
 
+/* modern food: SERP climb + lead pings */
+.mf-anim{display:grid;gap:12px;justify-items:center}
+.mf-serp,.mf-leads{width:min(100%,420px);background:#fff;color:#1c0a06;border-radius:22px;padding:14px;box-shadow:0 24px 50px -28px rgba(40,0,0,.7)}
+.mf-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px #e3e3e3;font-size:14px;font-weight:600;min-height:44px}
+.mf-g svg{width:20px;height:20px;display:block}
+#mf-q::after{content:"";display:inline-block;width:2px;height:1em;background:#a31d24;margin-inline-start:2px;vertical-align:-2px;animation:caret 1s steps(1) infinite}
+.mf-list{position:relative;height:calc(7 * 38px);margin-top:10px;overflow:hidden}
+.sp-mini[src*="modernfood"]{height:46px}@media(max-width:600px){.sp-mini[src*="modernfood"]{height:38px}}
+.mf-row{position:absolute;left:0;right:0;height:32px;display:flex;align-items:center;gap:10px;padding:0 10px;border-radius:10px;transition:transform .9s cubic-bezier(.65,0,.35,1)}
+.mf-row i{font-style:normal;font-size:12px;font-weight:700;color:#8a8a8a;width:18px}
+.mf-row span{height:9px;border-radius:5px;background:#e9e9ee;flex:1}
+.mf-row span+span{flex:.5;background:#f1f1f4}
+.mf-row.me{background:#fff4e2;box-shadow:inset 0 0 0 1.5px #f0a830;z-index:2}
+.mf-row.me b{font-size:13px;color:#1a0dab;white-space:nowrap}
+.mf-row.me em{margin-inline-start:auto;font-style:normal;font-size:11px;font-weight:800;color:#fff;background:#a31d24;padding:3px 8px;border-radius:999px;opacity:0;transform:scale(.6);transition:opacity .3s ease,transform .4s cubic-bezier(.34,1.6,.64,1)}
+.mf-row.me.top em{opacity:1;transform:none}
+.mf-lh{display:flex;align-items:center;gap:8px;font-size:14px}
+.mf-meta svg{width:24px;height:24px;display:block}
+.mf-count{margin-inline-start:auto;font-size:13px;color:#555}
+.mf-count em{font-style:normal;font:800 18px Syne,sans-serif;color:#a31d24;font-variant-numeric:tabular-nums}
+.mf-toasts{display:grid;gap:6px;margin-top:10px;min-height:118px;align-content:end}
+.mf-toast{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:12px;background:#f6f7fb;font-size:13px;animation:toastin .45s cubic-bezier(.34,1.4,.64,1)}
+.mf-toast i{width:8px;height:8px;border-radius:50%;background:#18b35d;flex:none}
+.mf-toast small{margin-inline-start:auto;color:#888}
+@keyframes toastin{from{opacity:0;transform:translateY(14px) scale(.96)}}
+.mf-prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px;margin-top:26px}
+.mf-prod{padding:20px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(163,29,36,.12),0 20px 40px -30px rgba(120,10,0,.5);color:#1c0a06;position:relative;overflow:hidden}
+.mf-prod::before{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,#f6c45c,#f0a830 60%,transparent 62%);opacity:.35}
+.mf-prod .yr{font-size:12px;font-weight:700;color:#a31d24}
+.mf-prod h3{margin:8px 0 6px;font-size:20px}
+.mf-prod p{color:#6a4a40;font-size:15px}
+:root[data-theme=dark] .mf-prod{background:#22100c;color:#fff1ea}:root[data-theme=dark] .mf-prod p{color:#d6b2a6}
+.mf-wins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px;margin-top:24px}
+.mf-wins div{padding:18px 20px;border-radius:18px;background:var(--solid);color:var(--onsolid)}
+.mf-wins b{display:block;font:800 28px Syne,sans-serif}
+.mf-wins span{font-size:14px;opacity:.9}
+.mf-sub{margin-top:30px;color:var(--accent);font-size:20px}
+.mf-sub+.contrib{margin-top:14px}
+
 /* timeline */
+
 
 
 .tl{margin-top:36px;position:relative;padding-inline-start:38px}
@@ -765,6 +805,74 @@ footer .ico{width:42px;height:42px}
   </section>
 </div>
 
+<!-- Modern Food project page (opens at #modernfood) -->
+<div class="subpage" id="sp-modernfood" hidden role="dialog" aria-modal="true" aria-labelledby="mf-title">
+  <div class="sp-top">
+    <a class="btn gl" href="#brands" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to portfolio</a>
+    <img class="sp-mini" src="img/mini-modernfood.jpg" alt="Modern Food" width="1182" height="435">
+    <a class="btn pri" href="https://www.modernfood.ae">Visit<span class="dom">&nbsp;modernfood.ae</span></a>
+  </div>
+
+  <header class="band hot sp-hero">
+    <div class="wrap sp-hgrid">
+      <div class="sp-in">
+        <span class="kicker"><b></b>Client: FMCG snacks, Dubai</span>
+        <h1 id="mf-title">Modern Food</h1>
+        <p class="lede">Modern Food makes oven-baked chips and snacks in Al Garhoud, Dubai, and has done since 1981. Part of the HBAS Group of Industries, it sells across the UAE and exports to the GCC, the wider Middle East, Africa and Australia.</p>
+        <div class="ctas">
+          <a class="btn pri mag" href="https://www.modernfood.ae">Visit modernfood.ae</a>
+          <a class="btn gl mag" href="#contact">Talk to me about it</a>
+        </div>
+      </div>
+      <div class="mf-anim" aria-hidden="true">
+        <div class="mf-serp">
+          <div class="mf-bar"><span class="mf-g" id="mf-g"></span><span id="mf-q"></span></div>
+          <div class="mf-list" id="mf-list"></div>
+        </div>
+        <div class="mf-leads">
+          <div class="mf-lh"><span class="mf-meta" id="mf-meta"></span><b>Meta lead ads</b><span class="mf-count"><em id="mf-n">0</em> leads today</span></div>
+          <div class="mf-toasts" id="mf-toasts"></div>
+        </div>
+        <p class="px-cap">Illustration: search rankings and daily leads</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The products</h2>
+      <p class="sp-p">Five oven-baked snack ranges, made in Dubai.</p>
+      <div class="mf-prods" id="mf-prods"></div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="wrap glass panel">
+      <h2>My contribution</h2>
+      <p class="sp-p">I run Modern Food's digital growth end to end: paid leads from Meta, the creative that powers them, the reporting that connects them to sales, and the SEO that took the website into Google's top 5.</p>
+      <div class="mf-wins">
+        <div><b>Top 5</b><span>on Google for the website</span></div>
+        <div><b>Daily</b><span>leads from Meta ads</span></div>
+        <div><b>Monthly</b><span>lead-quality and sales reports</span></div>
+      </div>
+      <h3 class="mf-sub">Performance marketing and leads</h3>
+      <div class="contrib" id="mf-c1"></div>
+      <h3 class="mf-sub">SEO, end to end</h3>
+      <div class="contrib" id="mf-c2"></div>
+    </div>
+  </section>
+
+  <section class="band hot sp-cta">
+    <div class="wrap">
+      <h2>See Modern Food online</h2>
+      <div class="ctas">
+        <a class="btn pri mag" href="https://www.modernfood.ae">Visit www.modernfood.ae</a>
+        <a class="btn gl" href="#brands" data-close>Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</div>
+
 <script>
 {
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -804,7 +912,8 @@ const brandLogos=[
  ['invited','Invited','#faf4e8','Logo for Invited, a Nextoria brand. A high-contrast serif wordmark with an elegant, editorial feel.'],
  ['findxpand','Findxpand','#ffffff','An AI-powered SEO tool where AI fixes errors and specialists approve them. I led the ideation, guided the developers end to end and designed the logo.','findxpand','Product and logo'],
  ['reachxpand','ReachXpand','#ffffff','An AI social media management tool for businesses, organisations, small businesses and vendors. I run quality checks, share social media expertise, propose new features, and use it daily to post for every company in the Hassan Bin Al Shaikh Group.','reachxpand','Product'],
- ['personaxpand','PersonaXpand','#ffffff','A social media management tool for personal branding, for influencers and everyday people. I run quality checks, share social media expertise, propose new features and lead its SEO and website content.','personaxpand','Product']];
+ ['personaxpand','PersonaXpand','#ffffff','A social media management tool for personal branding, for influencers and everyday people. I run quality checks, share social media expertise, propose new features and lead its SEO and website content.','personaxpand','Product'],
+ ['modernfood','Modern Food','#ffffff','Oven-baked snacks made in Dubai since 1981. I run Meta ads for daily leads, create the videos and creatives, report lead quality and sales with the sales team, and did end-to-end SEO that took the website into Google\'s top 5.','modernfood','Ads, SEO and strategy']];
 $('#logos').innerHTML=brandLogos.map(([k,n,bg,d,pg,tag])=>{const inner=`<div class="lart"><img src="img/logo-${k}.jpg" alt="${n} logo" loading="lazy"></div><figcaption><span class="tag">${tag||'Logo design'}</span><h3>${n}</h3><p>${d}</p>${pg?`<span class="more">View project<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>`:''}</figcaption>`;return pg?`<a class="lcard glass rv link" href="#${pg}" data-open="${pg}" style="--bg:${bg}">${inner}</a>`:`<figure class="lcard glass rv" style="--bg:${bg}">${inner}</figure>`}).join('');
 
 /* project pages, routed on the URL hash */
@@ -831,7 +940,7 @@ const RXSOC={"Instagram": "<svg viewBox=\"0 0 264.583 264.583\" aria-hidden=\"tr
 let fxTimer=null;
 const runMock=()=>{const rows=[...document.querySelectorAll('#fx-rows li')];if(reduce){rows.forEach(r=>{r.dataset.s=2;r.querySelector('em').textContent=states[2]});return}
  const set=(r,v)=>{r.dataset.s=v;r.querySelector('em').textContent=states[v]};
- rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();
+ rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();
  fxTimer=setInterval(()=>{const ri=Math.floor(i/2);
   if(ri>=rows.length){if(i>=rows.length*2+4){rows.forEach(r=>set(r,0));i=0}else i++;return}
   const r=rows[ri];set(r,i%2+1);r.classList.remove('pulse');void r.offsetWidth;r.classList.add('pulse');i++},850)};
@@ -874,9 +983,47 @@ const fitAll=()=>{const vw=innerWidth;
  fitTitle($('.hero .name'),$('.hero .hgrid>div'),Math.min(108,Math.max(52,vw*0.074)));
  document.querySelectorAll('.sp-hero h1').forEach(h=>{if(!h.closest('.subpage').hidden)fitTitle(h,h.closest('.sp-in'),Math.min(104,Math.max(48,vw*0.08)))})};
 fitAll();document.fonts&&document.fonts.ready.then(fitAll);addEventListener('resize',fitAll);
-const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand')};let openPage=null,lastY=0;
+$('#mf-g').innerHTML="<svg viewBox=\"0 0 256 262\" aria-hidden=\"true\"><path fill=\"#4285f4\" d=\"M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622l38.755 30.023l2.685.268c24.659-22.774 38.875-56.282 38.875-96.027\"/><path fill=\"#34a853\" d=\"M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055c-34.523 0-63.824-22.773-74.269-54.25l-1.531.13l-40.298 31.187l-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1\"/><path fill=\"#fbbc05\" d=\"M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82c0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602z\"/><path fill=\"#eb4335\" d=\"M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0C79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251\"/></svg>";$('#mf-meta').innerHTML="<svg viewBox=\"0 0 256 171\" aria-hidden=\"true\"><defs><linearGradient id=\"mfA\" x1=\"13.878%\" x2=\"89.144%\" y1=\"55.934%\" y2=\"58.694%\"><stop offset=\"0%\" stop-color=\"#0064e1\"/><stop offset=\"40%\" stop-color=\"#0064e1\"/><stop offset=\"83%\" stop-color=\"#0073ee\"/><stop offset=\"100%\" stop-color=\"#0082fb\"/></linearGradient><linearGradient id=\"mfB\" x1=\"54.315%\" x2=\"54.315%\" y1=\"82.782%\" y2=\"39.307%\"><stop offset=\"0%\" stop-color=\"#0082fb\"/><stop offset=\"100%\" stop-color=\"#0064e0\"/></linearGradient></defs><path fill=\"#0081fb\" d=\"M27.651 112.136c0 9.775 2.146 17.28 4.95 21.82c3.677 5.947 9.16 8.466 14.751 8.466c7.211 0 13.808-1.79 26.52-19.372c10.185-14.092 22.186-33.874 30.26-46.275l13.675-21.01c9.499-14.591 20.493-30.811 33.1-41.806C161.196 4.985 172.298 0 183.47 0c18.758 0 36.625 10.87 50.3 31.257C248.735 53.584 256 81.707 256 110.729c0 17.253-3.4 29.93-9.187 39.946c-5.591 9.686-16.488 19.363-34.818 19.363v-27.616c15.695 0 19.612-14.422 19.612-30.927c0-23.52-5.484-49.623-17.564-68.273c-8.574-13.23-19.684-21.313-31.907-21.313c-13.22 0-23.859 9.97-35.815 27.75c-6.356 9.445-12.882 20.956-20.208 33.944l-8.066 14.289c-16.203 28.728-20.307 35.271-28.408 46.07c-14.2 18.91-26.324 26.076-42.287 26.076c-18.935 0-30.91-8.2-38.325-20.556C2.973 139.413 0 126.202 0 111.148z\"/><path fill=\"url(#mfA)\" d=\"M21.802 33.206C34.48 13.666 52.774 0 73.757 0C85.91 0 97.99 3.597 110.605 13.897c13.798 11.261 28.505 29.805 46.853 60.368l6.58 10.967c15.881 26.459 24.917 40.07 30.205 46.49c6.802 8.243 11.565 10.7 17.752 10.7c15.695 0 19.612-14.422 19.612-30.927l24.393-.766c0 17.253-3.4 29.93-9.187 39.946c-5.591 9.686-16.488 19.363-34.818 19.363c-11.395 0-21.49-2.475-32.654-13.007c-8.582-8.083-18.615-22.443-26.334-35.352l-22.96-38.352C118.528 64.08 107.96 49.73 101.845 43.23c-6.578-6.988-15.036-15.428-28.532-15.428c-10.923 0-20.2 7.666-27.963 19.39z\"/><path fill=\"url(#mfB)\" d=\"M73.312 27.802c-10.923 0-20.2 7.666-27.963 19.39c-10.976 16.568-17.698 41.245-17.698 64.944c0 9.775 2.146 17.28 4.95 21.82L9.027 149.482C2.973 139.413 0 126.202 0 111.148C0 83.772 7.514 55.24 21.802 33.206C34.48 13.666 52.774 0 73.757 0z\"/></svg>";
+$('#mf-prods').innerHTML=[
+ ['Since 1981','Papy Snacks','Classic salted corn and potato rings, the first Modern Food product.'],
+ ['Since 1984','Dubai Pofak','Cheesy puffs.'],
+ ['Since 1984','Chipstix','Tomato, vinegar and herb potato sticks.'],
+ ['Since 2025','Dubai Bites','Chilli and tomato wheels.'],
+ ['New in 2026','Dubai Pofak Chilli Cheeze','Hot and cheesy puffs.']].map(([y,h,p])=>`<div class="mf-prod"><span class="yr">${y}</span><h3>${h}</h3><p>${p}</p></div>`).join('');
+const card=([h,p])=>`<div><b>${h}</b><p>${p}</p></div>`;
+$('#mf-c1').innerHTML=[
+ ['Meta ads, every day','Run lead-generation campaigns on Meta (Facebook and Instagram) that bring in new leads daily.'],
+ ['Videos and creatives','Create the ad videos and creatives that the campaigns run on.'],
+ ['Lead handling','Manage incoming leads and pass them to the right people quickly.'],
+ ['Working with sales','Collaborate with the sales department to turn leads into orders.'],
+ ['Monthly reporting','Report lead quality and the sales they produce every month, and track the trend over time.']].map(card).join('');
+$('#mf-c2').innerHTML=[
+ ['On-page SEO','Optimised pages, content and metadata across the site.'],
+ ['Off-page SEO','Built authority and links back to the website.'],
+ ['Technical SEO','Fixed the technical foundations so Google can crawl and index the site properly.'],
+ ['Google Business Profile','Set up and optimised the Google Business Profile for local search.'],
+ ['Keyword strategy','Planned the keywords each page and product should win.'],
+ ['GEO and AEO','Optimised for AI search engines and answer engines, not only classic Google results.'],
+ ['Top 5 on Google','Took the website into Google\'s top 5 positions.'],
+ ['Product strategy','Created the marketing strategy for Modern Food\'s products.']].map(card).join('');
+const mfQ='oven baked snacks dubai',mfN=6,mfH=38;let mfT=[];
+const mfClear=()=>{mfT.forEach(clearTimeout);mfT.forEach(clearInterval);mfT=[]};
+const runMf=()=>{const list=$('#mf-list'),q=$('#mf-q'),n=$('#mf-n'),tw=$('#mf-toasts');mfClear();
+ list.innerHTML=Array.from({length:mfN},(_,i)=>`<div class="mf-row" data-i="${i}"><i></i><span></span><span></span></div>`).join('')+`<div class="mf-row me"><i></i><b>modernfood.ae</b><em>Top 5</em></div>`;
+ const rows=[...list.querySelectorAll('.mf-row:not(.me)')],me=list.querySelector('.me');
+ const place=pos=>{let k=0;for(let i=0;i<=mfN;i++){if(i===pos){me.style.transform=`translateY(${i*mfH}px)`;me.querySelector('i').textContent=i+1;continue}const r=rows[k++];if(!r)continue;r.style.transform=`translateY(${i*mfH}px)`;r.querySelector('i').textContent=i+1}};
+ const names=['Wholesale enquiry','Distributor, Sharjah','Supermarket buyer','Export enquiry, Oman','HORECA order','Retail stockist'];
+ if(reduce){q.textContent=mfQ;place(2);me.classList.add('top');n.textContent='14';tw.innerHTML=names.slice(0,3).map(t=>`<div class="mf-toast"><i></i>${t}<small>now</small></div>`).join('');return}
+ const cycle=()=>{if(!openPage)return;q.textContent='';me.classList.remove('top');place(mfN);list.querySelectorAll('.mf-row').forEach(r=>r.style.transition='none');void list.offsetWidth;list.querySelectorAll('.mf-row').forEach(r=>r.style.transition='');
+  n.textContent='0';tw.innerHTML='';let k=0;
+  const type=()=>{q.textContent=mfQ.slice(0,++k);if(k<mfQ.length)mfT.push(setTimeout(type,45))};type();
+  [5,4,3,2].forEach((pos,j)=>mfT.push(setTimeout(()=>{place(pos);if(pos===2)mfT.push(setTimeout(()=>me.classList.add('top'),700))},1500+j*1000)));
+  let c=0;names.forEach((t,j)=>mfT.push(setTimeout(()=>{c+=2+(j%3);n.textContent=c;const d=document.createElement('div');d.className='mf-toast';d.innerHTML=`<i></i>${t}<small>now</small>`;tw.appendChild(d);while(tw.children.length>3)tw.firstElementChild.remove()},1200+j*900)));
+  mfT.push(setTimeout(cycle,9000))};
+ cycle()};
+const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood')};let openPage=null,lastY=0;
 const route=()=>{const h=location.hash.slice(1),pg=pages[h];
- if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();pg.querySelector('[data-close]').focus({preventScroll:true})}
+ if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();pg.querySelector('[data-close]').focus({preventScroll:true})}
  else if(!pg&&openPage){const p=openPage;openPage=null;p.classList.remove('open');document.body.style.overflow='';clearInterval(fxTimer);setTimeout(()=>{p.hidden=true},reduce?0:800);const t=h&&document.getElementById(h);if(t)t.scrollIntoView({behavior:'auto'})}};
 document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',e=>{const r=a.getBoundingClientRect(),pg=pages[a.dataset.open];pg.style.setProperty('--cx',r.left+r.width/2+'px');pg.style.setProperty('--cy',r.top+r.height/2+'px')}));
 addEventListener('hashchange',route);addEventListener('keydown',e=>{if(e.key==='Escape'&&openPage)location.hash='brands'});route();
