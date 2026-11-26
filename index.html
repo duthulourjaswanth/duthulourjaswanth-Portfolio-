@@ -384,7 +384,49 @@ a{color:inherit}
 .mf-sub{margin-top:30px;color:var(--accent);font-size:20px}
 .mf-sub+.contrib{margin-top:14px}
 
+/* insquad: WordPress build animation */
+.iq-mini{margin-inline:auto;font:800 17px Syne,sans-serif;color:#0e5a8a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media(max-width:600px){.iq-mini{font-size:13px;flex:1 1 0;text-align:center}}
+.iq-anim{display:grid;justify-items:center;gap:12px}
+.iq-win{position:relative;width:min(100%,430px);background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(40,0,0,.75)}
+.iq-chrome{display:flex;align-items:center;gap:6px;padding:10px 12px;background:#f1f3f6;font-size:12px;font-weight:600;color:#555}
+.iq-chrome i{width:9px;height:9px;border-radius:50%;background:#d6d9de}
+.iq-chrome span{margin-inline-start:8px;background:#fff;padding:3px 10px;border-radius:999px}
+.iq-wp{margin-inline-start:auto;width:20px;height:20px;display:block}
+.iq-wp svg{width:100%;height:100%;display:block;animation:spin 3s linear infinite}
+.iq-win.done .iq-wp svg{animation:none}
+.iq-page{padding:12px;display:grid;gap:10px;min-height:300px}
+.iq-blk{border-radius:12px;opacity:0;transform:translateY(18px) scale(.97);transition:opacity .4s ease,transform .6s cubic-bezier(.34,1.3,.64,1)}
+.iq-blk.on{opacity:1;transform:none}
+.iq-blk.b1{background:linear-gradient(135deg,#0e5a8a,#1b8ac4);padding:16px;display:grid;gap:7px}
+.iq-blk.b1 .h{height:12px;width:70%;border-radius:6px;background:#fff}
+.iq-blk.b1 .l{height:8px;width:52%;border-radius:5px;background:rgba(255,255,255,.6)}
+.iq-blk.b1 .btnb{justify-self:start;margin-top:4px;font-size:11px;font-weight:700;color:#0e5a8a;background:#fff;padding:5px 10px;border-radius:999px}
+.iq-blk.b2{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.iq-blk.b2 span{height:46px;border-radius:10px;background:#eef5fb;box-shadow:inset 0 0 0 1px #d8e8f5}
+.iq-blk.b3{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.iq-blk.b3 span{height:26px;border-radius:8px;background:#f4f6f9}
+.iq-blk.b3 span:nth-child(odd){background:#e3f0fa}
+.iq-blk.b4{display:flex;justify-content:space-around;padding:10px;background:#0b2f4a;color:#fff}
+.iq-blk.b4 b{font:800 16px Syne,sans-serif}
+.iq-pub{position:absolute;right:20px;top:54px;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;background:#18b35d;padding:6px 12px;border-radius:999px;transform:scale(0);transition:transform .45s cubic-bezier(.34,1.6,.64,1)}
+.iq-win.done .iq-pub{transform:scale(1)}
+.iq-svcs{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.iq-svcs span{padding:9px 15px;border-radius:999px;font-weight:600;font-size:15px;background:var(--chip);border:1px solid var(--chipline)}
+/* websites I've built (home) */
+.webs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:18px;margin-top:22px}
+.webcard .lart{background:linear-gradient(150deg,#0e5a8a,#0b2f4a)}
+.webcard .mockup{width:78%;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 20px 40px -20px rgba(0,0,0,.6);transform:translateY(8px);transition:transform .8s var(--ease-out)}
+.webcard .mockup div{padding:6px 8px;background:#f1f3f6;font-size:10px;font-weight:700;color:#555;display:flex;gap:4px;align-items:center}
+.webcard .mockup div i{width:6px;height:6px;border-radius:50%;background:#d6d9de}
+.webcard .mockup p{margin:0;padding:12px;font:800 15px Syne,sans-serif;color:#0e5a8a}
+.webcard .mockup p small{display:block;font:600 11px Manrope,sans-serif;color:#6b7a8a;margin-top:4px}
+@media(hover:hover){.webcard:hover .mockup{transform:translateY(0) scale(1.03)}}
+.rowlink{display:inline-flex;margin-top:6px;font-weight:700;color:var(--accent);text-decoration:none}
+.rowlink:hover{text-decoration:underline}
+
 /* timeline */
+
 
 
 
@@ -556,6 +598,13 @@ footer .ico{width:42px;height:42px}
     <h2 class="rv">Brands I've worked with</h2>
     <div class="lc-head rv"><h3>Products and logo work</h3><p>Brands and products I've worked on, from FMCG to SaaS and e-commerce.</p></div>
     <div class="logos" id="logos"></div>
+    <div class="lc-head rv" id="websites"><h3>Websites I've built</h3><p>Websites I designed and built for clients.</p></div>
+    <div class="webs">
+      <a class="lcard glass rv link webcard" href="#insquad" data-open="insquad">
+        <div class="lart"><span class="ind">Healthcare consulting</span><div class="mockup"><div><i></i><i></i><i></i>&nbsp;insquadsolution.com</div><p>Insquad Solution<small>Pharmacy business consulting for hospitals</small></p></div></div>
+        <figcaption><span class="tag">WordPress website</span><h3>Insquad Solution</h3><p>Designed and built on WordPress for a start-up pharmacy consulting firm in Chennai, India.</p><span class="more">View project<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figcaption>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -875,6 +924,68 @@ footer .ico{width:42px;height:42px}
   </section>
 </div>
 
+<!-- Insquad Solution website project (opens at #insquad) -->
+<div class="subpage" id="sp-insquad" hidden role="dialog" aria-modal="true" aria-labelledby="iq-title">
+  <div class="sp-top">
+    <a class="btn gl" href="#websites" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to portfolio</a>
+    <span class="iq-mini">insquadsolution.com</span>
+    <a class="btn pri" href="https://www.insquadsolution.com">Visit<span class="dom">&nbsp;insquadsolution.com</span></a>
+  </div>
+
+  <header class="band hot sp-hero">
+    <div class="wrap sp-hgrid">
+      <div class="sp-in">
+        <span class="kicker"><b></b>Website development: WordPress</span>
+        <h1 id="iq-title">Insquad Solution</h1>
+        <p class="lede">I designed and built the website for Insquad Solution, a start-up in healthcare consulting, on WordPress. Insquad is a pharmacy business consulting firm for hospitals, based in Chennai, India.</p>
+        <div class="ctas">
+          <a class="btn pri mag" href="https://www.insquadsolution.com">Visit insquadsolution.com</a>
+          <a class="btn gl mag" href="#contact">Build mine</a>
+        </div>
+      </div>
+      <div class="iq-anim" aria-hidden="true">
+        <div class="iq-win" id="iq-win">
+          <div class="iq-chrome"><i></i><i></i><i></i><span>insquadsolution.com</span><em class="iq-wp" id="iq-wp"></em></div>
+          <div class="iq-page">
+            <div class="iq-blk b1"><span class="h"></span><span class="l"></span><span class="btnb">Get a Free Consultation</span></div>
+            <div class="iq-blk b2"><span></span><span></span><span></span><span></span></div>
+            <div class="iq-blk b3"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="iq-blk b4"><b>200+</b><b>25%</b><b>2013</b></div>
+          </div>
+          <div class="iq-pub" id="iq-pub"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg>Published</div>
+        </div>
+        <p class="px-cap">Illustration: the site's sections being built in WordPress</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>About Insquad Solution</h2>
+      <p class="sp-p">Founded in 2013, Insquad Solution helps hospitals improve their pharmacy operations, cut costs and raise profitability. It describes itself as India's first pharmacy business consulting firm and cites work with over 200 hospitals across the country.</p>
+      <div class="iq-svcs" id="iq-svcs"></div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="wrap glass panel">
+      <h2>My contribution</h2>
+      <p class="sp-p">I built the whole website on WordPress, from structure to launch, so a young company could present its services clearly and turn visitors into consultation requests.</p>
+      <div class="contrib" id="iq-contrib"></div>
+    </div>
+  </section>
+
+  <section class="band hot sp-cta">
+    <div class="wrap">
+      <h2>See the live website</h2>
+      <div class="ctas">
+        <a class="btn pri mag" href="https://www.insquadsolution.com">Visit www.insquadsolution.com</a>
+        <a class="btn gl" href="#websites" data-close>Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</div>
+
 <script>
 {
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -885,7 +996,7 @@ const marquee=['Google Ads','Meta Ads','Performance Max','Technical SEO','Local 
 const services=[
  ['Paid media (PPC)','Google Ads Search, Display and Performance Max, plus Meta Ads, built around lead generation, audience segmentation, A/B testing and ROAS.'],
  ['SEO','Technical, on-page, off-page and local SEO, keyword research and audits that grew organic traffic 20–50%.'],
- ['Website development','WordPress and Shopify websites, e-commerce stores and landing pages, built faster with AI tools and designed to convert.'],
+ ['Website development','WordPress and Shopify websites, e-commerce stores and landing pages, built faster with AI tools and designed to convert. <a class="rowlink" href="#insquad" data-open="insquad">See the Insquad Solution website &rarr;</a>'],
  ['Social media and content','Social strategy, content calendars, copywriting and influencer marketing that grow brands organically.'],
  ['SaaS and product marketing','B2B SaaS marketing, go-to-market, affiliate and partner programs, and turning marketer feedback into product roadmaps.'],
  ['Analytics and CRO','GA4, Google Tag Manager, conversion rate optimization and reporting that shows where every dirham goes.'],
@@ -942,7 +1053,7 @@ const RXSOC={"Instagram": "<svg viewBox=\"0 0 264.583 264.583\" aria-hidden=\"tr
 let fxTimer=null;
 const runMock=()=>{const rows=[...document.querySelectorAll('#fx-rows li')];if(reduce){rows.forEach(r=>{r.dataset.s=2;r.querySelector('em').textContent=states[2]});return}
  const set=(r,v)=>{r.dataset.s=v;r.querySelector('em').textContent=states[v]};
- rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();
+ rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();iqClear();
  fxTimer=setInterval(()=>{const ri=Math.floor(i/2);
   if(ri>=rows.length){if(i>=rows.length*2+4){rows.forEach(r=>set(r,0));i=0}else i++;return}
   const r=rows[ri];set(r,i%2+1);r.classList.remove('pulse');void r.offsetWidth;r.classList.add('pulse');i++},850)};
@@ -1024,9 +1135,24 @@ const runMf=()=>{const list=$('#mf-list'),q=$('#mf-q'),n=$('#mf-n'),tw=$('#mf-to
   let c=0;names.forEach((t,j)=>mfT.push(setTimeout(()=>{c+=2+(j%3);n.textContent=c;const d=document.createElement('div');d.className='mf-toast';d.innerHTML=`<i></i>${t}<small>now</small>`;tw.appendChild(d);while(tw.children.length>3)tw.firstElementChild.remove()},1200+j*900)));
   mfT.push(setTimeout(cycle,9000))};
  cycle()};
-const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood')};let openPage=null,lastY=0;
+$('#iq-wp').innerHTML="<svg viewBox=\"0 0 256 255\" aria-hidden=\"true\"><path fill=\"#464342\" d=\"M18.124 127.5c0 43.296 25.16 80.711 61.646 98.442L27.594 82.986a109 109 0 0 0-9.47 44.514m183.221-5.52c0-13.517-4.856-22.879-9.02-30.165c-5.545-9.01-10.742-16.64-10.742-25.65c0-10.055 7.626-19.415 18.368-19.415c.485 0 .944.06 1.417.088c-19.46-17.829-45.387-28.714-73.863-28.714c-38.213 0-71.832 19.606-91.39 49.302c2.566.077 4.984.13 7.039.13c11.44 0 29.15-1.387 29.15-1.387c5.897-.348 6.592 8.312.702 9.01c0 0-5.926.697-12.52 1.042L100.32 194.7l23.937-71.79l-17.042-46.692c-5.89-.345-11.47-1.042-11.47-1.042c-5.894-.346-5.203-9.358.691-9.01c0 0 18.064 1.388 28.811 1.388c11.44 0 29.151-1.388 29.151-1.388c5.9-.348 6.594 8.312.702 9.01c0 0-5.938.697-12.52 1.042l39.529 117.581l10.91-36.458c4.728-15.129 8.327-25.995 8.327-35.36m-71.921 15.088l-32.818 95.363a109.4 109.4 0 0 0 30.899 4.456c12.737 0 24.952-2.202 36.323-6.2a9.6 9.6 0 0 1-.779-1.507zm94.058-62.045a84 84 0 0 1 .737 11.247c0 11.1-2.073 23.577-8.317 39.178l-33.411 96.6c32.518-18.963 54.39-54.193 54.39-94.545c.002-19.017-4.856-36.9-13.4-52.48M127.505 0C57.2 0 0 57.196 0 127.5c0 70.313 57.2 127.507 127.505 127.507c70.302 0 127.51-57.194 127.51-127.507C255.014 57.196 197.808 0 127.506 0m0 249.163c-67.08 0-121.659-54.578-121.659-121.663c0-67.08 54.576-121.654 121.659-121.654c67.078 0 121.652 54.574 121.652 121.654c0 67.085-54.574 121.663-121.652 121.663\"/></svg>";
+$('#iq-svcs').innerHTML=['Pharmacy Business Analysis','Pharmacy Outsourcing','Pharmacy Consulting','Training and Development','Pharmacy Stock Audit','Pharmacy Man Power Management','Pharmacy License Assistance'].map(t=>`<span>${t}</span>`).join('');
+$('#iq-contrib').innerHTML=[
+ ['Built on WordPress','Designed and built the full website on WordPress, end to end, for a start-up client.'],
+ ['Site structure','Planned the pages: home, about, a page for each of the seven services, portfolio and contact.'],
+ ['Home page story','Laid out the home page as a journey: hero, about, services, why choose us, success stories and a closing call to action.'],
+ ['Built for enquiries','Placed free-consultation calls to action throughout, so visitors can reach the team from any page.'],
+ ['Trust signals','Showcased hospital logos, key numbers and client testimonials to build credibility for a young brand.']].map(([h,p])=>`<div><b>${h}</b><p>${p}</p></div>`).join('');
+let iqT=[];const iqClear=()=>{iqT.forEach(clearTimeout);iqT=[]};
+const runIq=()=>{const win=$('#iq-win'),blks=[...win.querySelectorAll('.iq-blk')];iqClear();
+ if(reduce){blks.forEach(b=>b.classList.add('on'));win.classList.add('done');return}
+ const cycle=()=>{if(!openPage)return;win.classList.remove('done');blks.forEach(b=>b.classList.remove('on'));
+  blks.forEach((b,i)=>iqT.push(setTimeout(()=>b.classList.add('on'),500+i*700)));
+  iqT.push(setTimeout(()=>win.classList.add('done'),500+blks.length*700+200));
+  iqT.push(setTimeout(cycle,6500))};cycle()};
+const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood'),insquad:$('#sp-insquad')};let openPage=null,lastY=0;
 const route=()=>{const h=location.hash.slice(1),pg=pages[h];
- if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();pg.querySelector('[data-close]').focus({preventScroll:true})}
+ if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();if(h==='insquad')runIq();pg.querySelector('[data-close]').focus({preventScroll:true})}
  else if(!pg&&openPage){const p=openPage;openPage=null;p.classList.remove('open');document.body.style.overflow='';clearInterval(fxTimer);setTimeout(()=>{p.hidden=true},reduce?0:800);const t=h&&document.getElementById(h);if(t)t.scrollIntoView({behavior:'auto'})}};
 document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',e=>{const r=a.getBoundingClientRect(),pg=pages[a.dataset.open];pg.style.setProperty('--cx',r.left+r.width/2+'px');pg.style.setProperty('--cy',r.top+r.height/2+'px')}));
 addEventListener('hashchange',route);addEventListener('keydown',e=>{if(e.key==='Escape'&&openPage)location.hash='brands'});route();
