@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jaswanth Duthulour — AI and Digital Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: warm, confident, energetic — a marketer who ships, lit like a studio portrait.
+   IDEA: the studio backdrop from the portrait, alternating with clean white paper; content sits on frosted glass.
+   PICTURE: the portrait in a glass frame, channel chips (Google Ads, SEO, GA4...) floating around it.
+   COLOUR & TYPE: portrait red-orange #e02d02 to #8e1002 in hero, services, journey and contact; white paper elsewhere; Syne + Manrope.
+   LAYOUT: orange and white bands alternate; frosted white glass on white, frosted red glass on orange; jacket-black marquee. */
+:root{color-scheme:light;
+  --hot:#e02d02;--deep:#8e1002;--red:#c42502;--ink:#1c0a06;
+  --paper:#fffaf7;
+  --text:var(--ink);--mute:#6a4a40;--accent:var(--red);
+  --hair:rgba(28,10,6,.12);--chip:rgba(196,37,2,.07);--chipline:rgba(196,37,2,.2);--well:rgba(196,37,2,.05);
+  --solid:var(--red);--onsolid:#fff;
+  --glass:linear-gradient(140deg,rgba(255,255,255,.85),rgba(255,255,255,.45));
+  --gfill:rgba(255,255,255,.35);--gline:rgba(255,255,255,.95);--blur:blur(22px) saturate(160%);
+  --shadow:0 1px 0 #fff inset,0 0 0 1px rgba(196,37,2,.08),0 30px 60px -34px rgba(160,30,0,.35);
+  --ease-out:cubic-bezier(.22,1,.36,1)}
+.hot{--text:#fff8f4;--mute:rgba(255,236,226,.86);--accent:#ffd08a;
+  --hair:rgba(255,255,255,.18);--chip:rgba(255,255,255,.12);--chipline:rgba(255,255,255,.26);--well:rgba(23,5,3,.22);
+  --solid:#fff;--onsolid:#a51400;
+  --glass:linear-gradient(140deg,rgba(255,255,255,.16),rgba(255,255,255,.04) 45%,rgba(60,8,0,.10));
+  --gfill:rgba(70,10,0,.16);--gline:rgba(255,255,255,.26);
+  --shadow:0 1px 0 rgba(255,255,255,.18) inset,0 30px 60px -30px rgba(60,4,0,.55);
+  color:var(--text);position:relative;isolation:isolate;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 40%,var(--hot) 0%,#c71f01 40%,var(--deep) 95%)}
+.hot::before{content:"";position:absolute;inset:-20%;z-index:-1;pointer-events:none;
+  background:radial-gradient(30% 35% at 20% 25%,rgba(255,122,40,.5),transparent 70%),radial-gradient(30% 30% at 85% 75%,rgba(90,6,0,.55),transparent 70%);animation:sway 24s ease-in-out infinite alternate}
+@keyframes sway{to{transform:translate(6%,4%) scale(1.06)}}
+:root[data-theme=dark]{color-scheme:dark;--paper:#170605;--ink:#fff1ea;--mute:#d6b2a6;--accent:#ff8a5c;--hair:rgba(255,255,255,.12);--chip:rgba(255,138,92,.1);--chipline:rgba(255,138,92,.26);--well:rgba(255,255,255,.04);--solid:#ff6a3a;--onsolid:#1c0503;
+  --glass:linear-gradient(140deg,rgba(255,255,255,.08),rgba(255,255,255,.02));--gfill:rgba(40,8,4,.4);--gline:rgba(255,255,255,.14);--shadow:0 1px 0 rgba(255,255,255,.08) inset,0 30px 60px -30px rgba(0,0,0,.7)}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;background:var(--paper);overflow-x:clip}
+body{margin:0;color:var(--text);background:var(--paper);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Syne,Manrope,sans-serif;line-height:1.05;margin:0;text-wrap:balance}
+h2{font-size:clamp(32px,4.6vw,52px);font-weight:800;letter-spacing:-.02em;overflow-wrap:break-word}
+h3{font-size:22px;font-weight:700}
+p{margin:0;text-wrap:pretty}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(56px,7vw,104px) max(4vw,14px)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.eyebrow{color:var(--accent);font-weight:700;font-size:16px;margin-bottom:10px;display:block}
+
+/* soft warm light behind white sections */
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.bg i{position:absolute;border-radius:50%;will-change:transform}
+.bg .a{width:50vmax;height:50vmax;left:-18vmax;top:10vh;background:radial-gradient(closest-side,rgba(255,120,60,.22),transparent);animation:d1 26s ease-in-out infinite alternate}
+.bg .b{width:46vmax;height:46vmax;right:-18vmax;top:40vh;background:radial-gradient(closest-side,rgba(224,45,2,.16),transparent);animation:d2 32s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate(20vw,30vh) scale(1.1)}}
+@keyframes d2{to{transform:translate(-24vw,-20vh) scale(.9)}}
+
+/* glass */
+.glass{background:var(--glass),var(--gfill);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--gline);border-radius:28px;box-shadow:var(--shadow);position:relative;color:var(--text)}
+.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(400px circle at var(--mx,-999px) var(--my,-999px),rgba(255,255,255,.16),transparent 45%)}
+.panel{padding:clamp(24px,4vw,56px)}
+
+/* nav: white frosted pill on every background */
+.navw{position:fixed;top:12px;left:0;right:0;z-index:50;padding:0 max(4vw,14px)}
+.nav{--text:var(--ink);--glass:linear-gradient(140deg,rgba(255,255,255,.82),rgba(255,255,255,.6));--gfill:transparent;--gline:rgba(255,255,255,.9);
+  max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:8px 8px 8px 20px;border-radius:999px;overflow:hidden;box-shadow:0 14px 40px -18px rgba(100,10,0,.45)}
+:root[data-theme=dark] .nav{--glass:linear-gradient(140deg,rgba(30,8,5,.8),rgba(30,8,5,.6));--gline:rgba(255,255,255,.14)}
+.logo{font:800 19px Syne,sans-serif;text-decoration:none;display:flex;align-items:center;gap:10px;min-height:44px}
+.logo{white-space:nowrap}@media(max-width:600px){.logo{font-size:14px;gap:8px}}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--hot);box-shadow:0 0 12px var(--hot)}
+.links{display:flex;gap:2px;margin-inline-start:auto;flex-wrap:wrap}
+.links a{text-decoration:none;font-weight:600;font-size:15px;padding:10px 13px;border-radius:999px;color:var(--mute);transition:color .2s ease,background-color .2s ease}
+.links a:hover,.links a.on{color:var(--red);background:rgba(196,37,2,.08)}
+.nav .btn{min-height:44px;padding:0 18px;background:var(--red);color:#fff}
+.prog{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--hot);transform-origin:0 50%;transform:scaleX(0)}
+@media(max-width:980px){.links{display:none}.nav .btn{margin-inline-start:auto}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;font:700 16px Manrope,sans-serif;text-decoration:none;border:0;cursor:pointer;
+  transition:transform .25s var(--ease-out),background-color .2s ease,box-shadow .25s ease,color .2s ease}
+.btn:active{transform:scale(.96)}
+.btn svg{flex:none}
+.btn.pri{background:var(--solid);color:var(--onsolid);box-shadow:0 12px 30px -14px rgba(120,10,0,.7)}
+.btn.gl{color:var(--text);background:var(--chip);border:1px solid var(--chipline);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn.gl:hover{background:var(--solid);color:var(--onsolid);border-color:transparent}
+
+/* hero */
+.hero{padding-top:clamp(104px,10vw,140px);border-radius:0 0 clamp(28px,4vw,56px) clamp(28px,4vw,56px)}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);align-items:center}
+.kicker{font:700 clamp(17px,1.7vw,20px) Manrope,sans-serif;display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:22px;background:#fff;color:#a51400;box-shadow:0 12px 30px -14px rgba(60,0,0,.6)}
+.kicker b{width:9px;height:9px;border-radius:50%;background:#18b35d;animation:live 2.4s ease-out infinite;flex:none}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(24,179,93,.6)}100%{box-shadow:0 0 0 10px rgba(24,179,93,0)}}
+.name{font-size:clamp(52px,7.4vw,108px);font-weight:800;letter-spacing:-.045em;line-height:.92;margin:22px 0}
+.line{display:block;overflow:hidden;padding-bottom:.08em}
+.line>span{display:inline-block;transform:translateY(105%);transition:transform 1.1s var(--ease-out)}
+.ready .line>span{transform:none}
+.lede{font-size:clamp(18px,1.8vw,21px);max-width:38ch;color:var(--mute)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.ico{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--chip);border:1px solid var(--chipline);color:var(--text);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:transform .25s var(--ease-out),background-color .2s ease,color .2s ease}
+.ico:hover{background:#fff;color:#a51400;transform:translateY(-3px)}
+.ico.li:hover{color:#0a66c2}.ico.wa:hover{color:#25d366}
+.ico:active{transform:scale(.96)}
+.fadein{opacity:0;transform:translateY(14px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.ready .fadein{opacity:1;transform:none}
+
+.stage{position:relative;justify-self:center;width:min(100%,440px);padding:24px 34px 36px;transition:transform .7s var(--ease-out)}
+.frame{padding:10px;border-radius:36px;opacity:0;transform:scale(.95) translateY(16px);transition:opacity 1.2s var(--ease-out) .2s,transform 1.4s var(--ease-out) .2s}
+.ready .frame{opacity:1;transform:none}
+.frame img{display:block;width:100%;height:auto;aspect-ratio:820/1023;object-fit:cover;border-radius:28px;outline:1px solid rgba(255,255,255,.1);outline-offset:-1px}
+.chip{position:absolute;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;font-weight:700;font-size:15px;white-space:nowrap;color:#fff;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);
+  box-shadow:0 14px 30px -14px rgba(50,0,0,.6);opacity:0;transition:opacity .8s var(--ease-out)}
+.ready .chip{opacity:1}
+.chip i{width:8px;height:8px;border-radius:50%;background:#ffd08a}
+.chip.fl{animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.chip.big{padding:12px 18px;font-size:16px;background:#fff;color:#a51400;border-color:#fff}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(32px,4vw,56px);border-radius:24px;overflow:hidden}
+.stat{padding:22px 24px;border-inline-start:1px solid var(--hair)}
+.stat:first-child{border:0}
+.stat{container-type:inline-size}
+.stat b{display:block;white-space:nowrap;font:800 clamp(16px,13.6cqi,40px) Syne,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat span{font-size:15px;color:var(--mute)}
+@media(max-width:860px){.hgrid{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat:nth-child(3){border-inline-start:0}.stat:nth-child(n+3){border-top:1px solid var(--hair)}}
+@media(max-width:420px){.chip{font-size:13px;padding:8px 12px}}
+@media(max-width:600px){.stat{padding:18px 16px}}
+
+/* marquee */
+.marq{background:var(--ink);color:#fff;overflow:hidden;padding:18px 0;margin:clamp(28px,4vw,48px) 0 0;transform:rotate(-1deg);width:104%;margin-inline-start:-2%}
+:root[data-theme=dark] .marq{background:#fff;color:#1c0a06}
+.track{display:flex;width:max-content;animation:marq 40s linear infinite}
+.marq:hover .track{animation-play-state:paused}
+.track span{font:700 clamp(20px,2.4vw,28px) Syne,sans-serif;padding:0 28px;white-space:nowrap;display:flex;align-items:center;gap:28px}
+.track span::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--hot);box-shadow:0 0 12px var(--hot)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,5vw,72px);align-items:start}
+.about .big{font:600 clamp(21px,2.3vw,28px)/1.4 Manrope,sans-serif;letter-spacing:-.01em}
+.about .big em{font-style:normal;background:linear-gradient(transparent 62%,rgba(224,45,2,.22) 0)}
+.about p+p{margin-top:16px;color:var(--mute)}
+@media(max-width:860px){.about{grid-template-columns:minmax(0,1fr)}}
+
+/* services */
+.svc{margin-top:36px;border-top:1px solid var(--hair)}
+.row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) 44px;gap:24px;align-items:center;padding:26px 18px;border-bottom:1px solid var(--hair);isolation:isolate}
+.row::before{content:"";position:absolute;inset:4px 0;background:var(--chip);border-radius:18px;transform:scaleY(.6);opacity:0;transition:transform .45s var(--ease-out),opacity .3s ease;z-index:-1}
+.row h3{font-size:clamp(22px,2.5vw,30px);transition:transform .45s var(--ease-out)}
+.row p{color:var(--mute)}
+.row .arr{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--chipline);transition:transform .45s var(--ease-out),background-color .3s ease,color .3s ease}
+@media(hover:hover){.row:hover::before{transform:none;opacity:1}.row:hover h3{transform:translateX(8px)}.row:hover .arr{background:var(--solid);color:var(--onsolid);transform:rotate(-45deg)}}
+@media(max-width:700px){.row{grid-template-columns:minmax(0,1fr) 44px;padding:22px 6px}.row p{grid-column:1/-1;grid-row:2}}
+
+/* toolkit */
+.kits{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px 36px;margin-top:32px}
+.kit h3{font-size:18px;margin-bottom:12px;color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags>span{padding:7px 13px;border-radius:999px;font-size:14px;font-weight:600;background:var(--chip);border:1px solid var(--chipline);transition:background-color .2s ease,color .2s ease}
+@media(hover:hover){.tags>span:hover{background:var(--solid);color:var(--onsolid)}}
+
+/* tool logo pop-ups */
+.tags .tool{position:relative;font:inherit;font-size:14px;font-weight:600;color:inherit;cursor:default;padding:7px 13px 7px 11px;border-radius:999px;background:var(--chip);border:1px solid var(--chipline);display:inline-flex;align-items:center;gap:7px;
+  transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s var(--ease-out)}
+.tool .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.55;transition:opacity .2s ease}
+.tool .lg{position:absolute;left:50%;bottom:calc(100% + 12px);width:68px;height:68px;padding:13px;border-radius:20px;background:#fff;z-index:5;pointer-events:none;
+  box-shadow:0 18px 34px -14px rgba(120,20,0,.5),0 0 0 1px rgba(28,10,6,.06);opacity:0;transform:translate(-50%,8px) scale(.9);transform-origin:50% 100%;
+  transition:opacity .16s ease-out,transform .24s var(--ease-out)}
+.tool .lg::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:#fff;transform:translateX(-50%) rotate(45deg);border-radius:2px}
+.tool .lg svg{position:relative;z-index:1;width:100%;height:100%;display:block}
+.tool:hover,.tool:focus-visible,.tool.show{background:#fff;border-color:#fff;color:#1c0a06;box-shadow:0 8px 20px -10px rgba(120,20,0,.45);transform:translateY(-2px)}
+.tool:hover .dot,.tool:focus-visible .dot,.tool.show .dot{opacity:1}
+.tool:hover .lg,.tool:focus-visible .lg,.tool.show .lg{opacity:1;transform:translate(-50%,0) scale(1)}
+.kits{row-gap:44px}
+
+/* work */
+.whead{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.gnav{display:flex;gap:10px}
+.gnav button{width:48px;height:48px;border-radius:50%;border:1px solid var(--chipline);background:var(--chip);color:var(--text);cursor:pointer;font-size:20px;transition:transform .2s var(--ease-out),background-color .2s ease,color .2s ease}
+.gnav button:hover{background:var(--solid);color:var(--onsolid)}.gnav button:active{transform:scale(.96)}
+.gal{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:32px 2px 24px;scrollbar-width:none}
+.gal::-webkit-scrollbar{display:none}
+.case{flex:0 0 min(400px,84%);scroll-snap-align:start;padding:10px;border-radius:26px;transition:transform .5s var(--ease-out)}
+@media(hover:hover){.case:hover{transform:translateY(-6px)}}
+.case .art{height:170px;border-radius:18px;position:relative;overflow:hidden;display:grid;place-items:center;align-content:center;gap:6px;text-align:center;color:#fff;
+  background:radial-gradient(120% 120% at 30% 20%,#ff5a1f,var(--hot) 45%,var(--deep))}
+.case:nth-child(3n+2) .art{background:linear-gradient(150deg,#2a0d08,#1c0a06)}
+.case:nth-child(3n) .art{background:radial-gradient(120% 120% at 70% 20%,#ff8a3d,#e8480e 55%,#b31e02)}
+.case .art .big{font:800 clamp(40px,5vw,56px) Syne,sans-serif;letter-spacing:-.03em;line-height:1}
+.case .art .cap{font-size:14px;font-weight:600;opacity:.85;max-width:24ch}
+.case .body{padding:20px 14px 16px}
+.case .tag{font-size:14px;font-weight:700;color:var(--accent)}
+.case h3{margin:6px 0 8px}.case p{color:var(--mute);font-size:15px}
+.case .res{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.case .res b{font:700 14px Manrope,sans-serif;padding:6px 12px;border-radius:999px;background:var(--chip);border:1px solid var(--chipline);color:var(--accent)}
+
+/* brands: logo creations */
+.lc-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;margin-top:28px}
+.lc-head h3{font-size:clamp(22px,2.4vw,28px);color:var(--accent)}
+.lc-head p{color:var(--mute)}
+.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;margin-top:22px}
+.lcard{margin:0;padding:10px;border-radius:26px}
+.lart{position:relative;aspect-ratio:4/3;border-radius:18px;background:var(--bg);display:grid;place-items:center;overflow:hidden;
+  box-shadow:inset 0 0 0 1px rgba(28,10,6,.06);clip-path:inset(0 100% 0 0 round 18px);transition:clip-path 1.1s cubic-bezier(.77,0,.18,1)}
+.lcard.in .lart{clip-path:inset(0 0 0 0 round 18px)}
+.lart img{width:80%;height:auto;transform:scale(1.18);opacity:0;transition:transform 1.4s var(--ease-out) .25s,opacity .8s ease .25s}
+.lcard.in .lart img{transform:none;opacity:1}
+.lart::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.65) 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
+@media(hover:hover){.lcard:hover .lart img{transform:scale(1.05);transition-delay:0s}.lcard:hover .lart::after{transform:translateX(120%);transition:transform .9s var(--ease-out)}}
+.lcard figcaption{padding:18px 12px 12px}
+.lcard .tag{font-size:13px;font-weight:700;color:var(--accent);padding:4px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--chipline)}
+.lcard h3{margin:12px 0 6px}
+.lcard p{color:var(--mute);font-size:15px}
+
+/* project subpages */
+.subpage{position:fixed;inset:0;z-index:90;overflow-y:auto;overscroll-behavior:contain;background:var(--paper);color:var(--text);
+  clip-path:circle(0 at var(--cx,50%) var(--cy,50%));transition:clip-path .8s cubic-bezier(.77,0,.18,1)}
+.subpage.open{clip-path:circle(150% at var(--cx,50%) var(--cy,50%))}
+.sp-top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;padding:12px max(4vw,14px);background:rgba(255,250,247,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--hair)}
+:root[data-theme=dark] .sp-top{background:rgba(23,6,5,.82)}
+.sp-top .btn{min-height:44px;padding:0 18px;font-size:15px}
+.sp-top .btn.gl{--text:var(--ink)}
+.sp-mini{height:clamp(26px,2.6vw,34px);width:auto;margin-inline:auto;mix-blend-mode:multiply}
+:root[data-theme=dark] .sp-mini{mix-blend-mode:normal;filter:invert(1)}
+.sp-hero{padding-top:clamp(40px,6vw,80px)}
+.sp-hgrid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,56px);align-items:center}
+.sp-hero h1{font-size:clamp(52px,8vw,104px);font-weight:800;letter-spacing:-.045em;margin:22px 0 18px}
+.sp-logo{padding:14px;border-radius:30px;display:grid;gap:10px;justify-items:center}
+.sp-logo img{width:100%;height:auto;border-radius:20px;background:#fff}
+.sp-logo span{font-size:14px;font-weight:600;color:var(--mute)}
+.sp-p{color:var(--mute);max-width:62ch;margin-top:14px;font-size:17px}
+.sp-how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.flow{list-style:none;counter-reset:f;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.flow li{counter-increment:f;display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:14px;align-items:start}
+.flow li::before{content:counter(f);grid-row:span 2;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--solid);color:var(--onsolid);font:800 18px Syne,sans-serif}
+.flow b{font-size:18px}.flow span{color:var(--mute)}
+.mock{padding:16px;border-radius:26px}
+.mock-h{display:flex;align-items:center;gap:6px;padding:4px 6px 14px}
+.mock-h span{width:10px;height:10px;border-radius:50%;background:var(--chipline)}
+.mock-h b{margin-inline-start:10px;font-size:14px}
+.mock ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.mock li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:#fff;box-shadow:0 0 0 1px rgba(28,10,6,.06);font-size:14px;font-weight:600;color:#1c0a06}
+.mock li em{font-style:normal;font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;white-space:nowrap;transition:background-color .3s ease,color .3s ease}
+.mock li[data-s="0"] em{background:#ffe3dc;color:#b42300}
+.mock li[data-s="1"] em{background:#fff1c9;color:#8a5a00}
+.mock li[data-s="2"] em{background:#d9f6e4;color:#11743d}
+.mock li.pulse{animation:pop .5s var(--ease-out)}
+@keyframes pop{40%{transform:scale(1.02)}}
+.rx li[data-s="0"] em{background:#efe7ff;color:#5b2fc9}.rx li[data-s="1"] em{background:#fff1c9;color:#8a5a00}.rx li[data-s="2"] em{background:#e1ecff;color:#1d4ed8}.rx li[data-s="3"] em{background:#d9f6e4;color:#11743d}
+.rx li[data-s="0"] em::after{content:"";display:inline-block;width:14px;text-align:left;animation:dots 1.2s steps(4) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.rx li[data-s="0"] em::before{content:"✦ ";}
+.mock-note{font-size:13px;color:var(--mute);margin-top:12px}
+.contrib{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin-top:28px}
+.contrib div{padding:22px;border-radius:20px;background:var(--well);border:1px solid var(--chipline)}
+.contrib b{display:block;font:700 19px Syne,sans-serif;margin-bottom:6px}
+.contrib p{color:var(--mute);font-size:15px}
+.sp-cta h2{font-size:clamp(36px,6vw,72px);letter-spacing:-.03em;margin-bottom:24px}
+@media(max-width:860px){.sp-hgrid,.sp-how{grid-template-columns:minmax(0,1fr)}}
+
+/* product header: brand logo always visible */
+.sp-top .btn.pri{gap:0}
+.sp-top{background:rgba(255,250,247,.96)}
+.sp-mini{flex:0 1 auto;min-width:0;max-width:46%;object-fit:contain}
+@media(max-width:860px){.sp-mini{height:26px}}
+@media(max-width:600px){.sp-top{gap:10px}.sp-top .btn.gl{font-size:0;gap:0;width:44px;padding:0;flex:none}.sp-top .btn.gl svg{width:20px;height:20px}.sp-top .btn.pri{flex:none;padding:0 16px}.sp-top .dom{display:none}.sp-mini{height:24px;max-width:none;flex:1 1 0;width:0;object-position:center}}
+
+/* home card link */
+.lcard.link{cursor:pointer;text-decoration:none;color:inherit;display:block}
+.lcard .more{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-weight:700;color:var(--accent)}
+.lcard .more svg{transition:transform .3s var(--ease-out)}
+@media(hover:hover){.lcard.link:hover .more svg{transform:translateX(5px)}}
+
+/* ReachXpand platform hub */
+.hubwrap{display:grid;justify-items:center;gap:14px}
+.hub{position:relative;width:min(100%,440px);aspect-ratio:1}
+.hub-ring{position:absolute;inset:0;animation:spin 70s linear infinite}
+.spokes{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.spokes line{stroke:var(--chipline);stroke-width:.35}
+.spokes line.p{stroke:var(--accent);stroke-width:1.1;stroke-linecap:round;stroke-dasharray:7 200;stroke-dashoffset:7;animation:shoot 4s linear infinite;filter:drop-shadow(0 0 1.5px var(--accent))}
+@keyframes shoot{0%{stroke-dashoffset:7}35%,100%{stroke-dashoffset:-100}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pnode{position:absolute;width:clamp(42px,11%,54px);aspect-ratio:1;transform:translate(-50%,-50%)}
+.pnode i{position:absolute;inset:0;display:grid;place-items:center;border-radius:16px;background:#fff;padding:22%;box-shadow:0 0 0 1px rgba(28,10,6,.06),0 12px 26px -12px rgba(120,20,0,.45);animation:spin 70s linear infinite reverse}
+.pnode i svg{width:100%;height:100%;display:block}
+.pnode b{position:absolute;inset:0;border-radius:16px;animation:ping 4s ease-out infinite;pointer-events:none}
+@keyframes ping{0%,33%{box-shadow:0 0 0 0 rgba(224,45,2,0);transform:scale(1)}38%{box-shadow:0 0 0 4px rgba(224,45,2,.7);transform:scale(1.14)}60%,100%{box-shadow:0 0 0 18px rgba(224,45,2,0);transform:scale(1)}}
+.hub-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:44%;padding:14px 16px;border-radius:22px;--glass:linear-gradient(140deg,#fff,#fff);--gfill:#fff;border-color:#fff;box-shadow:0 0 0 1px rgba(28,10,6,.06),0 24px 50px -24px rgba(120,20,0,.45);animation:corepulse 4s ease-in-out infinite}
+.hub-core img{display:block;width:100%;height:auto}
+@keyframes corepulse{50%{box-shadow:0 0 0 10px rgba(224,45,2,.08),0 24px 50px -24px rgba(120,20,0,.45)}}
+.hub-cap{font-size:14px;font-weight:600;color:var(--mute);text-align:center;max-width:44ch}
+@media(prefers-reduced-motion:reduce){.hub-ring,.pnode i,.pnode b,.spokes line.p,.hub-core{animation:none!important}.spokes line.p{display:none}}
+
+/* reachxpand hero animation */
+.rx-anim{width:100%;display:grid;gap:10px}
+.rx-post{background:#fff;color:#1c0a06;border-radius:18px;padding:14px 16px;text-align:start}
+.sp-logo .rx-ai,.rx-ai{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#6b3fd1;background:#efe8ff;padding:4px 10px;border-radius:999px}
+.rx-ai svg{animation:spark 1.6s ease-in-out infinite}
+@keyframes spark{50%{transform:scale(1.25) rotate(20deg)}}
+#rx-type{margin-top:8px;font-size:15px;font-weight:600;line-height:1.45;min-height:66px}
+#rx-type::after{content:"";display:inline-block;width:2px;height:1em;background:#c42502;margin-inline-start:2px;vertical-align:-2px;animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+.rx-plats{display:flex;gap:8px;justify-content:center}
+.rx-plats i{position:relative;width:44px;height:44px;border-radius:14px;background:#fff;display:grid;place-items:center;opacity:.45;transform:scale(.92);transition:opacity .3s ease,transform .4s cubic-bezier(.34,1.5,.64,1)}
+.rx-plats i svg{width:22px;height:22px}
+.rx-plats i b{position:absolute;right:-5px;top:-5px;width:18px;height:18px;border-radius:50%;background:#18b35d;color:#fff;display:grid;place-items:center;transform:scale(0);transition:transform .35s cubic-bezier(.34,1.6,.64,1)}
+.rx-plats i.on{opacity:1;transform:none}.rx-plats i.on b{transform:scale(1)}
+@media(prefers-reduced-motion:reduce){#rx-type::after{display:none}}
+
+/* personaxpand: growing profile animation */
+.px-stage{display:grid;justify-items:center;gap:12px}
+.px-card{position:relative;width:min(100%,360px);padding:22px;border-radius:30px;background:#fff;color:#0f1b3d;box-shadow:0 30px 60px -30px rgba(40,0,0,.7)}
+.px-av{position:relative;width:96px;height:96px;margin:0 auto}
+.px-av svg{width:100%;height:100%}
+.px-ring{fill:none;stroke:#00a3e0;stroke-width:6;stroke-linecap:round;stroke-dasharray:340;stroke-dashoffset:340;transform:rotate(-90deg);transform-origin:60px 60px;transition:stroke-dashoffset 1.2s cubic-bezier(.22,1,.36,1)}
+.px-card.s1 .px-ring{stroke-dashoffset:0}
+.px-tick{position:absolute;right:2px;bottom:6px;width:26px;height:26px;border-radius:50%;background:#0a4fd6;display:grid;place-items:center;border:3px solid #fff;transform:scale(0);transition:transform .45s cubic-bezier(.34,1.6,.64,1)}
+.px-card.s4 .px-tick{transform:scale(1)}
+.px-name{display:grid;justify-items:center;gap:7px;margin:14px 0 16px}
+.px-name .bar{height:10px;border-radius:6px;background:#e4eefc;transform-origin:50% 50%;transform:scaleX(0);transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.px-name .w1{width:58%;background:#0a4fd6}.px-name .w2{width:76%;transition-delay:.15s}
+.px-card.s1 .px-name .bar{transform:none}
+.px-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center;padding:12px 0;border-block:1px solid #e9eef8}
+.px-stats b{display:block;font:800 22px Syne,sans-serif;font-variant-numeric:tabular-nums;color:#0a4fd6}
+.px-stats span{font-size:12px;color:#5a6788}
+.px-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:14px}
+.px-grid i{aspect-ratio:1;border-radius:10px;opacity:0;transform:scale(.6);transition:opacity .35s ease,transform .45s cubic-bezier(.34,1.5,.64,1)}
+.px-grid i.on{opacity:1;transform:none}
+.px-hearts{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:visible}
+.px-hearts svg{position:absolute;bottom:40px;width:22px;height:22px;animation:floatup 1.8s ease-out forwards}
+@keyframes floatup{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:1;transform:translateY(-10px) scale(1)}100%{opacity:0;transform:translateY(-150px) translateX(var(--dx)) scale(.9)}}
+.px-cap{font-size:14px;font-weight:600;color:var(--mute)}
+.px-who{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;margin-top:28px}
+.px-who h3{margin:14px 0 8px}.px-who p{color:var(--mute)}
+.px-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--solid);color:var(--onsolid)}
+
+/* timeline */
+
+
+.tl{margin-top:36px;position:relative;padding-inline-start:38px}
+.tl::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--hair)}
+.tl .fill{position:absolute;left:9px;top:6px;width:2px;height:calc(100% - 12px);background:var(--accent);box-shadow:0 0 12px var(--accent);transform-origin:50% 0;transform:scaleY(0)}
+.step{position:relative;padding:0 0 34px}.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:-35px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--hot);border:3px solid #fff}
+.step .when{font-size:14px;font-weight:700;color:var(--accent)}
+.step h3{margin:4px 0 6px}.step p{color:var(--mute);max-width:62ch}
+
+/* journey logos pop when the line reaches the dot */
+.step{padding-inline-end:clamp(0px,18vw,230px)}
+.step::before{transition:background-color .3s ease,transform .45s var(--ease-out),box-shadow .45s ease}
+.step.hit::before{background:var(--accent);transform:scale(1.25);box-shadow:0 0 0 6px rgba(255,208,138,.22),0 0 18px var(--accent)}
+.jlogo{position:absolute;right:0;top:-4px;width:clamp(150px,16vw,200px);height:84px;padding:16px 20px;border-radius:20px;background:#fff;display:grid;place-items:center;
+  box-shadow:0 20px 40px -18px rgba(60,0,0,.65),0 0 0 1px rgba(255,255,255,.6);opacity:0;transform:translateX(-24px) scale(.85) rotate(-4deg);transform-origin:0 50%;
+  transition:opacity .25s ease-out,transform .6s cubic-bezier(.34,1.4,.64,1)}
+.jlogo::before{content:"";position:absolute;left:-7px;top:50%;width:14px;height:14px;background:#fff;border-radius:3px;transform:translateY(-50%) rotate(45deg)}
+.jlogo svg,.jlogo img{position:relative;max-width:100%;max-height:100%;width:auto;height:100%;display:block}
+.jlogo.zipzapcart img,.jlogo.vaishno img{height:auto;width:100%}
+.jlogo.nextoria{padding:0;background:#2882be}.jlogo.nextoria::before{background:#2882be}.jlogo.nextoria img{width:100%;height:100%;max-height:none;object-fit:cover;border-radius:20px}
+.jlogo.siena{background:#b00020;padding:8px}.jlogo.siena{padding:5px}.jlogo.siena img{width:74px;height:74px;max-height:none}@media(max-width:760px){.jlogo.siena img{width:50px;height:50px}}.jlogo.siena::before{background:#b00020}
+.jlogo.wipro{padding:4px 20px}
+.step.hit .jlogo{opacity:1;transform:none}
+@media(max-width:760px){.step{padding-inline-end:0}.step.has-logo{padding-top:76px}.jlogo{right:auto;left:0;top:0;width:140px;height:60px;padding:10px 14px;border-radius:14px;transform-origin:0 100%;transform:translateY(12px) scale(.85)}.jlogo::before{display:none}}
+
+/* education */
+.edu{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px;margin-top:32px;align-items:start}
+.edu .when{font-size:14px;font-weight:700;color:var(--accent)}
+.edu .sub{color:var(--mute)}
+.uhead{display:flex;gap:20px;align-items:flex-start;justify-content:space-between}
+.ulogo{flex:none;width:clamp(92px,9vw,120px);height:auto;border-radius:16px;box-shadow:0 18px 34px -16px rgba(120,0,20,.55);transform:rotate(3deg);transition:transform .5s var(--ease-out)}
+.edu .panel:hover .ulogo{transform:rotate(0) scale(1.04)}
+@media(max-width:420px){.uhead{flex-direction:column-reverse}.ulogo{width:96px}}
+.proj{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+.proj li{padding:14px 16px;border-radius:16px;background:var(--well);border:1px solid var(--chipline);color:var(--mute);font-size:15px}
+.proj b{color:var(--text)}
+.langs{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.langs span{padding:7px 13px;border-radius:999px;font-size:14px;font-weight:600;background:var(--chip);border:1px solid var(--chipline)}
+.langs span em{font-style:normal;font-weight:500;color:var(--mute)}
+.creds{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px}
+.cred{padding:22px;border-radius:24px;transition:transform .4s var(--ease-out),opacity .8s var(--ease-out)}
+.cred .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--solid);color:var(--onsolid);font:800 15px Syne,sans-serif;margin-bottom:12px}
+.cred .ic.lg{background:#fff;padding:8px;width:48px;height:48px;box-shadow:0 0 0 1px rgba(28,10,6,.08),0 8px 18px -10px rgba(120,20,0,.4)}
+.cred .ic.lg svg{width:100%;height:100%;display:block}
+.cred .ic.lg img{width:100%;height:100%;object-fit:contain;display:block}
+.cred .ic.lg.ds{width:128px;padding:4px 8px;background:#17264a}.cred .ic.lg.ds img{object-fit:contain}
+.cred h3{font-size:18px}
+.cred p{color:var(--mute);font-size:15px;margin-top:6px}
+@media(max-width:860px){.edu{grid-template-columns:minmax(0,1fr)}}
+
+/* placeholder */
+.ph{border:2px dashed var(--chipline);border-radius:22px;padding:28px;color:var(--mute);display:grid;gap:6px;place-content:center;text-align:center;min-height:150px;margin-top:28px}
+.ph b{color:var(--text)}
+
+/* contact */
+.contact{border-radius:clamp(28px,4vw,56px) clamp(28px,4vw,56px) 0 0}
+.contact h2{font-size:clamp(44px,8vw,104px);letter-spacing:-.04em;max-width:12ch}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px;margin-top:32px}
+.cta{padding:22px;border-radius:22px;display:grid;gap:4px;align-content:start}
+.cta .hd{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--accent)}
+.cta .hd i{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#fff;color:#a51400;flex:none}
+.cta .hd i.li{color:#0a66c2}.cta .hd i.wa{color:#1faa53}
+.cta b{font:700 clamp(18px,1.8vw,21px) Manrope,sans-serif;overflow-wrap:anywhere;margin-top:8px}
+.cta .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.cta .btn{min-height:44px;padding:0 18px;font-size:15px}
+.toast{min-height:24px;margin-top:14px;font-weight:600;color:var(--accent)}
+footer{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:24px max(4vw,14px) 32px;font-size:14px;color:var(--mute);border-top:1px solid var(--hair)}
+footer .socials{margin:0}
+footer .ico{width:42px;height:42px}
+
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.hot .glass{--gfill:rgba(90,12,0,.55)}.glass{--gfill:rgba(255,255,255,.85)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.line>span,.fadein,.frame,.chip,.rv{transform:none!important;opacity:1!important}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i class="a"></i><i class="b"></i></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-li" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037c-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85c3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.06 2.06 0 0 1-2.063-2.065a2.064 2.064 0 1 1 2.063 2.065m1.782 13.019H3.555V9h3.564zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967c-.273-.099-.471-.148-.67.15c-.197.297-.767.966-.94 1.164c-.173.199-.347.223-.644.075c-.297-.15-1.255-.463-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059c-.173-.297-.018-.458.13-.606c.134-.133.298-.347.446-.52s.198-.298.298-.497c.099-.198.05-.371-.025-.52s-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51a13 13 0 0 0-.57-.01c-.198 0-.52.074-.792.372c-.272.297-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074s2.096 3.2 5.077 4.487c.709.306 1.262.489 1.694.625c.712.227 1.36.195 1.871.118c.571-.085 1.758-.719 2.006-1.413s.248-1.289.173-1.413c-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214l-3.741.982l.998-3.648l-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884c2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.82 11.82 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.9 11.9 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+</svg>
+
+<div class="navw">
+  <nav class="nav glass" id="nav">
+    <a class="logo" href="#top"><i></i>Jaswanth Duthulour</a>
+    <div class="links" id="links">
+      <a href="#about">About</a><a href="#expertise">Expertise</a><a href="#toolkit">Toolkit</a><a href="#work">Work</a><a href="#brands">Brands</a><a href="#journey">Journey</a><a href="#credentials">Credentials</a>
+    </div>
+    <a class="btn mag" href="#contact">Contact</a>
+    <div class="prog" id="prog"></div>
+  </nav>
+</div>
+
+<header class="band hero hot" id="top">
+  <div class="wrap">
+    <div class="hgrid">
+      <div>
+        <p class="kicker fadein" style="transition-delay:.1s"><b></b>Certified AI and Digital Marketing Specialist</p>
+        <h1 class="name"><span class="line"><span style="transition-delay:.15s">Jaswanth</span></span><span class="line"><span style="transition-delay:.28s">Duthulour</span></span></h1>
+        <p class="lede fadein" style="transition-delay:.55s">Performance marketing, SEO, social media and AI marketing that turn ad spend into qualified leads and sales. Based in Dubai, working across the GCC, India and Europe.</p>
+        <div class="ctas fadein" style="transition-delay:.7s">
+          <a class="btn pri mag" href="#work">See my work</a>
+          <a class="btn gl mag" href="https://www.linkedin.com/in/jaswanth-duthulour"><svg width="18" height="18"><use href="#i-li"/></svg>Connect on LinkedIn</a>
+        </div>
+        <div class="socials fadein" style="transition-delay:.8s">
+          <a class="ico li" href="https://www.linkedin.com/in/jaswanth-duthulour" aria-label="LinkedIn profile"><svg width="20" height="20"><use href="#i-li"/></svg></a>
+          <a class="ico" href="mailto:duthulourjaswanth@gmail.com" aria-label="Email duthulourjaswanth@gmail.com"><svg width="20" height="20"><use href="#i-mail"/></svg></a>
+          <a class="ico wa" href="https://wa.me/971583086108" aria-label="WhatsApp +971 58 308 6108"><svg width="20" height="20"><use href="#i-wa"/></svg></a>
+          <a class="ico" href="tel:+971583086108" aria-label="Call +971 58 308 6108"><svg width="20" height="20"><use href="#i-phone"/></svg></a>
+        </div>
+      </div>
+      <div class="stage" id="stage">
+        <div class="frame glass"><img src="img/jaswanth.jpg" alt="Portrait of Jaswanth Duthulour" width="820" height="1023"></div>
+        <div id="chips" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="stats glass fadein" style="transition-delay:.9s">
+      <div class="stat"><b data-to="3" data-suf="+">0</b><span>Years in digital marketing</span></div>
+      <div class="stat"><b data-to="700" data-from="500" data-pre="500–">0</b><span>Qualified leads a month from paid media</span></div>
+      <div class="stat"><b data-to="8">0</b><span>Brands running AI-driven ads at Nextoria</span></div>
+      <div class="stat"><b data-to="21" data-suf="k+">0</b><span>SKUs scaled on my own Shopify store</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="marq" aria-hidden="true"><div class="track" id="track"></div></div>
+
+<section class="band" id="about">
+  <div class="wrap glass panel about rv">
+    <div><span class="eyebrow">About me</span><h2>Marketing with a finance brain and a founder's hustle</h2></div>
+    <div>
+      <p class="big">I'm a certified AI and digital marketing specialist with <em>3+ years</em> in performance marketing, SEO, social media and <em>B2B SaaS marketing</em> across IT services, real estate, e-commerce and FMCG.</p>
+      <p>At Nextoria in Dubai I run AI-driven Google Ads and Meta Ads campaigns for 8 brands, launched an affiliate program across 4 SaaS platforms, and help shape the roadmap for products like markXpand, ReachXpand and PersonaXpand.</p>
+      <p>Before that I managed monthly ad budgets of AED 22,000–31,000 that delivered 500–700 qualified leads a month for premium real estate, and built my own luxury fashion store in Europe to 21,000+ products. My start in finance at Wipro and Accenture, and a master's from the University of Siena, mean I read every campaign through its numbers.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band hot" id="expertise">
+  <div class="wrap glass panel rv">
+    <h2>What I do</h2>
+    <div class="svc" id="svc"></div>
+  </div>
+</section>
+
+<section class="band" id="toolkit">
+  <div class="wrap glass panel rv">
+    <h2>Toolkit</h2>
+    <div class="kits" id="kits"></div>
+  </div>
+</section>
+
+<section class="band" id="work" style="padding-top:0">
+  <div class="wrap">
+    <div class="whead rv">
+      <h2>Selected work</h2>
+      <div class="gnav"><button id="prev" aria-label="Previous case study">&larr;</button><button id="next" aria-label="Next case study">&rarr;</button></div>
+    </div>
+    <div class="gal" id="gal" tabindex="0" aria-label="Case studies"></div>
+  </div>
+</section>
+
+<section class="band" id="brands" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="rv">Brands I've worked with</h2>
+    <div class="lc-head rv"><h3>Products and logo work</h3><p>Products I helped shape and brand marks I designed in the Nextoria group.</p></div>
+    <div class="logos" id="logos"></div>
+  </div>
+</section>
+
+<section class="band hot" id="journey">
+  <div class="wrap glass panel rv">
+    <h2>Journey</h2>
+    <div class="tl" id="tl"><div class="fill" id="tlfill"></div></div>
+  </div>
+</section>
+
+<section class="band" id="credentials">
+  <div class="wrap">
+    <h2 class="rv">Education and certifications</h2>
+    <div class="edu">
+      <div class="glass panel rv tilt">
+        <div class="uhead">
+          <div>
+            <span class="when">Oct 2017 – Apr 2020</span>
+            <h3 style="font-size:clamp(24px,2.6vw,32px);margin:6px 0 4px">MS in Accounting and Management in Economics</h3>
+            <p class="sub">University of Siena, Italy</p>
+          </div>
+          <img class="ulogo" src="img/siena-full.png" alt="Università di Siena 1240 logo" width="240" height="302">
+        </div>
+        <ul class="proj">
+          <li><b>Skoda, Prague, 2018.</b> Market strategy to boost Skoda car sales among millennials.</li>
+          <li><b>Head &amp; Shoulders (P&amp;G), Milan, 2017–18.</b> Strategy development for the brand.</li>
+        </ul>
+        <div class="langs" id="langs"></div>
+      </div>
+      <div class="creds" id="creds"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="testimonials" style="padding-top:0">
+  <div class="wrap glass panel rv">
+    <h2>What clients say</h2>
+    <div class="ph"><b>Testimonials go here</b>Send real quotes from clients or managers, with name and role.</div>
+  </div>
+</section>
+
+<section class="band hot contact" id="contact">
+  <div class="wrap">
+    <h2 class="rv">Let's grow something together</h2>
+    <p class="lede rv" style="margin-top:18px">Based in Dubai, UAE, and open to roles and projects across the GCC.</p>
+    <div class="cgrid">
+      <div class="cta glass rv"><span class="hd"><i><svg width="20" height="20"><use href="#i-mail"/></svg></i>Email</span><b>duthulourjaswanth@gmail.com</b><div class="acts"><a class="btn pri mag" href="mailto:duthulourjaswanth@gmail.com">Send an email</a><button class="btn gl" id="copy" type="button">Copy address</button></div></div>
+      <div class="cta glass rv"><span class="hd"><i class="wa"><svg width="20" height="20"><use href="#i-wa"/></svg></i>Phone and WhatsApp</span><b>+971 58 308 6108</b><div class="acts"><a class="btn pri mag" href="https://wa.me/971583086108">WhatsApp me</a><a class="btn gl" href="tel:+971583086108">Call</a></div></div>
+      <div class="cta glass rv"><span class="hd"><i class="li"><svg width="20" height="20"><use href="#i-li"/></svg></i>LinkedIn</span><b>linkedin.com/in/jaswanth-duthulour</b><div class="acts"><a class="btn pri mag" href="https://www.linkedin.com/in/jaswanth-duthulour">View my profile</a></div></div>
+      <div class="cta glass rv"><span class="hd"><i><svg width="20" height="20"><use href="#i-pin"/></svg></i>Location</span><b>Dubai, UAE</b><p style="color:var(--mute);margin-top:6px">UAE resident, open to roles across the GCC.</p></div>
+    </div>
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Jaswanth Duthulour, Certified AI and Digital Marketing Specialist</span>
+  <div class="socials">
+    <a class="ico li" href="https://www.linkedin.com/in/jaswanth-duthulour" aria-label="LinkedIn profile"><svg width="18" height="18"><use href="#i-li"/></svg></a>
+    <a class="ico" href="mailto:duthulourjaswanth@gmail.com" aria-label="Email"><svg width="18" height="18"><use href="#i-mail"/></svg></a>
+    <a class="ico wa" href="https://wa.me/971583086108" aria-label="WhatsApp"><svg width="18" height="18"><use href="#i-wa"/></svg></a>
+    <a class="ico" href="tel:+971583086108" aria-label="Call"><svg width="18" height="18"><use href="#i-phone"/></svg></a>
+  </div>
+</footer>
+
+<!-- Findxpand project page (opens at #findxpand) -->
+<div class="subpage" id="sp-findxpand" hidden role="dialog" aria-modal="true" aria-labelledby="fx-title">
+  <div class="sp-top">
+    <a class="btn gl" href="#brands" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to portfolio</a>
+    <img class="sp-mini" src="img/mini-findxpand.jpg" alt="Findxpand" width="600" height="91">
+    <a class="btn pri" href="https://www.findxpand.com">Visit<span class="dom">&nbsp;findxpand.com</span></a>
+  </div>
+
+  <header class="band hot sp-hero">
+    <div class="wrap sp-hgrid">
+      <div class="sp-in">
+        <span class="kicker"><b></b>Project: AI-powered SEO tool</span>
+        <h1 id="fx-title">Findxpand</h1>
+        <p class="lede">Findxpand is an SEO tool with AI built in. The AI finds and fixes SEO errors, and a specialist reviews each fix before it goes live. That takes the repetitive work off SEO specialists while keeping a human in control.</p>
+        <div class="ctas">
+          <a class="btn pri mag" href="https://www.findxpand.com">Visit findxpand.com</a>
+          <a class="btn gl mag" href="#contact">Talk to me about it</a>
+        </div>
+      </div>
+      <div class="sp-logo glass"><img src="img/logo-findxpand.jpg" alt="Findxpand logo" width="900" height="226"><span>Logo designed by Jaswanth</span></div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap sp-how">
+      <div>
+        <h2>How it works</h2>
+        <p class="sp-p">The AI does the heavy lifting on routine SEO fixes. The specialist stays in the loop to approve, edit or reject each one, so the work gets faster without losing judgement.</p>
+        <ol class="flow">
+          <li><b>AI finds the errors</b><span>Issues across the site are flagged automatically.</span></li>
+          <li><b>AI prepares the fix</b><span>Each error comes with a ready-made correction.</span></li>
+          <li><b>A specialist approves</b><span>A human reviews the fix before it goes live.</span></li>
+        </ol>
+      </div>
+      <div class="mock glass" aria-hidden="true">
+        <div class="mock-h"><span></span><span></span><span></span><b>SEO issues</b></div>
+        <ul id="fx-rows"></ul>
+        <p class="mock-note">Illustration of the workflow, not a product screenshot.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="wrap glass panel">
+      <h2>My contribution</h2>
+      <p class="sp-p">I took Findxpand from an idea to a working product. I came up with the concept, brought the SEO knowledge, and guided the developers through the build from start to finish.</p>
+      <div class="contrib" id="fx-contrib"></div>
+    </div>
+  </section>
+
+  <section class="band hot sp-cta">
+    <div class="wrap">
+      <h2>See Findxpand in action</h2>
+      <div class="ctas">
+        <a class="btn pri mag" href="https://www.findxpand.com">Visit www.findxpand.com</a>
+        <a class="btn gl" href="#brands" data-close>Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ReachXpand project page (opens at #reachxpand) -->
+<div class="subpage" id="sp-reachxpand" hidden role="dialog" aria-modal="true" aria-labelledby="rx-title">
+  <div class="sp-top">
+    <a class="btn gl" href="#brands" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to portfolio</a>
+    <img class="sp-mini" src="img/mini-reachxpand.jpg" alt="ReachXpand" width="600" height="96">
+    <a class="btn pri" href="https://www.reachxpand.com">Visit<span class="dom">&nbsp;reachxpand.com</span></a>
+  </div>
+
+  <header class="band hot sp-hero">
+    <div class="wrap sp-hgrid">
+      <div class="sp-in">
+        <span class="kicker"><b></b>Project: AI social media management tool</span>
+        <h1 id="rx-title">ReachXpand</h1>
+        <p class="lede">ReachXpand is an AI-powered social media management tool from Nextoria, made for businesses, organisations, small businesses and vendors. It learns a brand from its website, then plans, designs, writes and publishes posts across 10 platforms, including short videos. Its AI also answers customer messages around the clock using only facts the brand has approved.</p>
+        <div class="ctas">
+          <a class="btn pri mag" href="https://www.reachxpand.com">Visit reachxpand.com</a>
+          <a class="btn gl mag" href="#contact">Talk to me about it</a>
+        </div>
+      </div>
+      <div class="sp-logo glass"><img src="img/logo-reachxpand.jpg" alt="ReachXpand logo" width="900" height="221">
+        <div class="rx-anim" aria-hidden="true">
+          <div class="rx-post"><span class="rx-ai"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L20.5 10.5l-6.3 2.2L12 19l-2.2-6.3L3.5 10.5l6.3-2.2z"/></svg>AI writing a post</span><p id="rx-type"></p></div>
+          <div class="rx-plats" id="rx-plats"></div>
+        </div>
+        <span>Illustration. Used daily across the Hassan Bin Al Shaikh Group</span></div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap sp-how">
+      <div>
+        <h2>How I use it</h2>
+        <p class="sp-p">I run social media for every company in the Hassan Bin Al Shaikh Group of Industries through ReachXpand, every day. That makes me both a power user and a tester: I see what works for a busy marketing team and what needs to change.</p>
+        <ol class="flow">
+          <li><b>Plan the content</b><span>Posts for each company are prepared in one place.</span></li>
+          <li><b>Publish across the group</b><span>Content goes out for IT, FMCG, real estate, printing, packaging, paper and manufacturing.</span></li>
+          <li><b>Feed back to the product</b><span>What I learn from daily use goes back to the team as fixes and features.</span></li>
+        </ol>
+      </div>
+      <div class="hubwrap">
+        <div class="hub" id="rx-hub" aria-hidden="true">
+          <div class="hub-ring" id="rx-ring"><svg class="spokes" viewBox="0 0 100 100" id="rx-spokes"></svg></div>
+          <div class="hub-core glass"><img src="img/mini-reachxpand.jpg" alt="" width="600" height="96"></div>
+        </div>
+        <p class="hub-cap">Publishes to Instagram, Facebook, X, LinkedIn, YouTube, TikTok, Threads, Pinterest, Bluesky and WhatsApp</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="wrap glass panel">
+      <h2>My contribution</h2>
+      <p class="sp-p">I help make ReachXpand better from the inside: I check its quality, share social media know-how with the team, propose new features, and use it every day across a whole group of companies.</p>
+      <div class="contrib" id="rx-contrib"></div>
+    </div>
+  </section>
+
+  <section class="band hot sp-cta">
+    <div class="wrap">
+      <h2>See ReachXpand in action</h2>
+      <div class="ctas">
+        <a class="btn pri mag" href="https://www.reachxpand.com">Visit www.reachxpand.com</a>
+        <a class="btn gl" href="#brands" data-close>Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PersonaXpand project page (opens at #personaxpand) -->
+<div class="subpage" id="sp-personaxpand" hidden role="dialog" aria-modal="true" aria-labelledby="px-title">
+  <div class="sp-top">
+    <a class="btn gl" href="#brands" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to portfolio</a>
+    <img class="sp-mini" src="img/mini-personaxpand.jpg" alt="PersonaXpand" width="1276" height="196">
+    <a class="btn pri" href="https://www.personaxpand.com">Visit<span class="dom">&nbsp;personaxpand.com</span></a>
+  </div>
+
+  <header class="band hot sp-hero">
+    <div class="wrap sp-hgrid">
+      <div class="sp-in">
+        <span class="kicker"><b></b>Project: personal branding tool</span>
+        <h1 id="px-title">PersonaXpand</h1>
+        <p class="lede">PersonaXpand is a social media management tool built for personal branding. It helps influencers, and everyday people who want a stronger presence online, grow their own name on social media.</p>
+        <div class="ctas">
+          <a class="btn pri mag" href="https://www.personaxpand.com">Visit personaxpand.com</a>
+          <a class="btn gl mag" href="#contact">Talk to me about it</a>
+        </div>
+      </div>
+      <div class="px-stage" aria-hidden="true">
+        <div class="px-card" id="px-card">
+          <div class="px-av"><svg viewBox="0 0 120 120"><circle class="px-ring" cx="60" cy="60" r="54"/><circle cx="60" cy="48" r="17" fill="#cfe6ff"/><path d="M27 98c6-19 19-28 33-28s27 9 33 28" fill="#cfe6ff"/></svg><b class="px-tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></b></div>
+          <div class="px-name"><span class="bar w1"></span><span class="bar w2"></span></div>
+          <div class="px-stats"><div><b id="px-f">0</b><span>followers</span></div><div><b id="px-e">0%</b><span>engagement</span></div><div><b id="px-p">0</b><span>posts</span></div></div>
+          <div class="px-grid" id="px-grid"></div>
+          <div class="px-hearts" id="px-hearts"></div>
+        </div>
+        <p class="px-cap">Illustration: a personal brand growing</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Who it's for</h2>
+      <div class="px-who">
+        <div class="glass panel"><span class="px-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg></span><h3>Influencers and creators</h3><p>People whose name is the brand, who need to post consistently and keep growing an audience.</p></div>
+        <div class="glass panel"><span class="px-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><h3>Everyday people</h3><p>Professionals and anyone who wants a stronger personal presence online, without being a full-time creator.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="wrap glass panel">
+      <h2>My contribution</h2>
+      <p class="sp-p">I help shape PersonaXpand: I check its quality, share social media know-how with the team, propose new features, and lead its SEO and website content.</p>
+      <div class="contrib" id="px-contrib"></div>
+    </div>
+  </section>
+
+  <section class="band hot sp-cta">
+    <div class="wrap">
+      <h2>See PersonaXpand in action</h2>
+      <div class="ctas">
+        <a class="btn pri mag" href="https://www.personaxpand.com">Visit www.personaxpand.com</a>
+        <a class="btn gl" href="#brands" data-close>Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+{
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const $=s=>document.querySelector(s);
+
+const marquee=['Google Ads','Meta Ads','Performance Max','Technical SEO','Local SEO','GA4','Social media strategy','Influencer marketing','B2B SaaS marketing','Affiliate marketing','CRO','Website development','AI marketing'];
+const services=[
+ ['Paid media (PPC)','Google Ads Search, Display and Performance Max, plus Meta Ads, built around lead generation, audience segmentation, A/B testing and ROAS.'],
+ ['SEO','Technical, on-page, off-page and local SEO, keyword research and audits that grew organic traffic 20–50%.'],
+ ['Website development','WordPress and Shopify websites, e-commerce stores and landing pages, built faster with AI tools and designed to convert.'],
+ ['Social media and content','Social strategy, content calendars, copywriting and influencer marketing that grow brands organically.'],
+ ['SaaS and product marketing','B2B SaaS marketing, go-to-market, affiliate and partner programs, and turning marketer feedback into product roadmaps.'],
+ ['Analytics and CRO','GA4, Google Tag Manager, conversion rate optimization and reporting that shows where every dirham goes.'],
+ ['AI marketing','AI-assisted ads, content and creative that cut content turnaround time by up to 60%.']];
+const LOGOS={"Google Ads": "<svg viewBox=\"0 0 256 230\" aria-hidden=\"true\"><path fill=\"#fbbc04\" d=\"M5.888 166.405L90.88 20.9c10.796 6.356 65.236 36.484 74.028 42.214L79.916 208.627c-9.295 12.28-85.804-23.587-74.028-42.23z\"/><path fill=\"#4285f4\" d=\"M250.084 166.402L165.092 20.906C153.21 1.132 127.62-6.054 106.601 5.625S79.182 42.462 91.064 63.119l84.992 145.514c11.882 19.765 37.473 26.95 58.492 15.272c20.1-11.68 27.418-37.73 15.536-57.486z\"/><ellipse cx=\"42.664\" cy=\"187.924\" fill=\"#34a853\" rx=\"42.664\" ry=\"41.604\"/></svg>", "Performance Max": "<svg viewBox=\"0 0 256 230\" aria-hidden=\"true\"><path fill=\"#fbbc04\" d=\"M5.888 166.405L90.88 20.9c10.796 6.356 65.236 36.484 74.028 42.214L79.916 208.627c-9.295 12.28-85.804-23.587-74.028-42.23z\"/><path fill=\"#4285f4\" d=\"M250.084 166.402L165.092 20.906C153.21 1.132 127.62-6.054 106.601 5.625S79.182 42.462 91.064 63.119l84.992 145.514c11.882 19.765 37.473 26.95 58.492 15.272c20.1-11.68 27.418-37.73 15.536-57.486z\"/><ellipse cx=\"42.664\" cy=\"187.924\" fill=\"#34a853\" rx=\"42.664\" ry=\"41.604\"/></svg>", "Meta Ads": "<svg viewBox=\"0 0 256 171\" aria-hidden=\"true\"><defs><linearGradient id=\"SVGYeLhubCc\" x1=\"13.878%\" x2=\"89.144%\" y1=\"55.934%\" y2=\"58.694%\"><stop offset=\"0%\" stop-color=\"#0064e1\"/><stop offset=\"40%\" stop-color=\"#0064e1\"/><stop offset=\"83%\" stop-color=\"#0073ee\"/><stop offset=\"100%\" stop-color=\"#0082fb\"/></linearGradient><linearGradient id=\"SVGll66Sdsg\" x1=\"54.315%\" x2=\"54.315%\" y1=\"82.782%\" y2=\"39.307%\"><stop offset=\"0%\" stop-color=\"#0082fb\"/><stop offset=\"100%\" stop-color=\"#0064e0\"/></linearGradient></defs><path fill=\"#0081fb\" d=\"M27.651 112.136c0 9.775 2.146 17.28 4.95 21.82c3.677 5.947 9.16 8.466 14.751 8.466c7.211 0 13.808-1.79 26.52-19.372c10.185-14.092 22.186-33.874 30.26-46.275l13.675-21.01c9.499-14.591 20.493-30.811 33.1-41.806C161.196 4.985 172.298 0 183.47 0c18.758 0 36.625 10.87 50.3 31.257C248.735 53.584 256 81.707 256 110.729c0 17.253-3.4 29.93-9.187 39.946c-5.591 9.686-16.488 19.363-34.818 19.363v-27.616c15.695 0 19.612-14.422 19.612-30.927c0-23.52-5.484-49.623-17.564-68.273c-8.574-13.23-19.684-21.313-31.907-21.313c-13.22 0-23.859 9.97-35.815 27.75c-6.356 9.445-12.882 20.956-20.208 33.944l-8.066 14.289c-16.203 28.728-20.307 35.271-28.408 46.07c-14.2 18.91-26.324 26.076-42.287 26.076c-18.935 0-30.91-8.2-38.325-20.556C2.973 139.413 0 126.202 0 111.148z\"/><path fill=\"url(#SVGYeLhubCc)\" d=\"M21.802 33.206C34.48 13.666 52.774 0 73.757 0C85.91 0 97.99 3.597 110.605 13.897c13.798 11.261 28.505 29.805 46.853 60.368l6.58 10.967c15.881 26.459 24.917 40.07 30.205 46.49c6.802 8.243 11.565 10.7 17.752 10.7c15.695 0 19.612-14.422 19.612-30.927l24.393-.766c0 17.253-3.4 29.93-9.187 39.946c-5.591 9.686-16.488 19.363-34.818 19.363c-11.395 0-21.49-2.475-32.654-13.007c-8.582-8.083-18.615-22.443-26.334-35.352l-22.96-38.352C118.528 64.08 107.96 49.73 101.845 43.23c-6.578-6.988-15.036-15.428-28.532-15.428c-10.923 0-20.2 7.666-27.963 19.39z\"/><path fill=\"url(#SVGll66Sdsg)\" d=\"M73.312 27.802c-10.923 0-20.2 7.666-27.963 19.39c-10.976 16.568-17.698 41.245-17.698 64.944c0 9.775 2.146 17.28 4.95 21.82L9.027 149.482C2.973 139.413 0 126.202 0 111.148C0 83.772 7.514 55.24 21.802 33.206C34.48 13.666 52.774 0 73.757 0z\"/></svg>", "Local SEO and GBP": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#4285F4\" d=\"M3.273 1.636c-.736 0-1.363.492-1.568 1.16L0 9.272c0 1.664 1.336 3 3 3a3 3 0 0 0 3-3c0 1.664 1.336 3 3 3a3 3 0 0 0 3-3c0 1.65 1.35 3 3 3c1.664 0 3-1.336 3-3c0 1.664 1.336 3 3 3s3-1.336 3-3l-1.705-6.476a1.65 1.65 0 0 0-1.568-1.16zm8.729 9.326c-.604 1.063-1.703 1.81-3.002 1.81c-1.304 0-2.398-.747-3-1.806c-.604 1.06-1.702 1.806-3 1.806c-.484 0-.944-.1-1.363-.277v8.232c0 .9.736 1.637 1.636 1.637h17.454c.9 0 1.636-.737 1.636-1.637v-8.232a3.5 3.5 0 0 1-1.363.277c-1.304 0-2.398-.746-3-1.804c-.602 1.058-1.696 1.804-3 1.804c-1.299 0-2.394-.75-2.998-1.81m5.725 3.765c.808 0 1.488.298 2.007.782l-.859.859a1.62 1.62 0 0 0-1.148-.447c-.98 0-1.772.827-1.772 1.806s.792 1.807 1.772 1.807c.882 0 1.485-.501 1.615-1.191h-1.615v-1.16h2.826q.053.294.054.613c0 1.714-1.147 2.931-2.88 2.931a3 3 0 0 1 0-6\"/></svg>", "SEMrush": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#FF642D\" d=\"M20.698 11.911c0 .444-.226.516-.79.516c-.596 0-.706-.1-.77-.554c-.118-1.152-.896-2.13-2.201-2.24c-.418-.034-.518-.19-.518-.706c0-.48.074-.708.446-.708c2.265.01 3.833 1.832 3.833 3.69zm3.3 0c0-3.456-2.338-7.11-7.74-7.11H5.52c-.218 0-.354.11-.354.31c0 .109.082.209.156.26c.388.31.97.654 1.73 1.036c.743.372 1.323.616 1.903.852c.246.1.336.208.336.344c0 .19-.136.308-.4.308H.372c-.254 0-.372.164-.372.326c0 .136.044.254.162.372c.69.726 1.796 1.596 3.4 2.604c1.466.91 2.98 1.74 4.533 2.492c.236.11.308.236.308.372c-.008.154-.126.28-.4.28H4.1c-.216 0-.344.12-.344.3c0 .1.08.226.19.326c.888.808 2.311 1.688 4.207 2.494c2.53 1.08 5.094 1.721 7.98 1.721c5.465 0 7.867-4.087 7.867-7.289zm-7.133 5.104c-2.794 0-5.132-2.276-5.132-5.114c0-2.794 2.33-5.04 5.132-5.04c2.863 0 5.111 2.24 5.111 5.04a5.086 5.086 0 0 1-5.111 5.114\"/></svg>", "Google Analytics 4": "<svg viewBox=\"0 0 256 284\" aria-hidden=\"true\"><path fill=\"#f9ab00\" d=\"M256.003 247.933a35.224 35.224 0 0 1-39.376 35.161c-18.044-2.67-31.266-18.371-30.826-36.606V36.845C185.365 18.591 198.62 2.881 216.687.24a35.22 35.22 0 0 1 39.316 35.16z\"/><path fill=\"#e37400\" d=\"M35.101 213.193c19.386 0 35.101 15.716 35.101 35.101c0 19.386-15.715 35.101-35.101 35.101S0 267.68 0 248.295s15.715-35.102 35.101-35.102m92.358-106.387c-19.477 1.068-34.59 17.406-34.137 36.908v94.285c0 25.588 11.259 41.122 27.755 44.433a35.16 35.16 0 0 0 42.146-34.56V142.089a35.22 35.22 0 0 0-35.764-35.282\"/></svg>", "Google Tag Manager": "<svg viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path fill=\"#8ab4f8\" d=\"m150.262 245.516l-44.437-43.331l95.433-97.454l46.007 45.091z\"/><path fill=\"#4285f4\" d=\"M150.45 53.938L106.176 8.731L9.36 104.629c-12.48 12.48-12.48 32.713 0 45.207l95.36 95.986l45.09-42.182l-72.654-76.407z\"/><path fill=\"#8ab4f8\" d=\"m246.625 105.37l-96-96c-12.494-12.494-32.756-12.494-45.25 0s-12.495 32.757 0 45.252l96 96c12.494 12.494 32.756 12.494 45.25 0s12.495-32.757 0-45.251\"/><circle cx=\"127.265\" cy=\"224.731\" r=\"31.273\" fill=\"#246fdb\"/></svg>", "ChatGPT": "<svg viewBox=\"0 0 256 260\" aria-hidden=\"true\"><path d=\"M239.184 106.203a64.72 64.72 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.72 64.72 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.67 64.67 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.77 64.77 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483m-97.56 136.338a48.4 48.4 0 0 1-31.105-11.255l1.535-.87l51.67-29.825a8.6 8.6 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601M37.158 197.93a48.35 48.35 0 0 1-5.781-32.589l1.534.921l51.722 29.826a8.34 8.34 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803M23.549 85.38a48.5 48.5 0 0 1 25.58-21.333v61.39a8.29 8.29 0 0 0 4.195 7.316l62.874 36.272l-21.845 12.636a.82.82 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405zm179.466 41.695l-63.08-36.63L161.73 77.86a.82.82 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.54 8.54 0 0 0-4.4-7.213m21.742-32.69l-1.535-.922l-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.72.72 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391zM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87l-51.67 29.825a8.6 8.6 0 0 0-4.246 7.367zm11.868-25.58L128.067 97.3l28.188 16.218v32.434l-28.086 16.218l-28.188-16.218z\"/></svg>", "Claude": "<svg viewBox=\"0 0 256 257\" aria-hidden=\"true\"><path fill=\"#d97757\" d=\"m50.228 170.321l50.357-28.257l.843-2.463l-.843-1.361h-2.462l-8.426-.518l-28.775-.778l-24.952-1.037l-24.175-1.296l-6.092-1.297L0 125.796l.583-3.759l5.12-3.434l7.324.648l16.202 1.101l24.304 1.685l17.629 1.037l26.118 2.722h4.148l.583-1.685l-1.426-1.037l-1.101-1.037l-25.147-17.045l-27.22-18.017l-14.258-10.37l-7.713-5.25l-3.888-4.925l-1.685-10.758l7-7.713l9.397.649l2.398.648l9.527 7.323l20.35 15.75L94.817 91.9l3.889 3.24l1.555-1.102l.195-.777l-1.75-2.917l-14.453-26.118l-15.425-26.572l-6.87-11.018l-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0l10.63 1.426l4.472 3.888l6.61 15.101l10.694 23.786l16.591 32.34l4.861 9.592l2.592 8.879l.973 2.722h1.685v-1.556l1.36-18.211l2.528-22.36l2.463-28.776l.843-8.1l4.018-9.722l7.971-5.25l6.222 2.981l5.12 7.324l-.713 4.73l-3.046 19.768l-5.962 30.98l-3.889 20.739h2.268l2.593-2.593l10.499-13.934l17.628-22.036l7.778-8.749l9.073-9.657l5.833-4.601h11.018l8.1 12.055l-3.628 12.443l-11.342 14.388l-9.398 12.184l-13.48 18.147l-8.426 14.518l.778 1.166l2.01-.194l30.46-6.481l16.462-2.982l19.637-3.37l8.88 4.148l.971 4.213l-3.5 8.62l-20.998 5.184l-24.628 4.926l-36.682 8.685l-.454.324l.519.648l16.526 1.555l7.065.389h17.304l32.21 2.398l8.426 5.574l5.055 6.805l-.843 5.184l-12.962 6.611l-17.498-4.148l-40.83-9.721l-14-3.5h-1.944v1.167l11.666 11.406l21.387 19.314l26.767 24.887l1.36 6.157l-3.434 4.86l-3.63-.518l-23.526-17.693l-9.073-7.972l-20.545-17.304h-1.36v1.814l4.73 6.935l25.017 37.59l1.296 11.536l-1.814 3.76l-6.481 2.268l-7.13-1.297l-14.647-20.544l-15.1-23.138l-12.185-20.739l-1.49.843l-7.194 77.448l-3.37 3.953l-7.778 2.981l-6.48-4.925l-3.436-7.972l3.435-15.749l4.148-20.544l3.37-16.333l3.046-20.285l1.815-6.74l-.13-.454l-1.49.194l-15.295 20.999l-23.267 31.433l-18.406 19.702l-4.407 1.75l-7.648-3.954l.713-7.064l4.277-6.286l25.47-32.405l15.36-20.092l9.917-11.6l-.065-1.686h-.583L44.07 198.125l-12.055 1.555l-5.185-4.86l.648-7.972l2.463-2.593l20.35-13.999z\"/></svg>", "Midjourney": "<svg viewBox=\"0 0 256 214\" aria-hidden=\"true\"><path fill=\"#1a222d\" d=\"M240.86 162.892c.662 1.719.119 3.158-1.35 4.34c-13.753 11.071-28.19 21.114-43.904 29.24l-13.12 6.776c2.706 2.161 5.76 2.769 9.003 2.648c3.55-.133 6.524-1.763 9.27-3.858c3.283-2.504 6.387-5.274 9.836-7.519c8.35-5.435 17.35-4.944 25.248 1.185c3.355 2.604 6.439 5.578 9.92 7.988c1.683 1.165 3.838 1.8 5.904 2.257l.457.099c2.507.528 4.03 1.79 3.863 3.955c-.165 2.148-1.867 3.403-4.437 3.237c-5.445-.352-9.713-3.16-13.713-6.556c-2.498-2.12-4.91-4.38-7.606-6.219c-4.999-3.409-10.303-3.508-15.396-.235c-3.001 1.929-5.73 4.289-8.539 6.508c-4.527 3.578-9.413 6.212-15.374 6.302c-6.538.099-11.8-2.835-16.62-6.866c-1.724-1.442-3.431-2.905-5.188-4.306c-6.586-5.254-13.334-5.251-19.943.004a177 177 0 0 0-2.292 1.86l-1.52 1.25a122 122 0 0 1-3.849 3.062c-8.09 6.115-17.355 6.407-25.738.681c-3.05-2.083-5.831-4.561-8.74-6.853c-6.61-5.205-12.096-5.19-18.824-.022l-.55.424l-1.65 1.275c-2.2 1.7-4.415 3.385-6.74 4.896c-8.76 5.696-17.677 5.458-26.384-.047c-3.603-2.278-6.892-5.052-10.305-7.631l-.513-.386c-1.362-1.017-2.708-2.059-4.106-3.024c-1.95-1.346-4.05-1.722-6.162-.44c-3.732 2.266-7.42 4.604-11.116 6.928c-3.493 2.196-6.868 4.61-10.5 6.542c-1.968 1.046-4.332 1.533-6.575 1.82c-2.088.266-3.524-1.284-3.604-3.24c-.078-1.926 1.18-3.136 3.135-3.692l.114-.031c2.078-.556 4.219-1.262 6.022-2.395c5.087-3.199 10.017-6.649 15.003-10.008c.142-.095.224-.276.393-.493l-3.095-5.854q-1.552-2.93-3.093-5.87c-1.8-3.438-.629-5.744 3.237-6.02c10.423-.745 20.853-1.384 31.28-2.055l60.021-3.852c14.187-.913 28.373-1.835 42.56-2.75q30.008-1.936 60.018-3.87c5.32-.342 10.64-.676 15.96-1.024l5.32-.353c1.832-.123 3.302.43 3.982 2.192m-15.22 6.079l-.179-.437l-198.607 12.787l.49.916c1.288 2.412 2.428 4.59 3.673 6.706c.115.195.517.235.938.25l.43.01l.129.005l.122.007c1.726.127 3.612-.177 5.145.428c2.446.966 4.784 2.35 6.94 3.876c3.86 2.733 7.432 5.881 11.34 8.536c6.946 4.716 13.487 4.576 20.32-.206c2.883-2.018 5.618-4.248 8.475-6.306c8.932-6.435 17.394-6.302 26.113.417c2.548 1.964 4.977 4.082 7.52 6.051c6.378 4.938 12.849 4.956 19.194.051c2.113-1.633 4.125-3.397 6.199-5.082c9.406-7.641 18.94-8.378 28.19-1.563l.28.208c2.96 2.232 5.163 2.12 8.113.649l1.436-.718c13.157-6.597 26.065-13.607 37.982-22.318c1.928-1.41 3.838-2.844 5.756-4.267M41.217.675c21.496 9.698 40.8 22.744 58.345 38.424c21.83 19.512 39.036 42.552 51.744 68.903c6.688 13.87 11.89 28.276 14.28 43.572l.114.75l.174 1.198c.003 2.96-2.368 4.699-4.84 3.7c-12.272-4.959-24.944-8.398-38.039-10.362c-17.305-2.596-34.393-1.95-51.217 3.115c-11.157 3.36-21.77 7.942-31.632 14.195c-1.821 1.155-3.752.953-4.94-.46c-1.236-1.467-1.234-3.238.193-4.787c10.303-11.187 16.298-24.622 20.273-39.068c3.883-14.115 5.301-28.538 4.431-43.13c-.653-10.967-3.283-21.579-6.725-31.996c-4.453-13.477-10.231-26.36-17.198-38.717c-1.138-2.02-1.117-3.593.034-4.885c1.191-1.338 2.725-1.48 5.003-.452m66.27 25.192c1.993.581 4.678 1.155 7.204 2.137c10.083 3.925 18.77 10.152 27.046 16.955c13.45 11.056 25.765 23.285 36.779 36.772c7.665 9.387 13.953 19.713 19.686 30.371c6.5 12.087 12.099 24.582 16.85 37.454l.33.899c.126.342.255.683.37 1.028c.501 1.488.439 2.928-.727 4.065c-1.19 1.161-2.618 1.238-4.125.648l-.105-.042c-2.16-.888-4.35-1.707-6.505-2.604l-.922-.389c-6.066-2.604-12.3-3.124-18.72-1.666c-.592.135-1.192.237-1.792.329c-2.382.367-3.87-.564-4.52-2.87c-6.253-22.186-15.069-43.311-26.23-63.467l-.558-1.004c-7.196-12.857-15.434-24.948-26.14-35.22c-6.321-6.067-12.973-11.722-20.32-16.525c-1.702-1.113-2.34-2.658-1.78-4.344c.552-1.658 1.84-2.31 4.18-2.527M47.645 11.789c.02.561.171 1 .375 1.41c4.672 9.423 8.735 19.102 12.034 29.089c3.13 9.474 5.53 19.13 6.68 29.06c1.287 11.114.758 22.2-.767 33.254c-2.007 14.558-6.045 28.482-13.009 41.487l-.81 1.515l-1.228 2.303c.257.07.388.153.472.12a64 64 0 0 0 2.185-.907c14.78-6.488 30.181-10.406 46.357-10.809c18.47-.46 36.36 2.87 53.83 8.67l1.193.396c.864.284 1.786.576 2.98.963c-7.077-30.978-21.748-57.605-41.522-81.557c-19.063-23.09-42.249-41.132-68.77-54.994m87.764 37.559l.234.265l.465.518c.18.202.343.392.496.59a274 274 0 0 0 3.305 4.18l1.819 2.262c2.732 3.404 5.43 6.832 7.802 10.47c15.005 23.014 26.039 47.899 34.082 74.124l.243.795c.418 1.373.992 1.759 2.33 1.557l.093-.015c6.017-1.002 11.898-.481 17.6 1.715l.295.115c.545.216 1.127.336 2.183.645c-7.725-19.275-16.855-37.217-28.408-53.942c-9.99-14.462-36.741-40.14-42.54-43.28\"/></svg>", "Higgsfield": "<svg viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path fill=\"#dafd55\" d=\"M64 0h128c35.346 0 64 28.654 64 64v128c0 35.346-28.654 64-64 64H64c-35.346 0-64-28.654-64-64V64C0 28.654 28.654 0 64 0\"/><path fill=\"#1a1a1a\" d=\"m214.838 126.297l-.165-1.876c-1.569-18.013-12.871-51.9-44.224-51.9c-23.266 0-40.842 23.816-56.353 44.813c-12.377 16.816-23.1 31.241-34.9 31.241c-3.136-.34-7.178-1.963-9.652-5.633c-2.228-3.33-2.805-7.597-1.651-12.72c1.814-8.109 12.211-15.621 23.183-23.645c6.022-4.267 12.212-8.792 16.502-13.145c12.377-12.377 18.647-21.34 18.647-35.765s-7.673-21.597-14.108-24.67c-12.872-6.145-31.764-2.56-43.81 8.197c-1.814 1.708-3.63 3.328-5.282 4.864C50.897 57.241 42.73 64.84 24 59.032v23.389c24.834 11.354 45.71-10.33 53.63-20.315c6.105-6.573 12.54-10.415 17.327-10.415h.249c2.145.086 3.96.94 5.281 2.477c2.145 2.562 2.97 5.55 2.557 8.877c-.908 7.001-7.921 15.194-20.792 24.157c-15.1 10.5-40.345 28.084-42.327 50.192c-1.486 15.879 6.435 31.756 18.812 37.9c28.877 14.17 46.452-10.243 65.097-36.022c14.274-19.89 27.805-38.754 46.617-38.754c16.913 0 23.183 14.511 23.183 23.646v1.793l-1.65.34c-41.005 7.513-63.365 47.291-63.365 65.643S143.635 226 162.116 226c21.618 0 48.349-19.121 52.64-72.898l.165-1.963H232V126.3h-17.162zm-22.36 27.57c-3.299 32.181-19.224 47.206-28.877 47.206c-4.373 0-10.477-3.757-10.477-10.755c0-7.852 11.303-31.669 36.714-38.753l2.97-.768l-.33 3.073z\"/></svg>", "Runway": "<svg viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path d=\"M196.254 255.842c-31.015 2.836-56.948-33.508-76.827-51.942C109.375 276.33-.075 269.463 0 195.99C.037 165.13 0 89.715 0 59.826C0 49.08 2.952 38.259 8.483 29.079C18.983 11.28 39.273-.213 59.938.011c31.127.037 106.086-.038 136.316 0c73.54 0 80.527 109.407 7.847 119.259l34.492 34.442c37.89 35.635 9.452 103.697-42.339 102.13m-16.703-43.099c21.374 22.017 55.49-12.09 33.48-33.433l-59.787-59.705H119.8v33.435l51.68 51.607zM36.21 196.027c-.486 30.598 47.83 30.711 47.345 0v-136.2c.411-15.262-15.732-27.39-30.305-22.688c-.635.187-1.233.373-1.794.597C42.3 41.132 35.948 50.498 36.21 60.275zm160.045-112.58c30.716.485 30.68-47.763 0-47.278h-81.2c6.166 12.986 4.597 33.21 4.71 47.278z\"/></svg>", "ElevenLabs": "<svg viewBox=\"0 0 256 416\" aria-hidden=\"true\"><path d=\"M170.667 0H256v415.289h-85.333zM0 0h85.333v415.289H0z\"/></svg>", "Shopify": "<svg viewBox=\"0 0 256 292\" aria-hidden=\"true\"><path fill=\"#95bf46\" d=\"M223.774 57.34c-.201-1.46-1.48-2.268-2.537-2.357a19614 19614 0 0 0-23.383-1.743s-15.507-15.395-17.209-17.099c-1.703-1.703-5.029-1.185-6.32-.805c-.19.056-3.388 1.043-8.678 2.68c-5.18-14.906-14.322-28.604-30.405-28.604c-.444 0-.901.018-1.358.044C129.31 3.407 123.644.779 118.75.779c-37.465 0-55.364 46.835-60.976 70.635c-14.558 4.511-24.9 7.718-26.221 8.133c-8.126 2.549-8.383 2.805-9.45 10.462C21.3 95.806.038 260.235.038 260.235l165.678 31.042l89.77-19.42S223.973 58.8 223.775 57.34M156.49 40.848l-14.019 4.339c.005-.988.01-1.96.01-3.023c0-9.264-1.286-16.723-3.349-22.636c8.287 1.04 13.806 10.469 17.358 21.32m-27.638-19.483c2.304 5.773 3.802 14.058 3.802 25.238c0 .572-.005 1.095-.01 1.624c-9.117 2.824-19.024 5.89-28.953 8.966c5.575-21.516 16.025-31.908 25.161-35.828m-11.131-10.537c1.617 0 3.246.549 4.805 1.622c-12.007 5.65-24.877 19.88-30.312 48.297l-22.886 7.088C75.694 46.16 90.81 10.828 117.72 10.828\"/><path fill=\"#5e8e3e\" d=\"M221.237 54.983a19614 19614 0 0 0-23.383-1.743s-15.507-15.395-17.209-17.099c-.637-.634-1.496-.959-2.394-1.099l-12.527 256.233l89.762-19.418S223.972 58.8 223.774 57.34c-.201-1.46-1.48-2.268-2.537-2.357\"/><path fill=\"#fff\" d=\"m135.242 104.585l-11.069 32.926s-9.698-5.176-21.586-5.176c-17.428 0-18.305 10.937-18.305 13.693c0 15.038 39.2 20.8 39.2 56.024c0 27.713-17.577 45.558-41.277 45.558c-28.44 0-42.984-17.7-42.984-17.7l7.615-25.16s14.95 12.835 27.565 12.835c8.243 0 11.596-6.49 11.596-11.232c0-19.616-32.16-20.491-32.16-52.724c0-27.129 19.472-53.382 58.778-53.382c15.145 0 22.627 4.338 22.627 4.338\"/></svg>", "WordPress": "<svg viewBox=\"0 0 256 255\" aria-hidden=\"true\"><path fill=\"#464342\" d=\"M18.124 127.5c0 43.296 25.16 80.711 61.646 98.442L27.594 82.986a109 109 0 0 0-9.47 44.514m183.221-5.52c0-13.517-4.856-22.879-9.02-30.165c-5.545-9.01-10.742-16.64-10.742-25.65c0-10.055 7.626-19.415 18.368-19.415c.485 0 .944.06 1.417.088c-19.46-17.829-45.387-28.714-73.863-28.714c-38.213 0-71.832 19.606-91.39 49.302c2.566.077 4.984.13 7.039.13c11.44 0 29.15-1.387 29.15-1.387c5.897-.348 6.592 8.312.702 9.01c0 0-5.926.697-12.52 1.042L100.32 194.7l23.937-71.79l-17.042-46.692c-5.89-.345-11.47-1.042-11.47-1.042c-5.894-.346-5.203-9.358.691-9.01c0 0 18.064 1.388 28.811 1.388c11.44 0 29.151-1.388 29.151-1.388c5.9-.348 6.594 8.312.702 9.01c0 0-5.938.697-12.52 1.042l39.529 117.581l10.91-36.458c4.728-15.129 8.327-25.995 8.327-35.36m-71.921 15.088l-32.818 95.363a109.4 109.4 0 0 0 30.899 4.456c12.737 0 24.952-2.202 36.323-6.2a9.6 9.6 0 0 1-.779-1.507zm94.058-62.045a84 84 0 0 1 .737 11.247c0 11.1-2.073 23.577-8.317 39.178l-33.411 96.6c32.518-18.963 54.39-54.193 54.39-94.545c.002-19.017-4.856-36.9-13.4-52.48M127.505 0C57.2 0 0 57.196 0 127.5c0 70.313 57.2 127.507 127.505 127.507c70.302 0 127.51-57.194 127.51-127.507C255.014 57.196 197.808 0 127.506 0m0 249.163c-67.08 0-121.659-54.578-121.659-121.663c0-67.08 54.576-121.654 121.659-121.654c67.078 0 121.652 54.574 121.652 121.654c0 67.085-54.574 121.663-121.652 121.663\"/></svg>", "Canva": "<svg viewBox=\"0 0 128 128\" aria-hidden=\"true\"><g fill=\"#00c4cc\"><path d=\"M59.39.152c-.484.051-1.995.23-3.328.387c-5.374.613-11.468 2.227-16.816 4.48C19.891 13.106 5.324 30.849 1.305 51.2C.359 56.04.129 58.418.129 64c0 7.195.715 12.16 2.61 18.434c6.195 20.53 22.323 36.632 42.906 42.851c6.195 1.871 11.187 2.586 18.355 2.586c7.195 0 12.16-.715 18.434-2.61c20.53-6.195 36.632-22.323 42.851-42.906c1.871-6.195 2.586-11.187 2.586-18.355c0-3.047-.152-6.527-.332-7.809c-2.074-14.796-8.168-27.238-18.328-37.402C99.07 8.703 86.68 2.586 72.19.512c-1.996-.282-11.238-.54-12.8-.36m-20.863 40.32c1.36.41 1.996.794 2.918 1.715c1.793 1.82 2.203 2.817 2.203 5.555c0 2.051-.078 2.434-.691 3.508c-1.18 1.996-3.918 3.84-5.812 3.89c-1.333.028-1.278-.562.18-2.097c1.945-2.023 2.226-2.79 2.226-5.813c-.024-2.917-.383-3.914-1.739-4.734c-1.128-.691-2.355-.64-4.148.203c-4.66 2.23-9.703 9.653-11.672 17.258c-2.613 10.137 2.02 18.25 9.649 16.867c2.226-.41 6.425-2.558 8.246-4.25c1.508-1.379 1.508-1.406 1.66-3.12c.336-3.587 2.867-7.169 6.25-8.833c1.558-.77 1.945-.844 4.043-.844c1.996 0 2.457.102 3.43.637c3.097 1.77 2.457 5.89-.895 5.89c-1.945 0-2.945-1-1.535-1.534c1.383-.512.867-2.434-.742-2.868c-1.895-.488-4.047.793-5.403 3.25c-1.64 2.97-1.715 6.504-.156 8.114c1.512 1.613 3.406.336 4.867-3.329c.766-1.867 1.867-2.867 3.149-2.867c1.125 0 1.332.692.843 2.793c-.718 3.25-.23 4.094 1.793 3.098c.664-.309 1.766-1.023 2.43-1.535l1.254-1l.848-4.43c.922-4.965 1.277-5.633 3.172-5.988c1.82-.336 2.23.562 1.562 3.402l-.36 1.59l1.333-1.36c3.148-3.226 7.015-4.812 8.347-3.48c.715.715.637 1.613-.386 4.785c-.485 1.512-1.153 3.895-1.457 5.25c-.461 2.047-.489 2.535-.23 2.868c.82.972 3.327-.028 5.554-2.204l1.305-1.277l.156-2.844c.152-3.277.457-4.453 1.328-5.504c.82-.972 2.305-1.687 3.098-1.484c.793.207.793.973.078 3.227c-1 3.097-.895 10.238.129 10.238c.41 0 2.507-2.2 3.84-4.043l.996-1.36l-.793-.816c-1.383-1.46-1.715-2.406-1.715-4.789c0-1.738.129-2.379.562-3.227c.719-1.328 1.844-2.3 3.176-2.687c1.406-.434 3.148.281 3.863 1.562c.719 1.305.54 4.223-.383 6.223l-.664 1.457h.895c1.23 0 1.715-.305 3.918-2.379c1.152-1.101 2.484-2.05 3.48-2.511c3.918-1.84 8.528-.895 9.293 1.921c.64 2.254-.765 3.84-3.226 3.66c-1.766-.128-2.098-.59-1.074-1.456c1.843-1.54 0-3.508-2.637-2.793c-1.434.386-3.047 1.996-3.89 3.867c-1.692 3.738-.794 8.14 1.636 8.14c.973 0 2.691-1.921 3.355-3.789c.793-2.152 2.457-3.507 3.711-3.02c.692.255.743.946.309 3.122c-.488 2.383-.563 4.61-.18 5.633c.153.382.614 1.101 1.051 1.586c.816.921.844 1.254.152 1.691c-.332.23-.77.129-1.843-.46c-1.485-.77-2.766-2.153-3.227-3.458l-.281-.766l-1.024.766c-.59.41-1.511.871-2.047 1.023c-2.125.563-4.738-.894-5.964-3.351c-.489-.95-.641-3.738-.282-4.813c.204-.59.204-.59-.617-.18c-.433.231-1.355.485-2.07.563c-1.18.13-1.36.258-2.535 1.742c-1.664 2.07-4.61 4.864-5.813 5.454c-2.558 1.277-3.402.918-4.07-1.72l-.461-1.765l-1.102.973c-1.406 1.23-4.222 2.715-5.836 3.074c-1.535.332-3.175-.156-3.84-1.18c-.995-1.535-.663-4.785.922-9.164c1.176-3.25.333-3.3-2.636-.203c-2.203 2.328-3.149 3.992-3.762 6.578c-.64 2.688-1.41 3.66-3.148 4.07c-1.051.231-1.54-.41-1.332-1.816l.152-1.129l-.973.668c-1.383.946-3.125 1.817-4.328 2.149s-2.789-.024-3.172-.692c-.691-1.175-.691-1.175-1.765-.332c-2.332 1.895-5.66 1.356-7.348-1.152l-.54-.793l-1.687 1.562c-4.867 4.454-10.957 6.45-15.464 5.067c-5.735-1.738-8.907-6.656-8.856-13.746c.024-7.117 3.172-14.617 8.473-20.172c2.996-3.125 5.812-4.969 8.68-5.66c2.07-.512 3.328-.485 5.296.129zm0 0\"/><path d=\"M90.418 58.676c-.563.562-.356 2.816.36 4.25c.359.742.742 1.332.87 1.332c.102 0 .332-.59.512-1.309c.64-2.66-.512-5.504-1.742-4.273m0 0\"/></g></svg>", "Hootsuite": "<svg viewBox=\"0 0 256 257\" aria-hidden=\"true\"><path fill=\"#ff4c46\" d=\"M25.551 2.118A3.177 3.177 0 0 1 29.38.112l.227.07l85.775 32.609c4.055-.668 8.082-1 12.043-.972c14.97.104 29.107 3.464 43.284 11.839l82.503-6.83a2.67 2.67 0 0 1 1.703 4.815l-.233.153l-51.54 30.02q1.248 1.432 2.503 2.926c23.481 27.999 37.765 68.512 44.587 91.937a46.48 46.48 0 0 1-7.082 40.395c-15.334 20.985-48.034 49.555-112.19 49.1c-70.04-.485-106.218-35.332-123.6-56.747a33.29 33.29 0 0 1-5.196-32.68l1.3-3.4c10.258-26.677 29.366-73.011 44.672-90.24c9.214-10.36 19.84-19.305 31.067-26.194L26.522 5.626a3.18 3.18 0 0 1-.97-3.508\"/><path fill=\"#fff\" d=\"M128.966 183.475a.56.56 0 0 1 .726-.32a44.02 44.02 0 0 0 36.761 3.265l.698-.256a.533.533 0 0 1 .658.798l-15.354 16.906a2.67 2.67 0 0 1-3.717.216c-5.677-4.878-15.159-15.07-19.703-20.075a.56.56 0 0 1-.07-.534m21.315-86.586c39.704-27.624 61.228-3.645 73.305 22.955c8.724 19.17 11.814 55.06-16.509 60.561c-21.695 4.231-41.742-17.75-56.569-38.27a4.7 4.7 0 0 0-7.595-.022l-.603.84c-10.15 14.23-34.351 52.918-70.167 43.127c-34.56-9.461-42.153-48.337-27.78-75.21C65.63 70.346 96.7 57.143 150.28 96.89m-5.643 55.606a3.605 3.605 0 0 1 4.902-.087l.2.194l18.973 21.62q.152.174.259.378c.49.942.124 2.102-.817 2.592a42.7 42.7 0 0 1-18.414 4.649c-8.437-.07-17.07-5.67-20.605-8.243l-.144-.117a1.923 1.923 0 0 1-.29-2.55l.131-.164l15.591-18.084l.026.007a4 4 0 0 1 .188-.195\"/><path fill=\"#ff4c46\" d=\"m196.358 120.778l.219.355c4.59 7.126 2.535 16.625-4.592 21.216s-16.626 2.536-21.217-4.591c-4.465-6.932-2.647-16.124 4.046-20.849l.37-.253c6.666-4.77 15.938-3.235 20.709 3.43q.242.34.465.692m-95.977-8.177c-7.99 2.723-11.961 11.209-9.58 19.111c2.723 7.99 11.208 11.962 19.11 9.582c7.99-2.724 11.897-11.317 9.582-19.112c.021-.051-.03-.198-.128-.375c-2.458-7.691-10.308-11.756-17.78-9.632c-.344-.087-.774.17-1.204.426\"/></svg>"};
+const kits=[
+ ['Paid media',['Google Ads','Performance Max','Meta Ads','Lead generation','Audience segmentation','A/B testing','ROAS optimization']],
+ ['SEO',['Technical SEO','On-page and off-page','Local SEO and GBP','Keyword research','SEO audits','SEMrush','Ahrefs']],
+ ['Analytics',['Google Analytics 4','Google Tag Manager','CRO','Marketing reporting','CRM dashboards']],
+ ['AI tools',['ChatGPT','Claude','Jasper AI','Midjourney','Higgsfield','Runway','ElevenLabs']],
+ ['Platforms',['Shopify','WordPress','Canva','Adobe Express','Hootsuite','CRM']],
+ ['Web development',['WordPress','Shopify','Claude','AI-assisted development','Landing pages','E-commerce stores','Responsive design','SEO-ready builds']],
+ ['Strategy',['Social media strategy','Content marketing','Copywriting','Influencer marketing','Go-to-market','Affiliate marketing']]];
+/* [tag, headline, body, big figure, figure caption, result pills] */
+const cases=[
+ ['Real estate, Vaishno Ventures','Paid media for premium real estate launches','Google Ads (Search, Display, Performance Max) and Meta Ads campaigns for premium projects, feeding qualified leads straight to the sales team.','500–700','qualified leads a month',['AED 22–31k monthly spend','Google and Meta']],
+ ['E-commerce, Zipzapcart','Built a luxury fashion store for Europe','Founded and ran a Shopify store for the European market: storefront design, full SEO strategy, social campaigns and operations.','21,000+','products listed on Shopify',['EUR 5–20k monthly revenue','20–50% organic growth']],
+ ['SaaS, Nextoria','Affiliate program across 4 SaaS platforms','Designed commission tiers, attribution, payouts and partner policy for markXpand, ReachXpand, PersonaXpand and Purchosmart, with developers building real-time dashboards.','4','SaaS platforms launched',['Partner policy','Live dashboards']],
+ ['Paid media, Nextoria','AI-driven ads for a group of brands','Paid search and paid social on Google Ads and Meta Ads for the Modern group and Nextoria\'s SaaS products, run through markXpand, Nextoria\'s AI ad platform.','8','brands under management',['Google Ads','Meta Ads','markXpand']],
+ ['SEO, Nextoria','Findxpand and PersonaXpand SEO','Helped build Findxpand, an SEO platform, from the ground up, and lead SEO and website content for PersonaXpand with AI-assisted B2B blogs.','0→1','SEO platform built',['Jasper AI','B2B content']],
+ ['Influencer, Vaishno Ventures','25+ influencer partnerships','Ran influencer partnerships end to end: finding creators, negotiating contracts, coordinating content, tracking deliverables and measuring performance.','25+','partnerships managed',['End to end','Performance tracked']],
+ ['Events, Nextoria','Seamless Digital Commerce at DWTC','Managed Nextoria\'s exhibition at Dubai World Trade Centre, from planning and vendor coordination to showcasing products on site.','DWTC','exhibition, Dubai',['Planning','Vendors','On-site demos']]];
+const JLOGO={nextoria:'<img src="img/nextoria.jpg" alt="" width="480" height="202">',vaishno:'<img src="img/vaishno.png" alt="" width="440" height="107">',siena:'<img src="img/siena.png" alt="" width="300" height="300">',zipzapcart:'<img src="img/zipzapcart.png" alt="" width="420" height="121">',accenture:"<svg viewBox=\"0 0 24 24\"><path fill=\"#a100ff\" d=\"m.66 16.95l13.242-4.926L.66 6.852V0l22.68 9.132v5.682L.66 24Z\"/></svg>",wipro:"<svg viewBox=\"0 0 24 24\"><path fill=\"#341c53\" d=\"M15.542 12.035c0-.875-.69-1.585-1.542-1.585c-.85 0-1.541.71-1.541 1.585c0 .876.69 1.585 1.542 1.585c.85 0 1.54-.71 1.54-1.585zM14 12.872c-.437 0-.792-.375-.792-.837c0-.46.355-.836.793-.836c.437 0 .792.375.792.836c0 .462-.355.837-.792.837m-9.584-2.208l-.927 2.873a.13.13 0 0 1-.115.084H3.29a.16.16 0 0 1-.129-.078l-.95-1.825l-.95 1.825a.16.16 0 0 1-.128.078h-.085a.13.13 0 0 1-.115-.084l-.927-2.873c-.022-.07.019-.126.092-.126h.567c.048 0 .1.038.115.084l.469 1.452l.805-1.546a.16.16 0 0 1 .129-.078h.057a.16.16 0 0 1 .129.078l.805 1.546l.468-1.452a.13.13 0 0 1 .116-.084h.567c.073 0 .114.057.091.126M5.784 13.4a.13.13 0 0 1-.132.133H5.08a.13.13 0 0 1-.132-.133v-2.73c0-.073.059-.132.132-.132h.572a.13.13 0 0 1 .132.132zm.741-2.73v4.315c0 .074.06.133.132.133h.573a.13.13 0 0 0 .132-.133v-1.497c.242.085.51.132.792.132c.803 0 1.454-.71 1.454-1.585s-.651-1.585-1.454-1.585c-.394 0-.75.171-1.012.449l-.102-.278a.14.14 0 0 0-.119-.083h-.264a.13.13 0 0 0-.132.132m.837.9a.75.75 0 0 1 .637-.371c.424 0 .767.374.767.836s-.344.837-.767.837c-.24 0-.46-.063-.637-.17zm3.575 1.963h-.572a.13.13 0 0 1-.132-.132V10.67c0-.073.059-.132.132-.132h.264c.048 0 .102.037.118.083l.102.277s.32-.448.87-.448s.617.19.571.295l-.197.445c-.025.058-.09.1-.177.066a.73.73 0 0 0-.847.233V13.4a.13.13 0 0 1-.132.132m4.69-10.343a.704.704 0 0 1 .862-.497a.704.704 0 1 1-.364 1.36a.705.705 0 0 1-.498-.863m1.846 2.79a.53.53 0 0 1 .194.722a.53.53 0 0 1-.722.193a.53.53 0 0 1-.194-.722a.53.53 0 0 1 .722-.193m.664 10.968a.573.573 0 0 1 0-.81a.57.57 0 0 1 .81 0a.573.573 0 0 1 0 .81a.573.573 0 0 1-.81 0M15.68 9.571a.242.242 0 0 1-.42-.242a.242.242 0 1 1 .42.242m-.42 5.1a.242.242 0 0 1 .42-.242a.243.243 0 0 1-.088.331a.243.243 0 0 1-.331-.089m3.73-2.67a.517.517 0 1 1-.516-.518a.517.517 0 0 1 .517.517m-1.173-8.112a.749.749 0 1 1 1.296.75a.749.749 0 0 1-1.296-.75m-5.43 10.575a.154.154 0 1 1 .267.153a.154.154 0 0 1-.267-.154m2.804-8.792a.484.484 0 1 1 .935.25a.484.484 0 0 1-.593.343a.484.484 0 0 1-.342-.593m-1.2 2.18a.308.308 0 1 1 0-.617a.308.308 0 1 1 0 .617m0 1.013a.198.198 0 1 1 0 .396a.198.198 0 0 1 0-.396m0-2.84a.44.44 0 1 1 0-.882a.44.44 0 0 1 0 .881m-1.607 3.515a.154.154 0 1 1 .21.056a.154.154 0 0 1-.21-.056m1.607 5.602a.198.198 0 1 1 0-.396a.198.198 0 0 1 0 .396m0 1.013a.308.308 0 0 1 0 .616a.308.308 0 1 1 0-.616m3.494-2.139a.44.44 0 0 1 .602-.16a.44.44 0 0 1 .16.6a.44.44 0 0 1-.762-.44m-3.494 3.966a.44.44 0 1 1 0 .88a.44.44 0 0 1 0-.88m9.577-8.543a.968.968 0 1 1-1.87.502a.968.968 0 0 1 1.87-.502m-6.694 6.002a.396.396 0 0 1 .56-.56a.396.396 0 0 1 0 .56a.396.396 0 0 1-.56 0m.974-4.47a.484.484 0 0 1 .342-.592a.484.484 0 1 1 .25.935a.484.484 0 0 1-.592-.342m1.407-2.715a.617.617 0 0 1 .617 1.068a.617.617 0 0 1-.617-1.068m-.31-.391a.57.57 0 0 1-.81 0a.573.573 0 0 1 0-.81a.57.57 0 0 1 .81 0a.573.573 0 0 1 0 .81M17.85 13.03a.484.484 0 0 1 .935.25a.484.484 0 1 1-.935-.25m-3.02-5.425a.33.33 0 0 1 .404-.234a.33.33 0 0 1-.17.638a.33.33 0 0 1-.234-.404m6.47-.835a.88.88 0 0 1 1.203.321a.88.88 0 1 1-1.525.881a.88.88 0 0 1 .322-1.202m-3.05 2.777a.44.44 0 1 1-.762.44a.44.44 0 1 1 .763-.44m1.324.96a.66.66 0 0 1 .466-.808a.66.66 0 0 1 .342 1.275a.66.66 0 0 1-.808-.467m0 2.986a.66.66 0 1 1 1.275.341a.66.66 0 1 1-1.275-.341m.859-.736a.757.757 0 1 1 0-1.514a.757.757 0 0 1 0 1.514m-.676-6.514a.79.79 0 0 1 0-1.121a.79.79 0 0 1 1.121 0a.793.793 0 0 1-1.12 1.12M16.534 8.31a.352.352 0 1 1-.61-.353a.352.352 0 0 1 .61.352m-.639 5.586a.264.264 0 0 1 .374 0a.265.265 0 0 1 0 .373a.264.264 0 0 1-.374 0a.264.264 0 0 1 0-.373m0-4.167a.264.264 0 0 1 .374 0a.264.264 0 1 1-.374 0m.515 3.992a.287.287 0 0 1-.105-.391a.286.286 0 0 1 .391-.105a.286.286 0 0 1-.286.496m-.486 2.32a.35.35 0 0 1 .129-.48a.35.35 0 0 1 .481.128a.35.35 0 0 1-.129.481a.35.35 0 0 1-.481-.129m.877-5.659a.286.286 0 0 1-.105.391a.287.287 0 0 1-.391-.105a.286.286 0 0 1 .496-.286m-.249.934a.308.308 0 1 1 .596-.16a.308.308 0 0 1-.596.16m0 1.366a.308.308 0 1 1 .596.16a.308.308 0 0 1-.596-.16m.401-.346a.337.337 0 1 1 0-.673a.337.337 0 0 1 0 .673m.483-3.775a.396.396 0 1 1-.56.561a.396.396 0 0 1 .56-.56M10.02 20.013a.573.573 0 0 1-.782.21a.573.573 0 0 1 .573-.992a.573.573 0 0 1 .21.782m4.794-11.068a.22.22 0 1 1-.114.425a.22.22 0 0 1 .114-.425m-2.539 11.837a.616.616 0 1 1-1.19-.32a.616.616 0 0 1 1.19.32m2.539-5.726a.22.22 0 0 1-.114-.426a.22.22 0 1 1 .114.426m-.16 5.874a.66.66 0 0 1-.66.66a.66.66 0 0 1-.661-.66a.66.66 0 0 1 1.32 0m-1.47-5.922a.177.177 0 0 1-.124-.216a.177.177 0 0 1 .216-.124a.176.176 0 0 1-.092.34m-.07 1.371a.286.286 0 1 1-.553-.148a.286.286 0 0 1 .552.148m-2.796-2.273a.22.22 0 0 1-.381.22a.22.22 0 0 1 .08-.3a.22.22 0 0 1 .301.08m1.67 1.882a.264.264 0 1 1-.457-.264a.264.264 0 0 1 .458.264m.015-1.825a.132.132 0 1 1-.187-.187a.133.133 0 0 1 .187 0a.133.133 0 0 1 0 .187m-.996.81a.242.242 0 1 1-.343.342a.24.24 0 0 1 0-.342a.24.24 0 0 1 .343 0m.078 2.756a.35.35 0 0 1-.481.129a.352.352 0 1 1 .481-.129m9.792.029a.793.793 0 0 1 0 1.12a.793.793 0 0 1-1.12-1.12a.793.793 0 0 1 1.12 0m-1.62-2.01a.617.617 0 0 1-.225-.843a.617.617 0 0 1 .842-.225a.617.617 0 0 1-.617 1.067m3.245 1.16a.88.88 0 1 1-1.525-.88a.88.88 0 0 1 1.525.88m-7.267-.28a.33.33 0 1 1-.17-.637a.33.33 0 0 1 .17.638M24 12a1.058 1.058 0 1 1-2.116 0A1.058 1.058 0 0 1 24 12m-.43 2.564a.97.97 0 1 1-1.872-.502a.97.97 0 0 1 1.872.502m-6.583 5.881a.704.704 0 1 1-1.36.364a.704.704 0 0 1 .498-.862a.704.704 0 0 1 .862.498m2.125-1.082a.75.75 0 0 1-.274 1.022a.75.75 0 0 1-1.022-.274a.75.75 0 0 1 .274-1.023a.75.75 0 0 1 1.022.274zm-3.922-1.035a.484.484 0 1 1 .935-.25a.484.484 0 0 1-.935.25m2.283-.308a.528.528 0 1 1-.528-.915a.528.528 0 0 1 .528.915m-4.76.28a.396.396 0 0 1-.766-.205a.396.396 0 0 1 .485-.28a.396.396 0 0 1 .28.485m-.897-8.276a.132.132 0 1 1 .187-.187a.132.132 0 0 1-.187.187m.076-1.651a.264.264 0 0 1-.265-.458a.264.264 0 0 1 .265.458m-.807-4.835a.616.616 0 1 1 1.19-.32a.616.616 0 0 1-1.19.32m-.848 6.055a.22.22 0 1 1-.22.381a.22.22 0 0 1-.08-.3a.22.22 0 0 1 .3-.081m.77-.908a.242.242 0 0 1-.343.343a.242.242 0 0 1 .343-.343m-.532-2.062a.352.352 0 0 1 .61-.352a.352.352 0 0 1-.61.352m2.858-3.552a.66.66 0 0 1 1.32 0a.66.66 0 0 1-.66.66a.66.66 0 0 1-.66-.66m-.149 5.922a.176.176 0 1 1 .091.34a.176.176 0 0 1-.09-.34m-.957-3.573a.396.396 0 0 1 .205.765a.396.396 0 0 1-.485-.28a.397.397 0 0 1 .28-.485m.535 1.999a.286.286 0 1 1 .148.553a.286.286 0 0 1-.148-.553M9.03 4.559a.57.57 0 0 1 .21-.781a.573.573 0 0 1 .572.991a.57.57 0 0 1-.782-.21m-.37 10.505a.264.264 0 1 1-.458.264a.264.264 0 0 1 .458-.264M4.92 9.46a.46.46 0 0 1 .566-.327a.46.46 0 0 1 .327.566a.46.46 0 0 1-.566.327a.46.46 0 0 1-.327-.567m.9-2.17a.484.484 0 1 1 .178.662a.485.485 0 0 1-.178-.662m2.23 10.642a.53.53 0 0 1 0 .747a.53.53 0 0 1-.748 0a.53.53 0 0 1 0-.747a.53.53 0 0 1 .748 0m-1.373-1.722a.484.484 0 1 1-.839.485a.484.484 0 0 1 .839-.485m.626-10.14a.53.53 0 0 1 0-.746a.53.53 0 0 1 .747 0a.53.53 0 0 1 0 .747a.53.53 0 0 1-.747 0m2.366 1.62a.31.31 0 0 1-.436 0a.31.31 0 0 1 0-.436a.31.31 0 0 1 .436 0a.31.31 0 0 1 0 .436m0 8.623a.308.308 0 1 1-.436.435a.308.308 0 0 1 .436-.436m-1.466-7.64a.264.264 0 1 1 .457.264a.264.264 0 0 1-.458-.264\"/></svg>"};
+const brandLogos=[
+ ['purchosmart','Purchosmart','#ffffff','Logo for Purchosmart, one of Nextoria\'s SaaS platforms. A friendly robot face forms the "o", building a mascot into the name.'],
+ ['invited','Invited','#faf4e8','Logo for Invited, a Nextoria brand. A high-contrast serif wordmark with an elegant, editorial feel.'],
+ ['findxpand','Findxpand','#ffffff','An AI-powered SEO tool where AI fixes errors and specialists approve them. I led the ideation, guided the developers end to end and designed the logo.','findxpand','Product and logo'],
+ ['reachxpand','ReachXpand','#ffffff','An AI social media management tool for businesses, organisations, small businesses and vendors. I run quality checks, share social media expertise, propose new features, and use it daily to post for every company in the Hassan Bin Al Shaikh Group.','reachxpand','Product'],
+ ['personaxpand','PersonaXpand','#ffffff','A social media management tool for personal branding, for influencers and everyday people. I run quality checks, share social media expertise, propose new features and lead its SEO and website content.','personaxpand','Product']];
+$('#logos').innerHTML=brandLogos.map(([k,n,bg,d,pg,tag])=>{const inner=`<div class="lart"><img src="img/logo-${k}.jpg" alt="${n} logo" loading="lazy"></div><figcaption><span class="tag">${tag||'Logo design'}</span><h3>${n}</h3><p>${d}</p>${pg?`<span class="more">View project<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>`:''}</figcaption>`;return pg?`<a class="lcard glass rv link" href="#${pg}" data-open="${pg}" style="--bg:${bg}">${inner}</a>`:`<figure class="lcard glass rv" style="--bg:${bg}">${inner}</figure>`}).join('');
+
+/* project pages, routed on the URL hash */
+const fxRows=['Missing meta description','Broken internal link','Image without alt text','Duplicate title tag','Slow-loading hero image'];
+const states=['Error found','AI fix ready','Approved by specialist'];
+$('#fx-rows').innerHTML=fxRows.map(t=>`<li data-s="0"><span>${t}</span><em>${states[0]}</em></li>`).join('');
+$('#fx-contrib').innerHTML=[
+ ['Ideation','Came up with the idea for Findxpand and defined the problem it solves: the hours SEO specialists lose to repetitive fixes.'],
+ ['SEO knowledge, end to end','Brought the full SEO picture into the product: which errors matter, how specialists find them and how they fix them.'],
+ ['Guiding the developers','Guided the development team from start to finish, turning SEO workflows into features and requirements.'],
+ ['Human-in-the-loop design','Shaped the core idea that AI fixes the errors while a specialist approves every change.'],
+ ['Logo and brand','Designed the Findxpand logo.']].map(([h,p])=>`<div><b>${h}</b><p>${p}</p></div>`).join('');
+$('#rx-contrib').innerHTML=[
+ ['Quality checks','Test the tool from time to time, catch bugs and flag what needs fixing before it reaches users.'],
+ ['Social media knowledge','Share know-how on social media and social media management tools with the team, so the product matches how marketers really work.'],
+ ['New features','Proposed many new features for the tool, drawn from real day-to-day needs.'],
+ ['Daily use across the group','Use ReachXpand every day to publish social media for all the companies in the Hassan Bin Al Shaikh Group of Industries.']].map(([h,p])=>`<div><b>${h}</b><p>${p}</p></div>`).join('');
+const RXSOC={"Instagram": "<svg viewBox=\"0 0 264.583 264.583\" aria-hidden=\"true\"><defs><radialGradient id=\"SVG8bDSUbTK\" cx=\"158.429\" cy=\"578.088\" r=\"52.352\" fx=\"158.429\" fy=\"578.088\" gradientTransform=\"matrix(0 -4.03418 4.28018 0 -2332.227 942.236)\" gradientUnits=\"userSpaceOnUse\" href=\"#SVGyEXqFe2C\"/><radialGradient id=\"SVGHt3n4cxA\" cx=\"172.615\" cy=\"600.692\" r=\"65\" fx=\"172.615\" fy=\"600.692\" gradientTransform=\"rotate(-59.87 -448.718 683.191)scale(1.34356 1.74916)\" gradientUnits=\"userSpaceOnUse\" href=\"#SVGdDw0LeWO\"/><radialGradient id=\"SVGHvxlGeKS\" cx=\"144.012\" cy=\"51.337\" r=\"67.081\" fx=\"144.012\" fy=\"51.337\" gradientTransform=\"matrix(-2.3989 .67549 -.23008 -.81732 464.996 -26.404)\" gradientUnits=\"userSpaceOnUse\" href=\"#SVGTCOYweHu\"/><radialGradient id=\"SVG8E51ndLw\" cx=\"199.788\" cy=\"628.438\" r=\"52.352\" fx=\"199.788\" fy=\"628.438\" gradientTransform=\"rotate(164.25 577.79 780.16)scale(3.2292 2.32649)\" gradientUnits=\"userSpaceOnUse\" href=\"#SVGm1g5feOd\"/><linearGradient id=\"SVGm1g5feOd\"><stop offset=\"0\" stop-color=\"#ff005f\"/><stop offset=\"1\" stop-color=\"#fc01d8\"/></linearGradient><linearGradient id=\"SVGTCOYweHu\"><stop offset=\"0\" stop-color=\"#780cff\"/><stop offset=\"1\" stop-color=\"#820bff\" stop-opacity=\"0\"/></linearGradient><linearGradient id=\"SVGdDw0LeWO\"><stop offset=\"0\" stop-color=\"#fc0\"/><stop offset=\"1\" stop-color=\"#fc0\" stop-opacity=\"0\"/></linearGradient><linearGradient id=\"SVGyEXqFe2C\"><stop offset=\"0\" stop-color=\"#fc0\"/><stop offset=\".124\" stop-color=\"#fc0\"/><stop offset=\".567\" stop-color=\"#fe4a05\"/><stop offset=\".694\" stop-color=\"#ff0f3f\"/><stop offset=\"1\" stop-color=\"#fe0657\" stop-opacity=\"0\"/></linearGradient></defs><path fill=\"url(#SVG8E51ndLw)\" d=\"M204.15 18.143c-55.23 0-71.383.057-74.523.317c-11.334.943-18.387 2.728-26.07 6.554c-5.922 2.942-10.592 6.351-15.201 11.13c-8.394 8.716-13.481 19.439-15.323 32.184c-.895 6.188-1.156 7.45-1.209 39.056c-.02 10.536 0 24.4 0 42.999c0 55.2.062 71.341.326 74.476c.916 11.032 2.645 17.973 6.308 25.565c7 14.533 20.37 25.443 36.12 29.514c5.453 1.404 11.476 2.178 19.208 2.544c3.277.142 36.669.244 70.081.244s66.826-.04 70.02-.203c8.954-.422 14.153-1.12 19.901-2.606c15.852-4.09 28.977-14.838 36.12-29.575c3.591-7.409 5.412-14.614 6.236-25.07c.18-2.28.255-38.626.255-74.924c0-36.304-.082-72.583-.26-74.863c-.835-10.625-2.656-17.77-6.364-25.32c-3.042-6.182-6.42-10.799-11.324-15.519c-8.752-8.361-19.455-13.45-32.21-15.29c-6.18-.894-7.41-1.158-39.033-1.213z\" transform=\"translate(-71.816 -18.143)\"/><path fill=\"url(#SVG8bDSUbTK)\" d=\"M204.15 18.143c-55.23 0-71.383.057-74.523.317c-11.334.943-18.387 2.728-26.07 6.554c-5.922 2.942-10.592 6.351-15.201 11.13c-8.394 8.716-13.481 19.439-15.323 32.184c-.895 6.188-1.156 7.45-1.209 39.056c-.02 10.536 0 24.4 0 42.999c0 55.2.062 71.341.326 74.476c.916 11.032 2.645 17.973 6.308 25.565c7 14.533 20.37 25.443 36.12 29.514c5.453 1.404 11.476 2.178 19.208 2.544c3.277.142 36.669.244 70.081.244s66.826-.04 70.02-.203c8.954-.422 14.153-1.12 19.901-2.606c15.852-4.09 28.977-14.838 36.12-29.575c3.591-7.409 5.412-14.614 6.236-25.07c.18-2.28.255-38.626.255-74.924c0-36.304-.082-72.583-.26-74.863c-.835-10.625-2.656-17.77-6.364-25.32c-3.042-6.182-6.42-10.799-11.324-15.519c-8.752-8.361-19.455-13.45-32.21-15.29c-6.18-.894-7.41-1.158-39.033-1.213z\" transform=\"translate(-71.816 -18.143)\"/><path fill=\"url(#SVGHt3n4cxA)\" d=\"M204.15 18.143c-55.23 0-71.383.057-74.523.317c-11.334.943-18.387 2.728-26.07 6.554c-5.922 2.942-10.592 6.351-15.201 11.13c-8.394 8.716-13.481 19.439-15.323 32.184c-.895 6.188-1.156 7.45-1.209 39.056c-.02 10.536 0 24.4 0 42.999c0 55.2.062 71.341.326 74.476c.916 11.032 2.645 17.973 6.308 25.565c7 14.533 20.37 25.443 36.12 29.514c5.453 1.404 11.476 2.178 19.208 2.544c3.277.142 36.669.244 70.081.244s66.826-.04 70.02-.203c8.954-.422 14.153-1.12 19.901-2.606c15.852-4.09 28.977-14.838 36.12-29.575c3.591-7.409 5.412-14.614 6.236-25.07c.18-2.28.255-38.626.255-74.924c0-36.304-.082-72.583-.26-74.863c-.835-10.625-2.656-17.77-6.364-25.32c-3.042-6.182-6.42-10.799-11.324-15.519c-8.752-8.361-19.455-13.45-32.21-15.29c-6.18-.894-7.41-1.158-39.033-1.213z\" transform=\"translate(-71.816 -18.143)\"/><path fill=\"url(#SVGHvxlGeKS)\" d=\"M204.15 18.143c-55.23 0-71.383.057-74.523.317c-11.334.943-18.387 2.728-26.07 6.554c-5.922 2.942-10.592 6.351-15.201 11.13c-8.394 8.716-13.481 19.439-15.323 32.184c-.895 6.188-1.156 7.45-1.209 39.056c-.02 10.536 0 24.4 0 42.999c0 55.2.062 71.341.326 74.476c.916 11.032 2.645 17.973 6.308 25.565c7 14.533 20.37 25.443 36.12 29.514c5.453 1.404 11.476 2.178 19.208 2.544c3.277.142 36.669.244 70.081.244s66.826-.04 70.02-.203c8.954-.422 14.153-1.12 19.901-2.606c15.852-4.09 28.977-14.838 36.12-29.575c3.591-7.409 5.412-14.614 6.236-25.07c.18-2.28.255-38.626.255-74.924c0-36.304-.082-72.583-.26-74.863c-.835-10.625-2.656-17.77-6.364-25.32c-3.042-6.182-6.42-10.799-11.324-15.519c-8.752-8.361-19.455-13.45-32.21-15.29c-6.18-.894-7.41-1.158-39.033-1.213z\" transform=\"translate(-71.816 -18.143)\"/><path fill=\"#fff\" d=\"M132.345 33.973c-26.716 0-30.07.117-40.563.594c-10.472.48-17.62 2.136-23.876 4.567c-6.47 2.51-11.958 5.87-17.426 11.335c-5.472 5.464-8.834 10.948-11.354 17.412c-2.44 6.252-4.1 13.397-4.57 23.858c-.47 10.486-.593 13.838-.593 40.535s.119 30.037.594 40.522c.482 10.465 2.14 17.609 4.57 23.859c2.515 6.465 5.876 11.95 11.346 17.414c5.466 5.468 10.955 8.834 17.42 11.345c6.26 2.431 13.41 4.088 23.881 4.567c10.493.477 13.844.594 40.559.594c26.719 0 30.061-.117 40.555-.594c10.472-.48 17.63-2.136 23.888-4.567c6.468-2.51 11.948-5.877 17.414-11.345c5.472-5.464 8.834-10.949 11.354-17.412c2.419-6.252 4.079-13.398 4.57-23.858c.472-10.486.595-13.828.595-40.525s-.123-30.047-.594-40.533c-.492-10.465-2.152-17.608-4.57-23.858c-2.521-6.466-5.883-11.95-11.355-17.414c-5.472-5.468-10.944-8.827-17.42-11.335c-6.271-2.431-13.424-4.088-23.897-4.567c-10.493-.477-13.834-.594-40.558-.594zm-8.825 17.715c2.62-.004 5.542 0 8.825 0c26.266 0 29.38.094 39.752.565c9.591.438 14.797 2.04 18.264 3.385c4.591 1.782 7.864 3.912 11.305 7.352c3.443 3.44 5.575 6.717 7.362 11.305c1.346 3.46 2.951 8.663 3.388 18.247c.47 10.363.573 13.475.573 39.71c0 26.233-.102 29.346-.573 39.709c-.44 9.584-2.042 14.786-3.388 18.247c-1.783 4.587-3.919 7.854-7.362 11.292c-3.443 3.441-6.712 5.57-11.305 7.352c-3.463 1.352-8.673 2.95-18.264 3.388c-10.37.47-13.486.573-39.752.573c-26.268 0-29.38-.102-39.751-.573c-9.592-.443-14.797-2.044-18.267-3.39c-4.59-1.781-7.87-3.911-11.313-7.352c-3.443-3.44-5.574-6.709-7.362-11.298c-1.346-3.461-2.95-8.663-3.387-18.247c-.472-10.363-.566-13.476-.566-39.726s.094-29.347.566-39.71c.438-9.584 2.04-14.786 3.387-18.25c1.783-4.588 3.919-7.865 7.362-11.305c3.443-3.441 6.722-5.57 11.313-7.357c3.468-1.351 8.675-2.949 18.267-3.389c9.075-.41 12.592-.532 30.926-.553zm61.337 16.322c-6.518 0-11.805 5.277-11.805 11.792c0 6.512 5.287 11.796 11.805 11.796s11.804-5.284 11.804-11.796c0-6.513-5.287-11.796-11.805-11.796zm-52.512 13.782c-27.9 0-50.519 22.603-50.519 50.482s22.62 50.471 50.52 50.471s50.51-22.592 50.51-50.471s-22.613-50.482-50.513-50.482zm0 17.715c18.11 0 32.792 14.67 32.792 32.767c0 18.096-14.683 32.767-32.792 32.767s-32.791-14.671-32.791-32.767c0-18.098 14.68-32.767 32.791-32.767\"/></svg>", "Facebook": "<svg viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path fill=\"#1877f2\" d=\"M256 128C256 57.308 198.692 0 128 0S0 57.308 0 128c0 63.888 46.808 116.843 108 126.445V165H75.5v-37H108V99.8c0-32.08 19.11-49.8 48.348-49.8C170.352 50 185 52.5 185 52.5V84h-16.14C152.959 84 148 93.867 148 103.99V128h35.5l-5.675 37H148v89.445c61.192-9.602 108-62.556 108-126.445\"/><path fill=\"#fff\" d=\"m177.825 165l5.675-37H148v-24.01C148 93.866 152.959 84 168.86 84H185V52.5S170.352 50 156.347 50C127.11 50 108 67.72 108 99.8V128H75.5v37H108v89.445A129 129 0 0 0 128 256a129 129 0 0 0 20-1.555V165z\"/></svg>", "X": "<svg viewBox=\"0 0 251 256\" aria-hidden=\"true\"><path d=\"M149.079 108.399L242.33 0h-22.098l-80.97 94.12L74.59 0H0l97.796 142.328L0 256h22.1l85.507-99.395L175.905 256h74.59L149.073 108.399zM118.81 143.58l-9.909-14.172l-78.84-112.773h33.943l63.625 91.011l9.909 14.173l82.705 118.3H186.3l-67.49-96.533z\"/></svg>", "LinkedIn": "<svg viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path fill=\"#0a66c2\" d=\"M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4c-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.91 39.91 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186zM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009s9.851-22.014 22.008-22.016c12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97zM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453\"/></svg>", "YouTube": "<svg viewBox=\"0 0 256 180\" aria-hidden=\"true\"><path fill=\"red\" d=\"M250.346 28.075A32.18 32.18 0 0 0 227.69 5.418C207.824 0 127.87 0 127.87 0S47.912.164 28.046 5.582A32.18 32.18 0 0 0 5.39 28.24c-6.009 35.298-8.34 89.084.165 122.97a32.18 32.18 0 0 0 22.656 22.657c19.866 5.418 99.822 5.418 99.822 5.418s79.955 0 99.82-5.418a32.18 32.18 0 0 0 22.657-22.657c6.338-35.348 8.291-89.1-.164-123.134\"/><path fill=\"#fff\" d=\"m102.421 128.06l66.328-38.418l-66.328-38.418z\"/></svg>", "TikTok": "<svg viewBox=\"0 0 256 290\" aria-hidden=\"true\"><path fill=\"#ff004f\" d=\"M189.72 104.421c18.678 13.345 41.56 21.197 66.273 21.197v-47.53a67 67 0 0 1-13.918-1.456v37.413c-24.711 0-47.59-7.851-66.272-21.195v96.996c0 48.523-39.356 87.855-87.9 87.855c-18.113 0-34.949-5.473-48.934-14.86c15.962 16.313 38.222 26.432 62.848 26.432c48.548 0 87.905-39.332 87.905-87.857v-96.995zm17.17-47.952c-9.546-10.423-15.814-23.893-17.17-38.785v-6.113h-13.189c3.32 18.927 14.644 35.097 30.358 44.898M69.673 225.607a40 40 0 0 1-8.203-24.33c0-22.192 18.001-40.186 40.21-40.186a40.3 40.3 0 0 1 12.197 1.883v-48.593c-4.61-.631-9.262-.9-13.912-.801v37.822a40.3 40.3 0 0 0-12.203-1.882c-22.208 0-40.208 17.992-40.208 40.187c0 15.694 8.997 29.281 22.119 35.9\"/><path d=\"M175.803 92.849c18.683 13.344 41.56 21.195 66.272 21.195V76.631c-13.794-2.937-26.005-10.141-35.186-20.162c-15.715-9.802-27.038-25.972-30.358-44.898h-34.643v189.843c-.079 22.132-18.049 40.052-40.21 40.052c-13.058 0-24.66-6.221-32.007-15.86c-13.12-6.618-22.118-20.206-22.118-35.898c0-22.193 18-40.187 40.208-40.187c4.255 0 8.356.662 12.203 1.882v-37.822c-47.692.985-86.047 39.933-86.047 87.834c0 23.912 9.551 45.589 25.053 61.428c13.985 9.385 30.82 14.86 48.934 14.86c48.545 0 87.9-39.335 87.9-87.857z\"/><path fill=\"#00f2ea\" d=\"M242.075 76.63V66.516a66.3 66.3 0 0 1-35.186-10.047a66.47 66.47 0 0 0 35.186 20.163M176.53 11.57a68 68 0 0 1-.728-5.457V0h-47.834v189.845c-.076 22.13-18.046 40.05-40.208 40.05a40.06 40.06 0 0 1-18.09-4.287c7.347 9.637 18.949 15.857 32.007 15.857c22.16 0 40.132-17.918 40.21-40.05V11.571zM99.966 113.58v-10.769a89 89 0 0 0-12.061-.818C39.355 101.993 0 141.327 0 189.845c0 30.419 15.467 57.227 38.971 72.996c-15.502-15.838-25.053-37.516-25.053-61.427c0-47.9 38.354-86.848 86.048-87.833\"/></svg>", "Threads": "<svg viewBox=\"0 0 256 292\" aria-hidden=\"true\"><path d=\"M130.261 291.804h-.087c-43.537-.291-77.007-14.648-99.505-42.661C10.68 224.193.35 189.498 0 146.019v-.204C.35 102.307 10.68 67.64 30.698 42.69C53.167 14.649 86.666.291 130.174 0h.175c33.382.233 61.308 8.812 82.99 25.504C233.734 41.203 248.091 63.555 256 91.977l-24.803 6.916c-13.423-48.148-47.39-72.747-100.965-73.127c-35.366.263-62.125 11.38-79.516 33.033c-16.254 20.28-24.658 49.577-24.979 87.103c.321 37.526 8.725 66.823 25.008 87.104c17.391 21.68 44.15 32.799 79.516 33.032c31.895-.233 52.992-7.674 70.53-24.862c20.017-19.609 19.667-43.683 13.248-58.331c-3.765-8.638-10.622-15.816-19.872-21.273c-2.335 16.429-7.558 29.735-15.612 39.773c-10.767 13.394-26.029 20.718-45.346 21.769c-14.62.788-28.714-2.656-39.627-9.747c-12.927-8.374-20.485-21.155-21.302-36.037c-.788-14.474 4.96-27.78 16.166-37.468c10.71-9.25 25.766-14.678 43.566-15.7c13.102-.729 25.387-.145 36.71 1.722c-1.518-9.016-4.553-16.195-9.105-21.36c-6.245-7.12-15.903-10.738-28.684-10.826h-.35c-10.272 0-24.22 2.83-33.091 16.05L76.132 95.42c11.905-17.683 31.223-27.43 54.45-27.43h.526c38.839.234 61.979 24.016 64.284 65.51a163 163 0 0 1 3.91 1.722c18.121 8.52 31.37 21.419 38.344 37.322c9.687 22.148 10.592 58.244-18.822 87.045c-22.498 22.002-49.782 31.953-88.475 32.215zm12.198-142.138c-2.947 0-5.924.088-8.988.263c-22.323 1.255-36.242 11.497-35.454 26.058c.817 15.262 17.654 22.352 33.85 21.477c14.881-.788 34.257-6.595 37.525-45.113c-8.228-1.78-17.245-2.685-26.933-2.685\"/></svg>", "Pinterest": "<svg viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path fill=\"#cb1f27\" d=\"M0 128.002c0 52.414 31.518 97.442 76.619 117.239c-.36-8.938-.064-19.668 2.228-29.393c2.461-10.391 16.47-69.748 16.47-69.748s-4.089-8.173-4.089-20.252c0-18.969 10.994-33.136 24.686-33.136c11.643 0 17.268 8.745 17.268 19.217c0 11.704-7.465 29.211-11.304 45.426c-3.207 13.578 6.808 24.653 20.203 24.653c24.252 0 40.586-31.149 40.586-68.055c0-28.054-18.895-49.052-53.262-49.052c-38.828 0-63.017 28.956-63.017 61.3c0 11.152 3.288 19.016 8.438 25.106c2.368 2.797 2.697 3.922 1.84 7.134c-.614 2.355-2.024 8.025-2.608 10.272c-.852 3.242-3.479 4.401-6.409 3.204c-17.884-7.301-26.213-26.886-26.213-48.902c0-36.361 30.666-79.961 91.482-79.961c48.87 0 81.035 35.364 81.035 73.325c0 50.213-27.916 87.726-69.066 87.726c-13.819 0-26.818-7.47-31.271-15.955c0 0-7.431 29.492-9.005 35.187c-2.714 9.869-8.026 19.733-12.883 27.421a127.9 127.9 0 0 0 36.277 5.249c70.684 0 127.996-57.309 127.996-128.005C256.001 57.309 198.689 0 128.005 0C57.314 0 0 57.309 0 128.002\"/></svg>", "Bluesky": "<svg viewBox=\"0 0 256 226\" aria-hidden=\"true\"><path fill=\"#1185fe\" d=\"M55.491 15.172c29.35 22.035 60.917 66.712 72.509 90.686c11.592-23.974 43.159-68.651 72.509-90.686C221.686-.727 256-13.028 256 26.116c0 7.818-4.482 65.674-7.111 75.068c-9.138 32.654-42.436 40.983-72.057 35.942c51.775 8.812 64.946 38 36.501 67.187c-54.021 55.433-77.644-13.908-83.696-31.676c-1.11-3.257-1.63-4.78-1.637-3.485c-.008-1.296-.527.228-1.637 3.485c-6.052 17.768-29.675 87.11-83.696 31.676c-28.445-29.187-15.274-58.375 36.5-67.187c-29.62 5.041-62.918-3.288-72.056-35.942C4.482 91.79 0 33.934 0 26.116C0-13.028 34.314-.727 55.491 15.172\"/></svg>", "WhatsApp": "<svg viewBox=\"0 0 256 258\" aria-hidden=\"true\"><defs><linearGradient id=\"SVGK3KZq49U\" x1=\"50%\" x2=\"50%\" y1=\"100%\" y2=\"0%\"><stop offset=\"0%\" stop-color=\"#1faf38\"/><stop offset=\"100%\" stop-color=\"#60d669\"/></linearGradient><linearGradient id=\"SVGefMkoEOd\" x1=\"50%\" x2=\"50%\" y1=\"100%\" y2=\"0%\"><stop offset=\"0%\" stop-color=\"#f9f9f9\"/><stop offset=\"100%\" stop-color=\"#fff\"/></linearGradient></defs><path fill=\"url(#SVGK3KZq49U)\" d=\"M5.463 127.456c-.006 21.677 5.658 42.843 16.428 61.499L4.433 252.697l65.232-17.104a123 123 0 0 0 58.8 14.97h.054c67.815 0 123.018-55.183 123.047-123.01c.013-32.867-12.775-63.773-36.009-87.025c-23.23-23.25-54.125-36.061-87.043-36.076c-67.823 0-123.022 55.18-123.05 123.004\"/><path fill=\"url(#SVGefMkoEOd)\" d=\"M1.07 127.416c-.007 22.457 5.86 44.38 17.014 63.704L0 257.147l67.571-17.717c18.618 10.151 39.58 15.503 60.91 15.511h.055c70.248 0 127.434-57.168 127.464-127.423c.012-34.048-13.236-66.065-37.3-90.15C194.633 13.286 162.633.014 128.536 0C58.276 0 1.099 57.16 1.071 127.416m40.24 60.376l-2.523-4.005c-10.606-16.864-16.204-36.352-16.196-56.363C22.614 69.029 70.138 21.52 128.576 21.52c28.3.012 54.896 11.044 74.9 31.06c20.003 20.018 31.01 46.628 31.003 74.93c-.026 58.395-47.551 105.91-105.943 105.91h-.042c-19.013-.01-37.66-5.116-53.922-14.765l-3.87-2.295l-40.098 10.513z\"/><path fill=\"#fff\" d=\"M96.678 74.148c-2.386-5.303-4.897-5.41-7.166-5.503c-1.858-.08-3.982-.074-6.104-.074c-2.124 0-5.575.799-8.492 3.984c-2.92 3.188-11.148 10.892-11.148 26.561s11.413 30.813 13.004 32.94c1.593 2.123 22.033 35.307 54.405 48.073c26.904 10.609 32.379 8.499 38.218 7.967c5.84-.53 18.844-7.702 21.497-15.139c2.655-7.436 2.655-13.81 1.859-15.142c-.796-1.327-2.92-2.124-6.105-3.716s-18.844-9.298-21.763-10.361c-2.92-1.062-5.043-1.592-7.167 1.597c-2.124 3.184-8.223 10.356-10.082 12.48c-1.857 2.129-3.716 2.394-6.9.801c-3.187-1.598-13.444-4.957-25.613-15.806c-9.468-8.442-15.86-18.867-17.718-22.056c-1.858-3.184-.199-4.91 1.398-6.497c1.431-1.427 3.186-3.719 4.78-5.578c1.588-1.86 2.118-3.187 3.18-5.311c1.063-2.126.531-3.986-.264-5.579c-.798-1.593-6.987-17.343-9.819-23.64\"/></svg>"};
+{const names=Object.keys(RXSOC),n=names.length,R=42,ring=$('#rx-ring'),sp=$('#rx-spokes');let lines='',nodes='';
+ names.forEach((k,i)=>{const a=-Math.PI/2+i*2*Math.PI/n,x=50+R*Math.cos(a),y=50+R*Math.sin(a),d=(i*4/n).toFixed(2);
+  lines+=`<line x1="50" y1="50" x2="${x.toFixed(2)}" y2="${y.toFixed(2)}"/><line class="p" pathLength="100" x1="50" y1="50" x2="${x.toFixed(2)}" y2="${y.toFixed(2)}" style="animation-delay:${d}s"/>`;
+  nodes+=`<span class="pnode" style="left:${x.toFixed(2)}%;top:${y.toFixed(2)}%" title="${k}"><i>${RXSOC[k]}</i><b style="animation-delay:${d}s"></b></span>`});
+ sp.innerHTML=lines;ring.insertAdjacentHTML('beforeend',nodes)}
+let fxTimer=null;
+const runMock=()=>{const rows=[...document.querySelectorAll('#fx-rows li')];if(reduce){rows.forEach(r=>{r.dataset.s=2;r.querySelector('em').textContent=states[2]});return}
+ const set=(r,v)=>{r.dataset.s=v;r.querySelector('em').textContent=states[v]};
+ rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();
+ fxTimer=setInterval(()=>{const ri=Math.floor(i/2);
+  if(ri>=rows.length){if(i>=rows.length*2+4){rows.forEach(r=>set(r,0));i=0}else i++;return}
+  const r=rows[ri];set(r,i%2+1);r.classList.remove('pulse');void r.offsetWidth;r.classList.add('pulse');i++},850)};
+const PLAT={"Instagram": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#E4405F\" d=\"M7.03.084c-1.277.06-2.149.264-2.91.563a5.9 5.9 0 0 0-2.124 1.388a5.9 5.9 0 0 0-1.38 2.127C.321 4.926.12 5.8.064 7.076s-.069 1.688-.063 4.947s.021 3.667.083 4.947c.061 1.277.264 2.149.563 2.911c.308.789.72 1.457 1.388 2.123a5.9 5.9 0 0 0 2.129 1.38c.763.295 1.636.496 2.913.552c1.278.056 1.689.069 4.947.063s3.668-.021 4.947-.082c1.28-.06 2.147-.265 2.91-.563a5.9 5.9 0 0 0 2.123-1.388a5.9 5.9 0 0 0 1.38-2.129c.295-.763.496-1.636.551-2.912c.056-1.28.07-1.69.063-4.948c-.006-3.258-.02-3.667-.081-4.947c-.06-1.28-.264-2.148-.564-2.911a5.9 5.9 0 0 0-1.387-2.123a5.9 5.9 0 0 0-2.128-1.38c-.764-.294-1.636-.496-2.914-.55C15.647.009 15.236-.006 11.977 0S8.31.021 7.03.084m.14 21.693c-1.17-.05-1.805-.245-2.228-.408a3.7 3.7 0 0 1-1.382-.895a3.7 3.7 0 0 1-.9-1.378c-.165-.423-.363-1.058-.417-2.228c-.06-1.264-.072-1.644-.08-4.848c-.006-3.204.006-3.583.061-4.848c.05-1.169.246-1.805.408-2.228c.216-.561.477-.96.895-1.382a3.7 3.7 0 0 1 1.379-.9c.423-.165 1.057-.361 2.227-.417c1.265-.06 1.644-.072 4.848-.08c3.203-.006 3.583.006 4.85.062c1.168.05 1.804.244 2.227.408c.56.216.96.475 1.382.895s.681.817.9 1.378c.165.422.362 1.056.417 2.227c.06 1.265.074 1.645.08 4.848c.005 3.203-.006 3.583-.061 4.848c-.051 1.17-.245 1.805-.408 2.23c-.216.56-.477.96-.896 1.38a3.7 3.7 0 0 1-1.378.9c-.422.165-1.058.362-2.226.418c-1.266.06-1.645.072-4.85.079s-3.582-.006-4.848-.06m9.783-16.192a1.44 1.44 0 1 0 1.437-1.442a1.44 1.44 0 0 0-1.437 1.442M5.839 12.012a6.161 6.161 0 1 0 12.323-.024a6.162 6.162 0 0 0-12.323.024M8 12.008A4 4 0 1 1 12.008 16A4 4 0 0 1 8 12.008\"/></svg>", "Facebook": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#0866FF\" d=\"M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978c.401 0 .955.042 1.468.103a9 9 0 0 1 1.141.195v3.325a9 9 0 0 0-.653-.036a27 27 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.7 1.7 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103l-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647\"/></svg>", "LinkedIn": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#0A66C2\" d=\"M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037c-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85c3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.06 2.06 0 0 1-2.063-2.065a2.064 2.064 0 1 1 2.063 2.065m1.782 13.019H3.555V9h3.564zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z\"/></svg>", "X": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#000000\" d=\"M14.234 10.162L22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299l-.929-1.329L3.076 1.56h3.182l5.965 8.532l.929 1.329l7.754 11.09h-3.182z\"/></svg>"};
+$('#rx-plats').innerHTML=Object.entries(PLAT).map(([n,svg])=>`<i title="${n}">${svg}<b><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></b></i>`).join('');
+const rxCaps=['New premium paper range is here. Visit our showroom this week to see the full collection.','Planning a move? Explore ready-to-move homes with flexible payment plans.','Custom corrugated boxes, built strong and printed sharp. Request a quote today.'];
+let rxHero=null;
+const runRxHero=()=>{const el=$('#rx-type'),icons=[...document.querySelectorAll('#rx-plats i')];clearTimeout(rxHero);
+ if(reduce){el.textContent=rxCaps[0];icons.forEach(i=>i.classList.add('on'));return}
+ let c=0;const next=()=>{if(!openPage)return;const txt=rxCaps[c%rxCaps.length];icons.forEach(i=>i.classList.remove('on'));el.textContent='';let k=0;
+  const type=()=>{if(!openPage)return;el.textContent=txt.slice(0,++k);if(k<txt.length)rxHero=setTimeout(type,26);else{let j=0;const lite=()=>{if(j<icons.length){icons[j++].classList.add('on');rxHero=setTimeout(lite,220)}else{c++;rxHero=setTimeout(next,1800)}};rxHero=setTimeout(lite,400)}};type()};next()};
+$('#px-contrib').innerHTML=[
+ ['Quality checks','Test the tool from time to time, catch bugs and flag what needs fixing.'],
+ ['Social media knowledge','Share know-how on social media and social media management tools with the team, so the product fits how people really build a personal brand.'],
+ ['New features','Proposed many new features for the tool, drawn from real social media needs.'],
+ ['SEO and website content','Lead SEO and website content for PersonaXpand, including AI-assisted blogs written with Jasper AI.']].map(([h,p])=>`<div><b>${h}</b><p>${p}</p></div>`).join('');
+const pxCols=['#0a4fd6','#00a3e0','#7cc6ff','#cfe6ff','#2d6cf0','#59b8f0','#a9d6ff','#1680e8','#dbeeff'];
+$('#px-grid').innerHTML=pxCols.map(c=>`<i style="background:${c}"></i>`).join('');
+let pxT=[];
+const pxClear=()=>{pxT.forEach(clearTimeout);pxT.forEach(clearInterval);pxT=[]};
+const runPx=()=>{const card=$('#px-card'),tiles=[...document.querySelectorAll('#px-grid i')],F=$('#px-f'),E=$('#px-e'),P=$('#px-p'),H=$('#px-hearts');pxClear();
+ const fmt=n=>n>=1000?(n/1000).toFixed(n>=10000?0:1)+'k':String(n);
+ if(reduce){card.className='px-card s1 s4';tiles.forEach(t=>t.classList.add('on'));F.textContent='12.4k';E.textContent='6.8%';P.textContent='9';return}
+ const cycle=()=>{if(!openPage)return;card.className='px-card';tiles.forEach(t=>t.classList.remove('on'));F.textContent='0';E.textContent='0%';P.textContent='0';H.innerHTML='';
+  pxT.push(setTimeout(()=>card.classList.add('s1'),300));
+  tiles.forEach((t,i)=>pxT.push(setTimeout(()=>{t.classList.add('on');P.textContent=i+1},1200+i*260)));
+  const t0=performance.now()+1200,dur=2600;const iv=setInterval(()=>{const k=Math.min(1,Math.max(0,(performance.now()-t0)/dur)),e=1-Math.pow(1-k,3);F.textContent=fmt(Math.round(12400*e));E.textContent=(6.8*e).toFixed(1)+'%';if(k>=1)clearInterval(iv)},50);pxT.push(iv);
+  const heart=()=>{const s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox','0 0 24 24');s.innerHTML='<path fill="#ff3d6e" d="M12 21s-7.5-4.6-9.5-9.2C1 8.3 3.3 5 6.6 5c2 0 3.6 1.1 4.4 2.6.8-1.5 2.4-2.6 4.4-2.6 3.3 0 5.6 3.3 4.1 6.8C19.5 16.4 12 21 12 21z"/>';s.style.left=(20+Math.random()*60)+'%';s.style.setProperty('--dx',(Math.random()*40-20)+'px');H.appendChild(s);setTimeout(()=>s.remove(),1900)};
+  for(let i=0;i<9;i++)pxT.push(setTimeout(heart,1500+i*330));
+  pxT.push(setTimeout(()=>card.classList.add('s4'),4000));
+  pxT.push(setTimeout(cycle,7600))};
+ cycle()};
+/* fit big titles to their column, whatever font loads */
+const fitTitle=(el,box,max)=>{if(!el||!box||!box.clientWidth)return;el.style.fontSize=max+'px';
+ const parts=el.querySelectorAll('.line>span');let w=0;
+ if(parts.length)parts.forEach(s=>{w=Math.max(w,s.getBoundingClientRect().width)});else{const r=document.createRange();r.selectNodeContents(el);w=r.getBoundingClientRect().width}
+ const cs=getComputedStyle(box),avail=box.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+ if(w>avail)el.style.fontSize=Math.max(30,Math.floor(max*avail/w*0.97))+'px'};
+const fitAll=()=>{const vw=innerWidth;
+ fitTitle($('.hero .name'),$('.hero .hgrid>div'),Math.min(108,Math.max(52,vw*0.074)));
+ document.querySelectorAll('.sp-hero h1').forEach(h=>{if(!h.closest('.subpage').hidden)fitTitle(h,h.closest('.sp-in'),Math.min(104,Math.max(48,vw*0.08)))})};
+fitAll();document.fonts&&document.fonts.ready.then(fitAll);addEventListener('resize',fitAll);
+const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand')};let openPage=null,lastY=0;
+const route=()=>{const h=location.hash.slice(1),pg=pages[h];
+ if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();pg.querySelector('[data-close]').focus({preventScroll:true})}
+ else if(!pg&&openPage){const p=openPage;openPage=null;p.classList.remove('open');document.body.style.overflow='';clearInterval(fxTimer);setTimeout(()=>{p.hidden=true},reduce?0:800);const t=h&&document.getElementById(h);if(t)t.scrollIntoView({behavior:'auto'})}};
+document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',e=>{const r=a.getBoundingClientRect(),pg=pages[a.dataset.open];pg.style.setProperty('--cx',r.left+r.width/2+'px');pg.style.setProperty('--cy',r.top+r.height/2+'px')}));
+addEventListener('hashchange',route);addEventListener('keydown',e=>{if(e.key==='Escape'&&openPage)location.hash='brands'});route();
+const journey=[
+ ['Jul 2026 – Present','Marketing Specialist, Nextoria Information Technology, Dubai','AI-driven Google and Meta ads for 8 brands, an affiliate program across 4 SaaS platforms, product roadmap input, SEO for PersonaXpand and Findxpand, and social calendars for every Nextoria brand.','nextoria'],
+ ['Jan 2025 – Nov 2025','Digital Marketing Executive, Vaishno Ventures, Hyderabad','Google and Meta Ads for premium real estate with AED 22,000–31,000 monthly spend and 500–700 qualified leads a month, 20–50% organic traffic growth, and 25+ influencer partnerships.','vaishno'],
+ ['Sep 2021 – Jun 2023','Founder, Zipzapcart, Italy','Built a luxury fashion Shopify store for Europe to 21,000+ products and EUR 5,000–20,000 a month, with SEO, campaigns and operations run end to end.','zipzapcart'],
+ ['Oct 2017 – Apr 2020','MS, University of Siena, Italy','Accounting and Management in Economics, with market strategy projects for Skoda and Head & Shoulders.','siena'],
+ ['Nov 2016 – May 2017','Transaction Processing Associate, Accenture, India','Overseas vendors, multi-currency invoices in SAP, payment audits and management reports.','accenture'],
+ ['May 2015 – Nov 2016','Accounts Payable Officer, Wipro, India','Vendor management in JD Edwards, process accuracy raised to 92%, and fraudulent transactions caught.','wipro']];
+const CLOGO={DS:'<img src="img/digitalscholar.png" alt="" width="320" height="123">',"google": "<svg viewBox=\"0 0 256 262\" aria-hidden=\"true\"><path fill=\"#4285f4\" d=\"M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622l38.755 30.023l2.685.268c24.659-22.774 38.875-56.282 38.875-96.027\"/><path fill=\"#34a853\" d=\"M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055c-34.523 0-63.824-22.773-74.269-54.25l-1.531.13l-40.298 31.187l-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1\"/><path fill=\"#fbbc05\" d=\"M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82c0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602z\"/><path fill=\"#eb4335\" d=\"M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0C79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251\"/></svg>", "gbp": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#4285F4\" d=\"M3.273 1.636c-.736 0-1.363.492-1.568 1.16L0 9.272c0 1.664 1.336 3 3 3a3 3 0 0 0 3-3c0 1.664 1.336 3 3 3a3 3 0 0 0 3-3c0 1.65 1.35 3 3 3c1.664 0 3-1.336 3-3c0 1.664 1.336 3 3 3s3-1.336 3-3l-1.705-6.476a1.65 1.65 0 0 0-1.568-1.16zm8.729 9.326c-.604 1.063-1.703 1.81-3.002 1.81c-1.304 0-2.398-.747-3-1.806c-.604 1.06-1.702 1.806-3 1.806c-.484 0-.944-.1-1.363-.277v8.232c0 .9.736 1.637 1.636 1.637h17.454c.9 0 1.636-.737 1.636-1.637v-8.232a3.5 3.5 0 0 1-1.363.277c-1.304 0-2.398-.746-3-1.804c-.602 1.058-1.696 1.804-3 1.804c-1.299 0-2.394-.75-2.998-1.81m5.725 3.765c.808 0 1.488.298 2.007.782l-.859.859a1.62 1.62 0 0 0-1.148-.447c-.98 0-1.772.827-1.772 1.806s.792 1.807 1.772 1.807c.882 0 1.485-.501 1.615-1.191h-1.615v-1.16h2.826q.053.294.054.613c0 1.714-1.147 2.931-2.88 2.931a3 3 0 0 1 0-6\"/></svg>", "semrush": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#FF642D\" d=\"M20.698 11.911c0 .444-.226.516-.79.516c-.596 0-.706-.1-.77-.554c-.118-1.152-.896-2.13-2.201-2.24c-.418-.034-.518-.19-.518-.706c0-.48.074-.708.446-.708c2.265.01 3.833 1.832 3.833 3.69zm3.3 0c0-3.456-2.338-7.11-7.74-7.11H5.52c-.218 0-.354.11-.354.31c0 .109.082.209.156.26c.388.31.97.654 1.73 1.036c.743.372 1.323.616 1.903.852c.246.1.336.208.336.344c0 .19-.136.308-.4.308H.372c-.254 0-.372.164-.372.326c0 .136.044.254.162.372c.69.726 1.796 1.596 3.4 2.604c1.466.91 2.98 1.74 4.533 2.492c.236.11.308.236.308.372c-.008.154-.126.28-.4.28H4.1c-.216 0-.344.12-.344.3c0 .1.08.226.19.326c.888.808 2.311 1.688 4.207 2.494c2.53 1.08 5.094 1.721 7.98 1.721c5.465 0 7.867-4.087 7.867-7.289zm-7.133 5.104c-2.794 0-5.132-2.276-5.132-5.114c0-2.794 2.33-5.04 5.132-5.04c2.863 0 5.111 2.24 5.111 5.04a5.086 5.086 0 0 1-5.111 5.114\"/></svg>", "anthropic": "<svg viewBox=\"0 0 256 176\" aria-hidden=\"true\"><path fill=\"#181818\" d=\"m147.487 0l70.081 175.78H256L185.919 0zM66.183 106.221l23.98-61.774l23.98 61.774zM70.07 0L0 175.78h39.18l14.33-36.914h73.308l14.328 36.914h39.179L110.255 0z\"/></svg>"};
+const creds=[
+ ['DS','Certified Digital Marketing Specialist','Digital Scholar'],
+ ['google','Fundamentals of Digital Marketing','Google'],
+ ['gbp','Google My Business','Google'],
+ ['semrush','SEO Fundamentals, Keyword Research, Local SEO and Backlink Management','Semrush'],
+ ['DS','Facebook Ads','Digital Scholar'],
+ ['DS','Certified AI Tactics, Strategies and Frameworks','Digital Scholar'],
+ ['anthropic','Claude 101','Anthropic']];
+const langs=[['English','fluent'],['Italian','conversational'],['Telugu','native'],['Tamil','native']];
+/* chips: [label, left%, top%, float delay s] */
+const chips=[['Google Ads',-6,8,0],['SEO',76,2,1.2],['Meta Ads',-7,46,2.1],['GA4',74,40,.6],['Social',-2,80,1.7],['AI',78,74,2.6]];
+
+$('#track').innerHTML=[...marquee,...marquee].map(t=>`<span>${t}</span>`).join('');
+$('#svc').innerHTML=services.map(([h,p])=>`<div class="row"><h3>${h}</h3><p>${p}</p><span class="arr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>`).join('');
+$('#kits').innerHTML=kits.map(([h,t])=>`<div class="kit"><h3>${h}</h3><div class="tags">${t.map(x=>LOGOS[x]?`<button type="button" class="tool" aria-label="${x}"><span class="lg">${LOGOS[x]}</span><span class="dot"></span>${x}</button>`:`<span>${x}</span>`).join('')}</div></div>`).join('');
+/* tap to show a logo on touch screens */
+const tools=[...document.querySelectorAll('.tool')];
+tools.forEach(b=>b.addEventListener('click',e=>{const on=!b.classList.contains('show');tools.forEach(t=>t.classList.remove('show'));if(on)b.classList.add('show');e.stopPropagation()}));
+document.addEventListener('click',()=>tools.forEach(t=>t.classList.remove('show')));
+$('#gal').innerHTML=cases.map(([tag,h,p,big,cap,res])=>`<article class="case glass"><div class="art"><span class="big">${big}</span><span class="cap">${cap}</span></div><div class="body"><span class="tag">${tag}</span><h3>${h}</h3><p>${p}</p><div class="res">${res.map(r=>`<b>${r}</b>`).join('')}</div></div></article>`).join('');
+$('#tl').insertAdjacentHTML('beforeend',journey.map(([w,h,p,l])=>`<div class="step${l?' has-logo':''}">${l?`<span class="jlogo ${l}" aria-hidden="true">${JLOGO[l]}</span>`:''}<span class="when">${w}</span><h3>${h}</h3><p>${p}</p></div>`).join(''));
+$('#creds').innerHTML=creds.map(([i,h,p])=>`<div class="cred glass rv tilt">${CLOGO[i]?`<div class="ic lg${i==='DS'?' ds':''}" title="${p}">${CLOGO[i]}</div>`:`<div class="ic">${i}</div>`}<h3>${h}</h3><p>${p}</p></div>`).join('');
+$('#langs').innerHTML=langs.map(([l,v])=>`<span>${l} <em>${v}</em></span>`).join('');
+$('#chips').innerHTML=chips.map(([t,x,y,d],i)=>`<span class="chip fl" style="left:${x}%;top:${y}%;animation-delay:-${d}s;transition-delay:${(.9+i*.09).toFixed(2)}s"><i></i>${t}</span>`).join('')
+ +`<span class="chip big" style="left:50%;bottom:6px;transform:translateX(-50%);transition-delay:1.5s"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 17l6-6 4 4 6-7"/><path d="M15 8h5v5"/></svg>Growth</span>`;
+
+requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.add('ready')));
+
+const count=el=>{const to=+el.dataset.to,suf=el.dataset.suf||'',pre=el.dataset.pre||'',from=+(el.dataset.from||0);if(reduce){el.textContent=pre+to+suf;return}const t0=performance.now(),d=1400;const tick=t=>{const k=Math.min(1,(t-t0)/d),e=1-Math.pow(1-k,4);el.textContent=pre+Math.round(from+(to-from)*e)+suf;if(k<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)};
+setTimeout(()=>document.querySelectorAll('.stat b').forEach(count),1000);
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));const i=Math.max(0,sib.indexOf(el));el.style.transitionDelay=Math.min(i,5)*(60+i*8)+'ms';el.classList.add('in');io.unobserve(el);setTimeout(()=>el.style.transitionDelay='',1400)}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+const steps=[...document.querySelectorAll('.step')];
+const nav=$('#nav'),prog=$('#prog'),tl=$('#tl'),fill=$('#tlfill'),secs=[...document.querySelectorAll('#links a')].map(a=>[a,document.querySelector(a.getAttribute('href'))]);
+const onScroll=()=>{const h=document.documentElement,y=h.scrollTop,max=h.scrollHeight-h.clientHeight;prog.style.transform=`scaleX(${max?y/max:0})`;
+ const r=tl.getBoundingClientRect(),k=Math.min(1,Math.max(0,(innerHeight*.7-r.top)/r.height));fill.style.transform=`scaleY(${k})`;const fy=k*(tl.clientHeight-12)+6;for(const st of steps){st.classList.toggle('hit',fy>=st.offsetTop+12)}
+ let cur=null;secs.forEach(([a,s])=>{if(s&&s.getBoundingClientRect().top<innerHeight*.4)cur=a});secs.forEach(([a])=>a.classList.toggle('on',a===cur))};
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+if(!reduce&&fine){
+ /* light follows the cursor across every glass surface */
+ addEventListener('pointermove',e=>{for(const g of document.querySelectorAll('.glass')){const r=g.getBoundingClientRect();if(e.clientY<r.top-300||e.clientY>r.bottom+300)continue;g.style.setProperty('--mx',e.clientX-r.left+'px');g.style.setProperty('--my',e.clientY-r.top+'px')}},{passive:true});
+ const st=$('#stage');$('.hero').addEventListener('pointermove',e=>{const r=st.getBoundingClientRect(),dx=(e.clientX-r.left-r.width/2)/r.width,dy=(e.clientY-r.top-r.height/2)/r.height;st.style.transform=`perspective(1000px) rotateX(${-dy*6}deg) rotateY(${dx*6}deg)`});
+ $('.hero').addEventListener('pointerleave',()=>{st.style.transform=''});
+ document.querySelectorAll('.mag').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`});b.addEventListener('pointerleave',()=>{b.style.transform=''})});
+ document.querySelectorAll('.tilt').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(700px) rotateX(${-y*7}deg) rotateY(${x*7}deg) translateY(-4px)`});c.addEventListener('pointerleave',()=>{c.style.transform=''})});
+}
+
+const toast=$('#toast');$('#copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText('duthulourjaswanth@gmail.com');toast.textContent='Email address copied'}catch(e){toast.textContent='Copy failed. The address is duthulourjaswanth@gmail.com'}setTimeout(()=>toast.textContent='',3000)});
+const gal=$('#gal'),step=()=>gal.querySelector('.case').offsetWidth+18;
+$('#prev').addEventListener('click',()=>gal.scrollBy({left:-step(),behavior:reduce?'auto':'smooth'}));
+$('#next').addEventListener('click',()=>gal.scrollBy({left:step(),behavior:reduce?'auto':'smooth'}));
+gal.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();$('#next').click()}if(e.key==='ArrowLeft'){e.preventDefault();$('#prev').click()}});
+}
+</script>
+</body>
+</html>
