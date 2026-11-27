@@ -739,6 +739,76 @@ footer .ico{width:42px;height:42px}
 
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.hot .glass{--gfill:rgba(90,12,0,.55)}.glass{--gfill:rgba(255,255,255,.85)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.line>span,.fadein,.frame,.chip,.rv{transform:none!important;opacity:1!important}}
+
+/* ===== mobile: compact layout, swipe rails, shorter scroll ===== */
+.rail-dots{display:none}
+@media(max-width:640px){
+ .band{padding-block:40px}
+ .hero{padding-top:92px}
+ .panel{padding:22px 18px}
+ h2{font-size:clamp(28px,8vw,36px)}
+ .sp-p{font-size:15.5px}
+ /* hero photo smaller */
+ .stage{width:min(78%,300px);padding:16px 22px 26px}
+ .stats{margin-top:22px}
+ .marq{margin-top:22px;padding:12px 0}
+ /* about: read more */
+ .about .more-x{display:none}
+ .about.open .more-x{display:block}
+ .rm{margin-top:10px;font:inherit;font-weight:700;color:var(--accent);background:none;border:0;padding:6px 0;border-bottom:2px solid currentColor;cursor:pointer}
+ .about.open .rm{display:none}
+ /* what I do: accordion */
+ .svc{margin-top:18px}
+ .row{padding:16px 4px;gap:8px 12px;cursor:pointer}
+ .row h3{font-size:20px}
+ .row p{display:none;font-size:15px}
+ .row.open p{display:block}
+ .row .arr{width:36px;height:36px;transition:transform .35s var(--ease-out)}
+ .row.open .arr{transform:rotate(90deg);background:var(--solid);color:var(--onsolid)}
+ /* swipe rails */
+ .rail{display:flex!important;grid-template-columns:none!important;columns:auto!important;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;gap:12px!important;padding:6px 2px 14px;margin-inline:-2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .rail::-webkit-scrollbar{display:none}
+ .rail>*{flex:0 0 84%!important;min-width:0;max-width:none!important;scroll-snap-align:start;margin:0!important;grid-column:auto!important}
+ .rail.sm>*{flex-basis:64%!important}
+ .rail.dz-grid>*{flex:0 0 auto!important;width:62%}
+ .rail.dz-grid img{min-height:0}
+ .rail-dots{display:flex;justify-content:center;gap:6px;margin-top:4px}
+ .rail-dots i{width:6px;height:6px;border-radius:3px;background:var(--chipline);transition:width .3s,background-color .3s}
+ .rail-dots i.on{width:18px;background:var(--accent)}
+ .hot .rail-dots i{background:rgba(255,255,255,.45)}.hot .rail-dots i.on{background:#fff}
+ /* toolkit */
+ .kits{gap:12px!important;margin-top:18px}
+ .kit{padding:16px;border-radius:20px;background:var(--well);border:1px solid var(--chipline)}
+ .tags .tool{display:inline-flex;align-items:center;gap:7px}
+ .rail .tool .lg,.kits .tool .lg{position:static;order:-1;width:18px;height:18px;padding:0;border-radius:4px;background:none;box-shadow:none;opacity:1;transform:none;pointer-events:none}
+ .kits .tool .lg::after{display:none}
+ .kits .tool .dot{display:none}
+ .kits .tool.show,.kits .tool:hover{transform:none}
+ /* credentials: 2 columns */
+ .creds{grid-template-columns:1fr 1fr!important;gap:10px!important}
+ .cred{padding:14px;border-radius:18px}
+ .cred h3{font-size:15px}.cred p{font-size:13px}
+ .cred .ic.lg{width:38px;height:38px;padding:6px}.cred .ic.lg.ds{width:96px}
+ /* journey: shorter steps */
+ .step{padding-bottom:22px}
+ .step.has-logo{padding-top:62px}
+ .jlogo{width:120px;height:50px;padding:8px 12px}
+ .step p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:15px;cursor:pointer}
+ .step.open p{-webkit-line-clamp:unset;display:block}
+ /* contributions and small cards */
+ .contrib{margin-top:18px}
+ .contrib div{padding:18px}
+ .contrib b{font-size:17px}
+ .lm-feats{grid-template-columns:1fr 1fr!important;gap:10px}
+ .lm-feats div{padding:14px}.lm-feats b{font-size:18px}
+ .mf-wins{grid-template-columns:1fr 1fr!important;gap:10px}
+ .mf-wins div{padding:14px}.mf-wins b{font-size:22px}
+ .mf-sub{margin-top:18px;font-size:17px}
+ .dz-head{flex-wrap:wrap}
+ .fbd-kpi{padding:12px 14px}
+ .fbd-card{padding:14px}
+ .sp-hero .lede{font-size:16px}
+}
 </style>
 </head>
 <body>
@@ -801,8 +871,9 @@ footer .ico{width:42px;height:42px}
     <div><span class="eyebrow">About me</span><h2>Marketing with a finance brain and a founder's hustle</h2></div>
     <div>
       <p class="big">I'm a certified AI and digital marketing specialist with <em>3+ years</em> in performance marketing, SEO, social media and <em>B2B SaaS marketing</em> across IT services, real estate, e-commerce and FMCG.</p>
-      <p>At Nextoria in Dubai I run AI-driven Google Ads and Meta Ads campaigns for 8 brands, launched an affiliate program across 4 SaaS platforms, and help shape the roadmap for products like markXpand, ReachXpand and PersonaXpand.</p>
-      <p>Before that I managed monthly ad budgets of AED 22,000–31,000 that delivered 500–700 qualified leads a month for premium real estate, and built my own luxury fashion store in Europe to 21,000+ products. My start in finance at Wipro and Accenture, and a master's from the University of Siena, mean I read every campaign through its numbers.</p>
+      <div class="more-x"><p>At Nextoria in Dubai I run AI-driven Google Ads and Meta Ads campaigns for 8 brands, launched an affiliate program across 4 SaaS platforms, and help shape the roadmap for products like markXpand, ReachXpand and PersonaXpand.</p>
+      <p>Before that I managed monthly ad budgets of AED 22,000–31,000 that delivered 500–700 qualified leads a month for premium real estate, and built my own luxury fashion store in Europe to 21,000+ products. My start in finance at Wipro and Accenture, and a master's from the University of Siena, mean I read every campaign through its numbers.</p></div>
+      <button class="rm" type="button">Read more</button>
     </div>
   </div>
 </section>
@@ -1943,6 +2014,23 @@ $('#prev').addEventListener('click',()=>gal.scrollBy({left:-step(),behavior:redu
 $('#next').addEventListener('click',()=>gal.scrollBy({left:step(),behavior:reduce?'auto':'smooth'}));
 gal.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();$('#next').click()}if(e.key==='ArrowLeft'){e.preventDefault();$('#prev').click()}});
 }
+
+/* mobile helpers: rails with dots, accordions, read more */
+(()=>{const mq=matchMedia('(max-width:640px)');
+ const RAILS=['#logos','.webs','#kits','.contrib','#mf-prods','#mf-g-videos','#vk-g-posts','#mf-g-ads','#mf-g-shots','#dz-g-static','.dz-profs','.fbd-row'];
+ const SMALL=['#mf-prods'];
+ const els=[];RAILS.forEach(q=>document.querySelectorAll(q).forEach(e=>{if(!els.includes(e))els.push(e)}));
+ els.forEach(el=>{const dots=document.createElement('div');dots.className='rail-dots';dots.setAttribute('aria-hidden','true');el.after(dots);
+  const build=()=>{const n=el.children.length;dots.innerHTML='<i class="on"></i>'+'<i></i>'.repeat(Math.max(0,n-1));dots.style.display=n>1?'':'none'};
+  const sync=()=>{const kids=[...el.children];let k=0,b=1e9;kids.forEach((c,j)=>{const d=Math.abs(c.offsetLeft-el.offsetLeft-el.scrollLeft);if(d<b){b=d;k=j}});if(el.scrollLeft+el.clientWidth>=el.scrollWidth-4)k=kids.length-1;[...dots.children].forEach((d,j)=>d.classList.toggle('on',j===k))};
+  el.addEventListener('scroll',sync,{passive:true});
+  const apply=()=>{el.classList.toggle('rail',mq.matches);if(SMALL.some(q=>el.matches(q)))el.classList.toggle('sm',mq.matches);build();sync()};
+  apply();mq.addEventListener('change',apply)});
+ document.addEventListener('click',e=>{if(!mq.matches)return;
+  const r=e.target.closest('#svc .row');if(r){r.classList.toggle('open');return}
+  const st=e.target.closest('.step');if(st&&!e.target.closest('a')){st.classList.toggle('open');return}
+  const rm=e.target.closest('.rm');if(rm){rm.closest('.about').classList.add('open')}});
+})();
 </script>
 </body>
 </html>
