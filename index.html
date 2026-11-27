@@ -527,6 +527,12 @@ a{color:inherit}
 .dz-item{display:block;width:100%;margin:0 0 16px;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid;border-radius:18px;overflow:hidden;box-shadow:0 0 0 1px var(--hair),0 20px 40px -30px rgba(100,10,0,.5);transition:transform .4s var(--ease-out)}
 .dz-item img{display:block;width:100%;height:auto;min-height:180px;background:var(--chip)}
 .dz-item img.ld{min-height:0}
+.mfv-grid{display:grid;gap:22px;grid-template-columns:1fr;max-width:980px}.mfv-grid.two{max-width:none}
+.mfv-card{margin:0;border-radius:20px;overflow:hidden;background:var(--chip);box-shadow:0 0 0 1px var(--hair),0 24px 48px -32px rgba(100,10,0,.55)}
+.mfv-card video{display:block;width:100%;height:auto;aspect-ratio:var(--ar,16/9);background:#2a1a14;object-fit:contain}
+.mfv-card figcaption{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;font-size:14px;color:var(--text)}
+.mfv-card figcaption span{color:var(--mute);font-size:13px}
+@media(min-width:900px){.mfv-grid.two{grid-template-columns:1fr 1fr}}
 @media(hover:hover){.dz-item:hover{transform:translateY(-4px)}}
 .dz-cars,.dz-profs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:18px;margin-top:24px}
 .dz-car{border-radius:22px;padding:10px}
@@ -1048,6 +1054,14 @@ footer .ico{width:42px;height:42px}
     </div>
   </section>
 
+  <section class="band" style="padding-top:0" id="mf-videos">
+    <div class="wrap">
+      <div class="dz-head"><h2>Videos</h2><span class="dz-count" id="mf-v-count"></span></div>
+      <p class="sp-p">Video ads I produced for Modern Food's Meta campaigns and social channels. Tap to play with sound.</p>
+      <div class="mfv-grid" id="mf-g-videos"></div>
+    </div>
+  </section>
+
   <section class="band" style="padding-top:0">
     <div class="wrap glass panel">
       <h2>My contribution</h2>
@@ -1472,7 +1486,7 @@ $('#mf-c2').innerHTML=[
  ['Top 5 on Google','Took the website into Google\'s top 5 positions.'],
  ['Product strategy','Created the marketing strategy for Modern Food\'s products.']].map(card).join('');
 const mfQ='oven baked snacks dubai',mfN=6,mfH=38;let mfT=[];
-const mfClear=()=>{mfT.forEach(clearTimeout);mfT.forEach(clearInterval);mfT=[]};
+const mfClear=()=>{document.querySelectorAll('#mf-g-videos video').forEach(v=>v.pause());mfT.forEach(clearTimeout);mfT.forEach(clearInterval);mfT=[]};
 const runMf=()=>{const list=$('#mf-list'),q=$('#mf-q'),n=$('#mf-n'),tw=$('#mf-toasts');mfClear();
  list.innerHTML=Array.from({length:mfN},(_,i)=>`<div class="mf-row" data-i="${i}"><i></i><span></span><span></span></div>`).join('')+`<div class="mf-row me"><i></i><b>modernfood.ae</b><em>Top 5</em></div>`;
  const rows=[...list.querySelectorAll('.mf-row:not(.me)')],me=list.querySelector('.me');
@@ -1573,6 +1587,13 @@ const MF_ADS=[['mf04','Dubai Pofak ad: Make every bite extraordinary'],['mf16','
 const MF_SHOTS=[['mf12','Papy Snacks product shot'],['mf05','Chipstix product shot'],['mf08','Dubai Bites product shot'],['mf09','Dubai Pofak outdoor shot'],['mf02','Dubai Pofak lifestyle shot'],['mf11','Papy Snacks pour shot'],['mf06','Chipstix pour shot'],['mf07','Dubai Bites pour shot'],['mf13','The full Modern Food range'],['mf01','Dubai Pofak kitchen scene'],['mf10','Dubai Pofak kitchen scene, wide']];
 const mfGal=(list,g)=>list.map(([k,a],i)=>`<button class="dz-item" data-lb="m" data-g="${g}" data-i="${i}" aria-label="View ${a}"><img src="img/mf/${k}-s.webp" alt="${a}" loading="lazy" onload="this.classList.add('ld')"></button>`).join('');
 $('#mf-g-ads').innerHTML=mfGal(MF_ADS,'a');$('#mf-g-shots').innerHTML=mfGal(MF_SHOTS,'s');
+/* Modern Food videos: add entries as [file-stem, title, length, aspect] — files live in img/mf/video/ (stem.mp4 + stem-poster.webp) */
+const MF_VIDEOS=[['dubai-pofak-ad','Dubai Pofak ad','35s','16/9']];
+(()=>{const g=$('#mf-g-videos');if(!g)return;
+g.classList.toggle('two',MF_VIDEOS.length>1);
+g.innerHTML=MF_VIDEOS.map(([k,t,d,ar])=>`<figure class="mfv-card" style="--ar:${ar}"><video controls playsinline preload="none" poster="img/mf/video/${k}-poster.webp" aria-label="${t}"><source src="img/mf/video/${k}.mp4" type="video/mp4"></video><figcaption>${t}<span>${d}</span></figcaption></figure>`).join('');
+$('#mf-v-count').textContent=MF_VIDEOS.length+(MF_VIDEOS.length>1?' videos':' video');
+g.addEventListener('play',e=>{g.querySelectorAll('video').forEach(v=>{if(v!==e.target)v.pause()})},true)})();
 /* lightbox */
 let lbList=[],lbI=0,lbCap='';const lb=$('#lb'),lbImg=$('#lb-img');
 const lbShow=()=>{lbImg.src=lbList[lbI].src;lbImg.alt=lbList[lbI].alt||'';$('#lb-cap').textContent=(lbList[lbI].cap||'')+(lbList.length>1?`  ${lbI+1} / ${lbList.length}`:'');$('#lb-p').hidden=$('#lb-n').hidden=lbList.length<2};
