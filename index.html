@@ -458,7 +458,48 @@ a{color:inherit}
 .webcard.lamsa .lart{background:linear-gradient(150deg,#fbf7f2,#eaf3f7)}
 .webcard.lamsa .lart img{width:auto;height:clamp(150px,16vw,200px);max-width:70%;transform:none;opacity:1}
 
+/* under construction badges */
+.uc{display:inline-flex;align-items:center;gap:6px;vertical-align:middle;margin-inline-start:8px;padding:8px 14px;border-radius:22px;font-weight:700;font-size:15px;color:#3b2a00;background:repeating-linear-gradient(-45deg,#ffd23f 0 10px,#ffc21a 10px 20px);box-shadow:0 10px 24px -14px rgba(60,0,0,.6)}
+.lart .ucb{position:absolute;right:12px;top:12px;z-index:2;font-size:12px;font-weight:800;color:#3b2a00;padding:5px 11px;border-radius:999px;background:repeating-linear-gradient(-45deg,#ffd23f 0 8px,#ffc21a 8px 16px)}
+@media(max-width:600px){.uc{margin:10px 0 0;font-size:13px}}
+/* insquad logo */
+.webcard.insq .lart{background:#fff}
+.webcard.insq .lart img,.webcard.nfta .lart .nf-big{transform:none;opacity:1}
+.webcard.insq .lart img{width:auto;height:clamp(140px,15vw,180px);max-width:70%}
+.iq-logo{height:54px;width:auto;margin-inline:auto;margin-block:-6px}@media(max-width:600px){.iq-logo{height:38px;flex:1 1 0;width:0;object-fit:contain}}
+/* nfta */
+.nf-brand{display:inline-flex;align-items:center;gap:8px;font:800 22px Syne,sans-serif;color:#0e0e12;letter-spacing:.02em}
+.nf-brand svg{color:#e11414}
+.nf-mini{margin-inline:auto}
+.webcard.nfta .lart{background:#0e0e12}
+.webcard.nfta .nf-big{font-size:clamp(40px,5vw,58px);color:#fff;gap:14px}
+.webcard.nfta .nf-big svg{width:1em;height:1em}
+.nf-anim{display:grid;justify-items:center;gap:12px}
+.nf-admin{width:min(100%,430px);background:#17171c;color:#f4f4f5;border-radius:18px;padding:12px 14px;box-shadow:0 20px 40px -24px rgba(0,0,0,.8)}
+.nf-ah{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
+.nf-lock{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:#e11414}
+.nf-save{margin-inline-start:auto;font-size:11px;font-weight:700;color:#0e0e12;background:#7dffb3;padding:3px 9px;border-radius:999px;opacity:0;transform:scale(.7);transition:opacity .25s ease,transform .35s cubic-bezier(.34,1.6,.64,1)}
+.nf-save.on{opacity:1;transform:none}
+.nf-admin label{display:block;font-size:11px;color:#a1a1aa;margin:10px 0 5px}
+.nf-field{min-height:38px;padding:9px 12px;border-radius:10px;background:#0e0e12;box-shadow:inset 0 0 0 1.5px #e11414;font-size:14px;font-weight:600}
+.nf-field::after{content:"";display:inline-block;width:2px;height:1em;background:#ff6a6a;margin-inline-start:2px;vertical-align:-2px;animation:caret 1s steps(1) infinite}
+.nf-site{width:min(100%,430px);background:#fff;color:#14141a;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(40,0,0,.75)}
+.nf-nav{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid #eee}
+.nf-nav .nf-brand{font-size:15px;margin-inline-end:auto}
+.nf-nav i{width:22px;height:5px;border-radius:3px;background:#e7e7ea}
+.nf-nav b{font-size:10px;color:#fff;background:#e11414;padding:4px 9px;border-radius:999px;margin-inline-start:4px}
+.nf-hero{display:grid;gap:8px;padding:18px 16px;background:#f4efe2}
+.nf-hero small{font-size:10px;font-weight:700;color:#a30d0d}
+.nf-hero strong{font:800 21px/1.15 Syne,sans-serif;transition:color .3s ease}
+.nf-hero strong em{font-style:normal;color:#e11414}
+.nf-hero strong.flash{animation:nfflash .9s ease}
+@keyframes nfflash{30%{background:#ffe7a3;border-radius:6px}}
+.nf-hero>span{justify-self:start;font-size:11px;font-weight:700;color:#fff;background:#0e0e12;padding:6px 12px;border-radius:999px}
+.nf-courses{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px}
+.nf-courses span{padding:10px 6px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1px #eee;font-size:11px;font-weight:700;text-align:center}
+
 /* timeline */
+
 
 
 
@@ -634,13 +675,17 @@ footer .ico{width:42px;height:42px}
     <div class="logos" id="logos"></div>
     <div class="lc-head rv" id="websites"><h3>Websites I've built</h3><p>Websites I designed and built for clients.</p></div>
     <div class="webs">
-      <a class="lcard glass rv link webcard" href="#insquad" data-open="insquad">
-        <div class="lart"><span class="ind">Healthcare consulting</span><div class="mockup"><div><i></i><i></i><i></i>&nbsp;insquadsolution.com</div><p>Insquad Solution<small>Pharmacy business consulting for hospitals</small></p></div></div>
+      <a class="lcard glass rv link webcard insq" href="#insquad" data-open="insquad">
+        <div class="lart"><span class="ind">Healthcare consulting</span><img src="img/logo-insquad.webp" alt="Insquad Solution logo" loading="lazy" width="427" height="344"></div>
         <figcaption><span class="tag">WordPress website</span><h3>Insquad Solution</h3><p>Designed and built on WordPress for a start-up pharmacy consulting firm in Chennai, India.</p><span class="more">View project<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figcaption>
       </a>
       <a class="lcard glass rv link webcard lamsa" href="#lamsa" data-open="lamsa">
-        <div class="lart"><span class="ind">Healthcare, aesthetics</span><img src="img/logo-lamsa.webp" alt="Lamsa Clinic logo" loading="lazy" width="338" height="419"></div>
+        <div class="lart"><span class="ind">Healthcare, aesthetics</span><span class="ucb">Under construction</span><img src="img/logo-lamsa.webp" alt="Lamsa Clinic logo" loading="lazy" width="338" height="419"></div>
         <figcaption><span class="tag">Built with AI</span><h3>Lamsa Clinic</h3><p>A bilingual English and Arabic website for a premium aesthetics clinic in Doha, Qatar, built with AI: 25 pages, a page per treatment, WhatsApp booking.</p><span class="more">View project<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figcaption>
+      </a>
+      <a class="lcard glass rv link webcard nfta" href="#nfta" data-open="nfta">
+        <div class="lart"><span class="ind">Fitness education</span><span class="ucb">Under construction</span><span class="nf-brand nf-big"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9h2v6H2zM20 9h2v6h-2zM5 7h2v10H5zM17 7h2v10h-2zM8 11h8v2H8z" fill="currentColor"/></svg>NFTA</span></div>
+        <figcaption><span class="tag">Website with admin panel</span><h3>NFTA</h3><p>The new website for India's leading personal fitness and training academy, in Bangalore: course pages, founder story, blog, and a no-code admin panel.</p><span class="more">View project<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figcaption>
       </a>
     </div>
   </div>
@@ -966,7 +1011,7 @@ footer .ico{width:42px;height:42px}
 <div class="subpage" id="sp-insquad" hidden role="dialog" aria-modal="true" aria-labelledby="iq-title">
   <div class="sp-top">
     <a class="btn gl" href="#websites" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to portfolio</a>
-    <span class="iq-mini">insquadsolution.com</span>
+    <img class="iq-logo" src="img/logo-insquad.webp" alt="Insquad Solution" width="427" height="344">
     <a class="btn pri" href="https://www.insquadsolution.com">Visit<span class="dom">&nbsp;insquadsolution.com</span></a>
   </div>
 
@@ -1035,9 +1080,9 @@ footer .ico{width:42px;height:42px}
   <header class="band hot sp-hero">
     <div class="wrap sp-hgrid">
       <div class="sp-in">
-        <span class="kicker"><b></b>Website development: built with AI</span>
+        <span class="kicker"><b></b>Website development: built with AI</span> <span class="uc">Under construction</span>
         <h1 id="lm-title">Lamsa Clinic</h1>
-        <p class="lede">I built the website for Lamsa Clinic, a premium skin, hair and aesthetics clinic in Al Waab, Doha, Qatar, using AI. It's a fast, bilingual English and Arabic site with 25 pages and a page for every treatment.</p>
+        <p class="lede">I built the website for Lamsa Clinic, a premium skin, hair and aesthetics clinic in Al Waab, Doha, Qatar, using AI. It's a fast, bilingual English and Arabic site with 25 pages and a page for every treatment, and it's still under construction.</p>
         <div class="ctas">
           <a class="btn pri mag" href="https://duthulourjaswanth.github.io/lamsa-clinic-website/">View the live site</a>
           <a class="btn gl mag" href="#contact">Build mine</a>
@@ -1076,6 +1121,68 @@ footer .ico{width:42px;height:42px}
       <h2>See the live website</h2>
       <div class="ctas">
         <a class="btn pri mag" href="https://duthulourjaswanth.github.io/lamsa-clinic-website/">View the live site</a>
+        <a class="btn gl" href="#websites" data-close>Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- NFTA website project (opens at #nfta) -->
+<div class="subpage" id="sp-nfta" hidden role="dialog" aria-modal="true" aria-labelledby="nf-title">
+  <div class="sp-top">
+    <a class="btn gl" href="#websites" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to portfolio</a>
+    <span class="nf-brand nf-mini"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M2 9h2v6H2zM20 9h2v6h-2zM5 7h2v10H5zM17 7h2v10h-2zM8 11h8v2H8z" fill="currentColor"/></svg>NFTA</span>
+    <a class="btn pri" href="https://duthulourjaswanth.github.io/nfta-website/">View<span class="dom">&nbsp;live site</span></a>
+  </div>
+
+  <header class="band hot sp-hero">
+    <div class="wrap sp-hgrid">
+      <div class="sp-in">
+        <span class="kicker"><b></b>Website development</span> <span class="uc">Under construction</span>
+        <h1 id="nf-title">NFTA</h1>
+        <p class="lede">NFTA is India's leading personal fitness and training academy, based in Bangalore. I'm building its new website: a page for every certification, the founder's story, a blog, and an admin panel so the NFTA team can edit every page themselves, with no coding.</p>
+        <div class="ctas">
+          <a class="btn pri mag" href="https://duthulourjaswanth.github.io/nfta-website/">View the live site</a>
+          <a class="btn gl mag" href="#contact">Build mine</a>
+        </div>
+      </div>
+      <div class="nf-anim" aria-hidden="true">
+        <div class="nf-admin">
+          <div class="nf-ah"><span class="nf-lock"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>NFTA admin<span class="nf-save" id="nf-save">Saved</span></div>
+          <label>Hero headline</label>
+          <div class="nf-field" id="nf-field"></div>
+        </div>
+        <div class="nf-site">
+          <div class="nf-nav"><span class="nf-brand"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M2 9h2v6H2zM20 9h2v6h-2zM5 7h2v10H5zM17 7h2v10h-2zM8 11h8v2H8z" fill="currentColor"/></svg>NFTA</span><i></i><i></i><i></i><b>Contact</b></div>
+          <div class="nf-hero"><small>India's Premier Personal Trainer Academy</small><strong id="nf-h">Become The <em>Coach</em> They Trust</strong><span>Explore courses</span></div>
+          <div class="nf-courses"><span>Personal Trainer</span><span>Weight Loss Nutritionist</span><span>Contest-Prep</span></div>
+        </div>
+        <p class="px-cap">Illustration: the team edits a headline and the site updates</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Certification programs on the site</h2>
+      <p class="sp-p">Each program gets its own page, built to explain the course and turn visitors into enrolments.</p>
+      <div class="iq-svcs" id="nf-courses"></div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="wrap glass panel">
+      <h2>My contribution</h2>
+      <p class="sp-p">I'm designing and building the whole website, and setting it up so NFTA can run it on their own once it launches.</p>
+      <div class="contrib" id="nf-contrib"></div>
+    </div>
+  </section>
+
+  <section class="band hot sp-cta">
+    <div class="wrap">
+      <h2>See the work in progress</h2>
+      <div class="ctas">
+        <a class="btn pri mag" href="https://duthulourjaswanth.github.io/nfta-website/">View the live site</a>
         <a class="btn gl" href="#websites" data-close>Back to portfolio</a>
       </div>
     </div>
@@ -1149,7 +1256,7 @@ const RXSOC={"Instagram": "<svg viewBox=\"0 0 264.583 264.583\" aria-hidden=\"tr
 let fxTimer=null;
 const runMock=()=>{const rows=[...document.querySelectorAll('#fx-rows li')];if(reduce){rows.forEach(r=>{r.dataset.s=2;r.querySelector('em').textContent=states[2]});return}
  const set=(r,v)=>{r.dataset.s=v;r.querySelector('em').textContent=states[v]};
- rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();iqClear();lmClear();
+ rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();iqClear();lmClear();nfClear();
  fxTimer=setInterval(()=>{const ri=Math.floor(i/2);
   if(ri>=rows.length){if(i>=rows.length*2+4){rows.forEach(r=>set(r,0));i=0}else i++;return}
   const r=rows[ri];set(r,i%2+1);r.classList.remove('pulse');void r.offsetWidth;r.classList.add('pulse');i++},850)};
@@ -1275,9 +1382,25 @@ const runLm=()=>{const win=$('#lm-win'),ty=$('#lm-type'),H=$('#lm-h'),C=$('#lm-c
    lmT.push(setTimeout(()=>{win.style.opacity=0;lmT.push(setTimeout(()=>{lang(EN);win.style.opacity=1},250))},5000));
    lmT.push(setTimeout(cycle,6800))};
   type()};cycle()};
-const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood'),insquad:$('#sp-insquad'),lamsa:$('#sp-lamsa')};let openPage=null,lastY=0;
+$('#nf-courses').innerHTML=['Certified Personal Trainer','Weight Loss Nutritionist','Contest-Prep and Transformation','Personal Yoga Trainer'].map(t=>`<span>${t}</span>`).join('');
+$('#nf-contrib').innerHTML=[
+ ['Site structure','Planned the pages: home, about, courses with a page per certification, trainers, blog and contact.'],
+ ['No-code admin panel','Built an admin panel with a secure login, so the team can change any text or image on any page without a developer.'],
+ ['Content and images','Content is stored in Firebase and images are handled by Cloudinary, both on free plans.'],
+ ['Course pages that convert','Each certification has its own page that explains the program and leads to enrolment.'],
+ ['SEO basics','Search-friendly page titles and descriptions, plus structured data so Google understands the academy.']].map(([h,p])=>`<div><b>${h}</b><p>${p}</p></div>`).join('');
+let nfT=[];const nfClear=()=>{nfT.forEach(clearTimeout);nfT=[]};
+const runNf=()=>{const f=$('#nf-field'),h=$('#nf-h'),sv=$('#nf-save');nfClear();
+ const heads=[['Become The ','Coach',' They Trust'],['Start Your ','Fitness',' Career Today'],['Train Smarter, ','Coach',' Better']];
+ const show=([a,b,c])=>{h.innerHTML='';h.append(a);const e=document.createElement('em');e.textContent=b;h.append(e,c)};
+ if(reduce){f.textContent=heads[1].join('');show(heads[1]);sv.classList.add('on');return}
+ let n=1;const cycle=()=>{if(!openPage)return;const t=heads[n%heads.length],txt=t.join('');sv.classList.remove('on');f.textContent='';let k=0;
+  const type=()=>{if(!openPage)return;f.textContent=txt.slice(0,++k);if(k<txt.length)nfT.push(setTimeout(type,40));else nfT.push(setTimeout(()=>{sv.classList.add('on');show(t);h.classList.remove('flash');void h.offsetWidth;h.classList.add('flash');n++;nfT.push(setTimeout(cycle,2600))},500))};
+  nfT.push(setTimeout(type,600))};
+ show(heads[0]);cycle()};
+const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood'),insquad:$('#sp-insquad'),lamsa:$('#sp-lamsa'),nfta:$('#sp-nfta')};let openPage=null,lastY=0;
 const route=()=>{const h=location.hash.slice(1),pg=pages[h];
- if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();if(h==='insquad')runIq();if(h==='lamsa')runLm();pg.querySelector('[data-close]').focus({preventScroll:true})}
+ if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();if(h==='insquad')runIq();if(h==='lamsa')runLm();if(h==='nfta')runNf();pg.querySelector('[data-close]').focus({preventScroll:true})}
  else if(!pg&&openPage){const p=openPage;openPage=null;p.classList.remove('open');document.body.style.overflow='';clearInterval(fxTimer);setTimeout(()=>{p.hidden=true},reduce?0:800);const t=h&&document.getElementById(h);if(t)t.scrollIntoView({behavior:'auto'})}};
 document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',e=>{const r=a.getBoundingClientRect(),pg=pages[a.dataset.open];pg.style.setProperty('--cx',r.left+r.width/2+'px');pg.style.setProperty('--cy',r.top+r.height/2+'px')}));
 addEventListener('hashchange',route);addEventListener('keydown',e=>{if(e.key==='Escape'&&openPage)location.hash='brands'});route();
