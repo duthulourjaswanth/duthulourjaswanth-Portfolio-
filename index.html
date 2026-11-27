@@ -390,6 +390,53 @@ a{color:inherit}
 .mf-wins b{display:block;font:800 28px Syne,sans-serif}
 .mf-wins span{font-size:14px;opacity:.9}
 .mf-sub{margin-top:30px;color:var(--accent);font-size:20px}
+.fbd{margin-top:24px;border-radius:26px;padding:clamp(16px,2.6vw,28px)}
+.fbd-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.fbd-plat{display:inline-flex;align-items:center;gap:8px;font-weight:700;padding:8px 14px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px var(--hair)}
+.fbd-plat svg{width:18px;height:18px}
+.fbd-range{font-weight:600;color:var(--mute);padding:8px 14px;border-radius:999px;background:var(--chip);border:1px solid var(--chipline)}
+.fbd-src{margin-inline-start:auto;font:inherit;font-weight:700;color:var(--deep);background:none;border:0;border-bottom:2px solid currentColor;padding:2px 0;cursor:zoom-in}
+.fbd-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+@media(max-width:860px){.fbd-kpis{grid-template-columns:1fr 1fr}}
+.fbd-kpi{padding:16px 18px;border-radius:18px;background:#fff;box-shadow:0 0 0 1px var(--hair);container-type:inline-size}
+.fbd-kpi.hero{box-shadow:0 0 0 2px #0866ff}
+.fbd-kpi b{display:block;font:800 clamp(20px,12cqi,34px)/1.1 Syne,sans-serif;color:#3b2620;font-variant-numeric:tabular-nums}
+.fbd-kpi em{display:inline-block;margin-top:6px;font-style:normal;font-weight:700;font-size:14px;color:#1a8f4a}
+.fbd-kpi em.n{color:#0866ff}
+.fbd-kpi span{display:block;margin-top:2px;font-size:14px;color:#6a4a40}
+.fbd-chart{margin-top:14px;padding:16px 18px 12px;border-radius:18px;background:#fff;box-shadow:0 0 0 1px var(--hair)}
+.fbd-ch{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;margin-bottom:8px}.fbd-ch b{color:#3b2620}.fbd-ch span{font-size:13px;color:#6a4a40}
+#fbd-svg{display:block;width:100%;height:clamp(160px,24vw,240px);overflow:visible}
+#fbd-svg .g{stroke:#ece4e0;stroke-width:1;vector-effect:non-scaling-stroke}
+#fbd-svg .gl{font:12px Manrope,sans-serif;fill:#9a8580}
+#fbd-svg .ln{fill:none;stroke:#0866ff;stroke-width:2;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.6s cubic-bezier(.45,0,.2,1)}
+#fbd-svg .ar{fill:url(#fbdg);opacity:0;transition:opacity 1s ease 1.6s}
+.fbd.in #fbd-svg .ln{stroke-dashoffset:0}.fbd.in #fbd-svg .ar{opacity:1}
+.fbd-pk{position:absolute;width:12px;height:12px;margin:-6px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px #0866ff,0 0 0 9px rgba(8,102,255,.18);opacity:0;transition:opacity .5s ease 2.4s}.fbd.in .fbd-pk{opacity:1}
+.fbd-plot{position:relative}
+.fbd-yl{position:absolute;left:4px;font-size:11px;color:#9a8580;pointer-events:none}
+.fbd-x{position:relative;height:22px;font-size:12px;color:#9a8580}
+.fbd-x span{position:absolute;top:6px;transform:translateX(-10%)}
+#fbd-svg .pk{vector-effect:non-scaling-stroke}
+.fbd-row{display:grid;grid-template-columns:1.2fr 1fr;gap:12px;margin-top:12px}
+@media(max-width:760px){.fbd-row{grid-template-columns:1fr}}
+.fbd-card{padding:18px;border-radius:18px;background:#fff;box-shadow:0 0 0 1px var(--hair);color:#3b2620}
+.fbd-card h3{font-size:17px;margin:0 0 12px}
+.fbd-bars>div{display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin-bottom:11px;font-size:14px}
+.fbd-bars i{grid-column:1/-1;height:10px;border-radius:6px;background:#f1ebe8;overflow:hidden}
+.fbd-bars i::after{content:"";display:block;height:100%;width:var(--w);max-width:0;border-radius:6px;background:linear-gradient(90deg,#0a3d7a,#0866ff);transition:max-width 1.3s cubic-bezier(.3,0,.2,1) var(--d)}
+.fbd.in .fbd-bars i::after{max-width:100%}
+.fbd-bars b{font-variant-numeric:tabular-nums}
+.fbd-dwrap{position:relative;width:170px;margin:4px auto 10px}
+.fbd-dwrap svg{display:block;width:100%;transform:rotate(-90deg)}
+.fbd-dwrap circle{fill:none;stroke-width:14}
+.fbd-dwrap .t{stroke:#f1ebe8}
+.fbd-dwrap .nf{stroke:#0866ff;stroke-dasharray:0 100;transition:stroke-dasharray 1.8s cubic-bezier(.3,0,.2,1) .3s;stroke-linecap:butt}
+.fbd-dwrap .f{stroke:#0a3d7a;stroke-dasharray:0 100;stroke-dashoffset:-99.6;transition:stroke-dasharray .4s ease 2s}
+.fbd.in .fbd-dwrap .nf{stroke-dasharray:99.6 100}.fbd.in .fbd-dwrap .f{stroke-dasharray:.4 100}
+.fbd-dc{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.fbd-dc b{font:800 26px Syne,sans-serif}.fbd-dc span{font-size:12px;color:#6a4a40}
+.fbd-donut p{font-size:14px;color:#6a4a40;text-align:center}
 .mf-sub+.contrib{margin-top:14px}
 
 /* insquad: WordPress build animation */
@@ -1095,6 +1142,45 @@ footer .ico{width:42px;height:42px}
     </div>
   </section>
 
+  <section class="band" style="padding-top:0" id="mf-results">
+    <div class="wrap">
+      <div class="dz-head"><h2>Social media results</h2><span class="dz-count">Facebook, 2026</span></div>
+      <p class="sp-p">Modern Food's Facebook page this year, from Meta Business Suite. Views grew almost fivefold on last year, and nearly all of them came from people who don't follow the page yet.</p>
+      <div class="fbd glass" id="fbd">
+        <div class="fbd-top">
+          <span class="fbd-plat"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0866ff" d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>Facebook</span>
+          <span class="fbd-range">Jan 1 &ndash; Nov 26, 2026</span>
+          <button class="fbd-src" data-lb="fb" data-i="0">View original screenshot</button>
+        </div>
+        <div class="fbd-kpis">
+          <div class="fbd-kpi hero"><b data-n="3013584">0</b><em>&uarr; 380%</em><span>Views</span></div>
+          <div class="fbd-kpi"><b data-n="5803">0</b><em>&uarr; 273%</em><span>3-second views</span></div>
+          <div class="fbd-kpi"><b data-t="1d 18h">0</b><em>&uarr; 333%</em><span>Watch time</span></div>
+          <div class="fbd-kpi"><b data-n="99.8" data-s="%">0</b><em class="n">reach</em><span>Views from non-followers</span></div>
+        </div>
+        <div class="fbd-chart">
+          <div class="fbd-ch"><b>Daily views</b><span>Peak of about 130K views in a single day in late July</span></div>
+          <div class="fbd-plot"><svg id="fbd-svg" viewBox="0 0 1000 260" preserveAspectRatio="none" role="img" aria-label="Daily Facebook views, January to November 2026"></svg></div>
+          <div class="fbd-x" id="fbd-x"></div>
+        </div>
+        <div class="fbd-row">
+          <div class="fbd-card">
+            <h3>Views by content type</h3>
+            <div class="fbd-bars" id="fbd-bars"></div>
+          </div>
+          <div class="fbd-card fbd-donut">
+            <h3>Followers vs. non-followers</h3>
+            <div class="fbd-dwrap">
+              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="48" class="t"/><circle cx="60" cy="60" r="48" class="nf" pathLength="100"/><circle cx="60" cy="60" r="48" class="f" pathLength="100"/></svg>
+              <div class="fbd-dc"><b>99.8%</b><span>non-followers</span></div>
+            </div>
+            <p>Only 0.2% of views came from existing followers: the content is reaching new audiences, not just the existing fans.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="band" style="padding-top:0" id="mf-creatives">
     <div class="wrap">
       <div class="dz-head"><h2>Creatives</h2><span class="dz-count">17 designs</span></div>
@@ -1746,6 +1832,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lb]');if(!
  if(b.dataset.lb==='s')lbOpen(DESIGN.statics.map(d=>({src:d.src,alt:d.alt,cap:d.brand})),i);
  if(b.dataset.lb==='c'){const c=DESIGN.carousels[i];lbOpen(c.slides.map(sl=>({src:sl,alt:c.title,cap:c.title})),+b.dataset.j)}
  if(b.dataset.lb==='m'){const L=b.dataset.g==='a'?MF_ADS:MF_SHOTS;lbOpen(L.map(([k,a])=>({src:`img/mf/${k}-l.webp`,alt:a,cap:a})),i)}
+ if(b.dataset.lb==='fb')lbOpen([{src:'img/mf/fb-insights.webp',alt:'Modern Food Facebook insights, Meta Business Suite',cap:'Modern Food Facebook insights, Jan 1 to Nov 26, 2026'}],0);
  if(b.dataset.lb==='v')lbOpen(VK_STATICS.map(([k,t])=>({src:`img/vooki/${k}.webp`,alt:'Vooki '+t,cap:'Vooki, '+t})),i);
  if(b.dataset.lb==='p'){const pf=DESIGN.profiles[i];lbOpen(pf.pages.map(pg=>({src:pg,alt:pf.title,cap:pf.title})),0)}});
 $('#lb-x').addEventListener('click',lbClose);$('#lb-p').addEventListener('click',()=>{lbI=(lbI-1+lbList.length)%lbList.length;lbShow()});$('#lb-n').addEventListener('click',()=>{lbI=(lbI+1)%lbList.length;lbShow()});
@@ -1757,6 +1844,21 @@ $('#vk-contrib').innerHTML=[
  ['GIFs','Made animated GIFs to bring products to life in the feed and stories.'],
  ['On-brand creatives','Kept every piece in Vooki\'s colours and eco-friendly message, with a link back to vooki.in.']].map(card).join('');
 {const tr=$('#vk-track'),dots=$('#vk-dots');const N=7;tr.innerHTML=Array.from({length:N},(_,i)=>`<img src="img/vooki/tips-${i+1}.webp" alt="" loading="lazy">`).join('');dots.innerHTML='<i class="on"></i>'+'<i></i>'.repeat(N-1)}
+/* Modern Food Facebook dashboard; daily views (thousands) traced from the Meta Business Suite chart */
+const FB_DAILY=[70,18,3,4,3,3,3,4,4,3,5,29,49,53,43,8,4,3,7,9,8,7,4,75,75,21,2,3,5,5,5,5,12,19,19,15,17,16,14,22,19,15,17,18,18,18,17,17,24,26,26,24,22,4,1,3,10,17,18,49,69,68,55,4,2,2,1,1,1,1,1,1,1,1,1,1,1,2,2,4,4,4,6,28,45,45,41,40,40,43,44,45,45,43,43,42,42,42,41,13,14,16,22,23,23,22,21,20,21,21,21,20,19,21,22,27,32,34,32,30,23,20,4,1,2,4,4,4,23,39,45,47,42,9,6,5,5,14,17,18,21,21,19,15,7,1,1,1,1,1,1,1,1,1,1,2,4,4,10,15,14,10,10,6,9,15,15,14,16,18,18,13,13,6,1,6,9,10,9,8,8,10,8,8,3,1,1,1,2,2,2,2,2,1,1,3,3,3,2,2,2,2,2,1,4,6,84,132,83,21,2,16,17,8,4,5,5,2,2,3,3,3,4,4,3,2,3,2,3,3,2,2,2,2,16,21,23,27,28,23,22,21,15,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,12,13,17,17,15,16,17,17,11,4,4,4,4,4,4,3,2,2,2,2,2,2,3,4,3,3,3,3,3,2,14,14,13,19,19,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,2,2];
+{const svg=$('#fbd-svg'),W=1000,H=260,max=140,D=330,N=FB_DAILY.length,X=i=>i/(D-1)*W,Y=v=>H-v/max*H;
+ let d='M'+FB_DAILY.map((v,i)=>X(i).toFixed(1)+','+Y(v).toFixed(1)).join('L');
+ const pk=FB_DAILY.indexOf(Math.max(...FB_DAILY));
+ svg.innerHTML=`<defs><linearGradient id="fbdg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0866ff" stop-opacity=".28"/><stop offset="1" stop-color="#0866ff" stop-opacity="0"/></linearGradient></defs>`+
+  [0,50,100].map(v=>`<line class="g" x1="0" x2="${W}" y1="${Y(v)}" y2="${Y(v)}"/>`).join('')+
+  `<path class="ar" d="${d}L${X(N-1)},${H}L0,${H}Z"/><path class="ln" pathLength="1" d="${d}"/>`;
+ svg.insertAdjacentHTML('afterend',`<span class="fbd-pk" style="left:${X(pk)/W*100}%;top:${Y(FB_DAILY[pk])/H*100}%"></span>`);
+ $('#fbd-x').innerHTML=[['Jan',0],['Mar',59],['May',120],['Jul',181],['Sep',243],['Nov',304]].map(([m,d])=>`<span style="left:${d/(D-1)*100}%">${m}</span>`).join('');
+ svg.insertAdjacentHTML('afterend',[0,50,100].map(v=>`<span class="fbd-yl" style="bottom:calc(${v/max*100}% + 2px)">${v?v+'K':'0'}</span>`).join(''));
+ $('#fbd-bars').innerHTML=[['Link',57.9],['Photo',20.9],['Reel',19.7],['Video',.7],['Other',.2]].map(([k,v],i)=>`<div><span>${k}</span><b>${v}%</b><i style="--w:${Math.max(v/57.9*100,1.2)}%;--d:${i*.12}s"></i></div>`).join('');
+ const box=$('#fbd'),fmt=(n,dec)=>n.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+ const count=()=>box.querySelectorAll('.fbd-kpi b').forEach(b=>{if(b.dataset.t){b.textContent=b.dataset.t;return}const to=+b.dataset.n,dec=String(to).includes('.')?1:0,suf=b.dataset.s||'';if(reduce){b.textContent=fmt(to,dec)+suf;return}const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1600),e=1-Math.pow(1-k,3);b.textContent=fmt(to*e,dec)+suf;if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)});
+ new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){box.classList.add('in');count();o.disconnect()}}),{threshold:.25}).observe(box)}
 const VK_STATICS=[['toddler-spotlight','Product spotlight','Your toddler\'s safety, our priority: chemical-free, organic and eco-friendly cleaning.'],['poll-time','Poll post','An interactive poll asking followers what matters most when choosing cleaning products.']];
 $('#vk-g-posts').innerHTML=`<figure class="vk-post"><div class="m gif"><video src="img/vooki/toddler-gif.mp4" poster="img/vooki/toddler-gif-poster.webp" muted loop playsinline preload="none" aria-label="Toddler vs Vooki GIF"></video><span class="vk-badge">GIF</span></div><figcaption><b>Toddler vs Vooki</b><span>A relatable meme GIF: the toddler's wall art, the panicked parent, and Vooki to the rescue.</span></figcaption></figure>`+VK_STATICS.map(([k,t,d],i)=>`<figure class="vk-post"><button class="m" data-lb="v" data-i="${i}" aria-label="View ${t}"><img src="img/vooki/${k}.webp" alt="Vooki ${t}" loading="lazy"><span class="vk-badge">STATIC</span></button><figcaption><b>${t}</b><span>${d}</span></figcaption></figure>`).join('');
 {const v=$('#vk-g-posts video');new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&openPage===pages.vooki){v.preload='auto';v.play().catch(()=>{})}else v.pause()}),{threshold:.35}).observe(v)}
