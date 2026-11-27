@@ -371,8 +371,15 @@ a{color:inherit}
 .mf-toast small{margin-inline-start:auto;color:#888}
 @keyframes toastin{from{opacity:0;transform:translateY(14px) scale(.96)}}
 .mf-prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px;margin-top:26px}
+@media(max-width:560px){.mf-prods{grid-template-columns:1fr 1fr;gap:10px}.mf-prod{padding:14px}.mf-prod .pk{height:150px}.mf-prod h3{font-size:17px}.mf-prod p{font-size:14px}.mf-prod:last-child{grid-column:1/-1}}
 .mf-prod{padding:20px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(163,29,36,.12),0 20px 40px -30px rgba(120,10,0,.5);color:#3b2620;position:relative;overflow:hidden}
-.mf-prod::before{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,#f6c45c,#f0a830 60%,transparent 62%);opacity:.35}
+.mf-prod::before{content:"";position:absolute;left:50%;top:26px;width:170px;height:170px;margin-left:-85px;border-radius:50%;background:radial-gradient(circle,var(--pc,#f6c45c) 0,transparent 68%);opacity:.45;transition:transform .5s var(--ease-out),opacity .5s}
+.mf-prod .pk{position:relative;display:grid;place-items:center;height:210px;margin:-4px 0 12px}
+.mf-prod .pk img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(110,30,0,.28));transform:translateY(0) rotate(-2deg);transition:transform .5s var(--ease-out)}
+.mf-prod:nth-child(even) .pk img{transform:rotate(2deg)}
+.mf-prod.in .pk img{animation:pkin .9s var(--ease-out) both;animation-delay:calc(var(--i)*.1s)}
+@keyframes pkin{from{opacity:0;transform:translateY(40px) scale(.85) rotate(-6deg)}}
+@media(hover:hover){.mf-prod:hover .pk img{transform:translateY(-10px) rotate(0) scale(1.05)}.mf-prod:hover::before{transform:scale(1.25);opacity:.7}}
 .mf-prod .yr{font-size:12px;font-weight:700;color:#a31d24}
 .mf-prod h3{margin:8px 0 6px;font-size:20px}
 .mf-prod p{color:#6a4a40;font-size:15px}
@@ -1463,11 +1470,12 @@ const fitAll=()=>{const vw=innerWidth;
 fitAll();document.fonts&&document.fonts.ready.then(fitAll);addEventListener('resize',fitAll);
 $('#mf-g').innerHTML="<svg viewBox=\"0 0 256 262\" aria-hidden=\"true\"><path fill=\"#4285f4\" d=\"M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622l38.755 30.023l2.685.268c24.659-22.774 38.875-56.282 38.875-96.027\"/><path fill=\"#34a853\" d=\"M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055c-34.523 0-63.824-22.773-74.269-54.25l-1.531.13l-40.298 31.187l-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1\"/><path fill=\"#fbbc05\" d=\"M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82c0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602z\"/><path fill=\"#eb4335\" d=\"M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0C79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251\"/></svg>";$('#mf-meta').innerHTML="<svg viewBox=\"0 0 256 171\" aria-hidden=\"true\"><defs><linearGradient id=\"mfA\" x1=\"13.878%\" x2=\"89.144%\" y1=\"55.934%\" y2=\"58.694%\"><stop offset=\"0%\" stop-color=\"#0064e1\"/><stop offset=\"40%\" stop-color=\"#0064e1\"/><stop offset=\"83%\" stop-color=\"#0073ee\"/><stop offset=\"100%\" stop-color=\"#0082fb\"/></linearGradient><linearGradient id=\"mfB\" x1=\"54.315%\" x2=\"54.315%\" y1=\"82.782%\" y2=\"39.307%\"><stop offset=\"0%\" stop-color=\"#0082fb\"/><stop offset=\"100%\" stop-color=\"#0064e0\"/></linearGradient></defs><path fill=\"#0081fb\" d=\"M27.651 112.136c0 9.775 2.146 17.28 4.95 21.82c3.677 5.947 9.16 8.466 14.751 8.466c7.211 0 13.808-1.79 26.52-19.372c10.185-14.092 22.186-33.874 30.26-46.275l13.675-21.01c9.499-14.591 20.493-30.811 33.1-41.806C161.196 4.985 172.298 0 183.47 0c18.758 0 36.625 10.87 50.3 31.257C248.735 53.584 256 81.707 256 110.729c0 17.253-3.4 29.93-9.187 39.946c-5.591 9.686-16.488 19.363-34.818 19.363v-27.616c15.695 0 19.612-14.422 19.612-30.927c0-23.52-5.484-49.623-17.564-68.273c-8.574-13.23-19.684-21.313-31.907-21.313c-13.22 0-23.859 9.97-35.815 27.75c-6.356 9.445-12.882 20.956-20.208 33.944l-8.066 14.289c-16.203 28.728-20.307 35.271-28.408 46.07c-14.2 18.91-26.324 26.076-42.287 26.076c-18.935 0-30.91-8.2-38.325-20.556C2.973 139.413 0 126.202 0 111.148z\"/><path fill=\"url(#mfA)\" d=\"M21.802 33.206C34.48 13.666 52.774 0 73.757 0C85.91 0 97.99 3.597 110.605 13.897c13.798 11.261 28.505 29.805 46.853 60.368l6.58 10.967c15.881 26.459 24.917 40.07 30.205 46.49c6.802 8.243 11.565 10.7 17.752 10.7c15.695 0 19.612-14.422 19.612-30.927l24.393-.766c0 17.253-3.4 29.93-9.187 39.946c-5.591 9.686-16.488 19.363-34.818 19.363c-11.395 0-21.49-2.475-32.654-13.007c-8.582-8.083-18.615-22.443-26.334-35.352l-22.96-38.352C118.528 64.08 107.96 49.73 101.845 43.23c-6.578-6.988-15.036-15.428-28.532-15.428c-10.923 0-20.2 7.666-27.963 19.39z\"/><path fill=\"url(#mfB)\" d=\"M73.312 27.802c-10.923 0-20.2 7.666-27.963 19.39c-10.976 16.568-17.698 41.245-17.698 64.944c0 9.775 2.146 17.28 4.95 21.82L9.027 149.482C2.973 139.413 0 126.202 0 111.148C0 83.772 7.514 55.24 21.802 33.206C34.48 13.666 52.774 0 73.757 0z\"/></svg>";
 $('#mf-prods').innerHTML=[
- ['Since 1981','Papy Snacks','Classic salted corn and potato rings, the first Modern Food product.'],
- ['Since 1984','Dubai Pofak','Cheesy puffs.'],
- ['Since 1984','Chipstix','Tomato, vinegar and herb potato sticks.'],
- ['Since 2025','Dubai Bites','Chilli and tomato wheels.'],
- ['New in 2026','Dubai Pofak Chilli Cheeze','Hot and cheesy puffs.']].map(([y,h,p])=>`<div class="mf-prod"><span class="yr">${y}</span><h3>${h}</h3><p>${p}</p></div>`).join('');
+ ['Since 1981','Papy Snacks','Classic salted corn and potato rings, the first Modern Food product.','papy','#ff6b5a'],
+ ['Since 1984','Dubai Pofak','Cheesy puffs.','pofak','#ffc542'],
+ ['Since 1984','Chipstix','Tomato, vinegar and herb potato sticks.','chipstix','#c9e64a'],
+ ['Since 2025','Dubai Bites','Chilli and tomato wheels.','bites','#e2584f'],
+ ['New in 2026','Dubai Pofak Chilli Cheeze','Hot and cheesy puffs.','chilli','#ff8a3d']].map(([y,h,p,k,c],i)=>`<div class="mf-prod" style="--pc:${c};--i:${i}"><div class="pk"><img src="img/mf/packs/${k}.webp" alt="${h} pack" loading="lazy" decoding="async"></div><span class="yr">${y}</span><h3>${h}</h3><p>${p}</p></div>`).join('');
+(()=>{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});document.querySelectorAll('.mf-prod').forEach(el=>io.observe(el))})();
 const card=([h,p])=>`<div><b>${h}</b><p>${p}</p></div>`;
 $('#mf-c1').innerHTML=[
  ['Meta ads, every day','Run lead-generation campaigns on Meta (Facebook and Instagram) that bring in new leads daily.'],
