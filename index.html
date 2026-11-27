@@ -425,7 +425,41 @@ a{color:inherit}
 .rowlink{display:inline-flex;margin-top:6px;font-weight:700;color:var(--accent);text-decoration:none}
 .rowlink:hover{text-decoration:underline}
 
+/* lamsa: prompt to page, then EN/AR flip */
+.lm-mini{height:46px}@media(max-width:600px){.lm-mini{height:40px}}
+.lm-anim{display:grid;justify-items:center;gap:12px}
+.lm-prompt{width:min(100%,430px);background:#fff;color:#1c0a06;border-radius:18px;padding:12px 16px;box-shadow:0 20px 40px -24px rgba(40,0,0,.7)}
+.lm-prompt .rx-ai{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#6b3fd1;background:#efe8ff;padding:4px 10px;border-radius:999px}
+#lm-type{margin-top:8px;font-size:14px;font-weight:600;line-height:1.45;min-height:42px}
+#lm-type::after{content:"";display:inline-block;width:2px;height:1em;background:#c42502;margin-inline-start:2px;vertical-align:-2px;animation:caret 1s steps(1) infinite}
+.lm-win{width:min(100%,430px);background:#fbf7f2;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(40,0,0,.75);color:#123;transition:opacity .25s ease}
+.lm-win>*{opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .6s cubic-bezier(.34,1.3,.64,1)}
+.lm-win.s1 .lm-nav,.lm-win.s2 .lm-hero,.lm-win.s3 .lm-cards{opacity:1;transform:none}
+.lm-nav{display:flex;align-items:center;gap:10px;padding:10px 12px;margin:10px;border-radius:999px;background:#fff;box-shadow:0 4px 14px -8px rgba(0,0,0,.25)}
+.lm-nav img{height:26px;width:auto}
+.lm-links{display:flex;gap:6px;margin-inline-start:auto}.lm-links i{width:26px;height:6px;border-radius:4px;background:#d9e6ee}
+.lm-tog{display:flex;border-radius:999px;background:#eef3f6;padding:2px}
+.lm-tog b{font-size:10px;padding:3px 7px;border-radius:999px;color:#567}
+.lm-win:not(.ar) .lm-tog b[data-l=en],.lm-win.ar .lm-tog b[data-l=ar]{background:#1f7fa6;color:#fff}
+.lm-hero{display:flex;gap:10px;margin:0 10px;padding:16px;border-radius:16px;background:linear-gradient(135deg,#1f7fa6,#2f9cc6 55%,#7cc4df);color:#fff}
+.lm-copy{display:grid;gap:10px;align-content:center;flex:1}
+.lm-copy strong{font:700 17px/1.25 Manrope,sans-serif}
+.lm-cta{justify-self:start;font-size:11px;font-weight:700;background:#f4956a;color:#fff;padding:6px 12px;border-radius:999px}
+.lm-pic{width:86px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.15))}
+.lm-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px}
+.lm-cards span{padding:12px 8px;border-radius:12px;background:#fff;font-size:12px;font-weight:700;color:#1f7fa6;text-align:center;box-shadow:inset 0 0 0 1px #e2edf3}
+.lm-win.ar{direction:rtl}
+.lm-win.ar .lm-copy strong{font-family:Tahoma,Arial,sans-serif}
+.lm-feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin-top:26px}
+.lm-feats div{padding:18px 20px;border-radius:18px;background:#fff;box-shadow:0 0 0 1px rgba(31,127,166,.14),0 18px 36px -30px rgba(10,60,90,.5);color:#123}
+.lm-feats b{display:block;font:800 22px Syne,sans-serif;color:#1f7fa6}
+.lm-feats span{font-size:14px;color:#4a5a66}
+:root[data-theme=dark] .lm-feats div{background:#22100c;color:#fff1ea}:root[data-theme=dark] .lm-feats span{color:#d6b2a6}
+.webcard.lamsa .lart{background:linear-gradient(150deg,#fbf7f2,#eaf3f7)}
+.webcard.lamsa .lart img{width:auto;height:clamp(150px,16vw,200px);max-width:70%;transform:none;opacity:1}
+
 /* timeline */
+
 
 
 
@@ -603,6 +637,10 @@ footer .ico{width:42px;height:42px}
       <a class="lcard glass rv link webcard" href="#insquad" data-open="insquad">
         <div class="lart"><span class="ind">Healthcare consulting</span><div class="mockup"><div><i></i><i></i><i></i>&nbsp;insquadsolution.com</div><p>Insquad Solution<small>Pharmacy business consulting for hospitals</small></p></div></div>
         <figcaption><span class="tag">WordPress website</span><h3>Insquad Solution</h3><p>Designed and built on WordPress for a start-up pharmacy consulting firm in Chennai, India.</p><span class="more">View project<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figcaption>
+      </a>
+      <a class="lcard glass rv link webcard lamsa" href="#lamsa" data-open="lamsa">
+        <div class="lart"><span class="ind">Healthcare, aesthetics</span><img src="img/logo-lamsa.webp" alt="Lamsa Clinic logo" loading="lazy" width="338" height="419"></div>
+        <figcaption><span class="tag">Built with AI</span><h3>Lamsa Clinic</h3><p>A bilingual English and Arabic website for a premium aesthetics clinic in Doha, Qatar, built with AI: 25 pages, a page per treatment, WhatsApp booking.</p><span class="more">View project<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figcaption>
       </a>
     </div>
   </div>
@@ -986,6 +1024,64 @@ footer .ico{width:42px;height:42px}
   </section>
 </div>
 
+<!-- Lamsa Clinic website project (opens at #lamsa) -->
+<div class="subpage" id="sp-lamsa" hidden role="dialog" aria-modal="true" aria-labelledby="lm-title">
+  <div class="sp-top">
+    <a class="btn gl" href="#websites" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to portfolio</a>
+    <img class="sp-mini lm-mini" src="img/logo-lamsa.webp" alt="Lamsa Clinic" width="338" height="419">
+    <a class="btn pri" href="https://duthulourjaswanth.github.io/lamsa-clinic-website/">View<span class="dom">&nbsp;live site</span></a>
+  </div>
+
+  <header class="band hot sp-hero">
+    <div class="wrap sp-hgrid">
+      <div class="sp-in">
+        <span class="kicker"><b></b>Website development: built with AI</span>
+        <h1 id="lm-title">Lamsa Clinic</h1>
+        <p class="lede">I built the website for Lamsa Clinic, a premium skin, hair and aesthetics clinic in Al Waab, Doha, Qatar, using AI. It's a fast, bilingual English and Arabic site with 25 pages and a page for every treatment.</p>
+        <div class="ctas">
+          <a class="btn pri mag" href="https://duthulourjaswanth.github.io/lamsa-clinic-website/">View the live site</a>
+          <a class="btn gl mag" href="#contact">Build mine</a>
+        </div>
+      </div>
+      <div class="lm-anim" aria-hidden="true">
+        <div class="lm-prompt"><span class="rx-ai"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L20.5 10.5l-6.3 2.2L12 19l-2.2-6.3L3.5 10.5l6.3-2.2z"/></svg>Prompt to AI</span><p id="lm-type"></p></div>
+        <div class="lm-win" id="lm-win">
+          <div class="lm-nav"><img src="img/logo-lamsa.webp" alt=""><span class="lm-links"><i></i><i></i><i></i></span><span class="lm-tog"><b data-l="en">EN</b><b data-l="ar">AR</b></span></div>
+          <div class="lm-hero"><div class="lm-copy"><strong id="lm-h">Confidence, revealed through care.</strong><span class="lm-cta" id="lm-cta">Book consultation</span></div><div class="lm-pic"></div></div>
+          <div class="lm-cards"><span>Skin</span><span>Hair</span><span>Body</span></div>
+        </div>
+        <p class="px-cap">Illustration: AI builds the page, then it flips to Arabic</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>What the site includes</h2>
+      <p class="sp-p">A premium clinic website that is quick to load, easy to book from, and set up to be found on Google in both languages.</p>
+      <div class="lm-feats" id="lm-feats"></div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="wrap glass panel">
+      <h2>My contribution</h2>
+      <p class="sp-p">I directed AI to design and build the whole site, from structure and content to code and launch, and shaped it around how a Doha clinic actually wins patients.</p>
+      <div class="contrib" id="lm-contrib"></div>
+    </div>
+  </section>
+
+  <section class="band hot sp-cta">
+    <div class="wrap">
+      <h2>See the live website</h2>
+      <div class="ctas">
+        <a class="btn pri mag" href="https://duthulourjaswanth.github.io/lamsa-clinic-website/">View the live site</a>
+        <a class="btn gl" href="#websites" data-close>Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</div>
+
 <script>
 {
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1053,7 +1149,7 @@ const RXSOC={"Instagram": "<svg viewBox=\"0 0 264.583 264.583\" aria-hidden=\"tr
 let fxTimer=null;
 const runMock=()=>{const rows=[...document.querySelectorAll('#fx-rows li')];if(reduce){rows.forEach(r=>{r.dataset.s=2;r.querySelector('em').textContent=states[2]});return}
  const set=(r,v)=>{r.dataset.s=v;r.querySelector('em').textContent=states[v]};
- rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();iqClear();
+ rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();iqClear();lmClear();
  fxTimer=setInterval(()=>{const ri=Math.floor(i/2);
   if(ri>=rows.length){if(i>=rows.length*2+4){rows.forEach(r=>set(r,0));i=0}else i++;return}
   const r=rows[ri];set(r,i%2+1);r.classList.remove('pulse');void r.offsetWidth;r.classList.add('pulse');i++},850)};
@@ -1150,9 +1246,38 @@ const runIq=()=>{const win=$('#iq-win'),blks=[...win.querySelectorAll('.iq-blk')
   blks.forEach((b,i)=>iqT.push(setTimeout(()=>b.classList.add('on'),500+i*700)));
   iqT.push(setTimeout(()=>win.classList.add('done'),500+blks.length*700+200));
   iqT.push(setTimeout(cycle,6500))};cycle()};
-const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood'),insquad:$('#sp-insquad')};let openPage=null,lastY=0;
+$('#lm-feats').innerHTML=[
+ ['25','pages, generated from one build'],
+ ['16','treatment pages, one URL each'],
+ ['EN / AR','bilingual, with right-to-left Arabic'],
+ ['WhatsApp','booking straight from any page'],
+ ['SEO-ready','structured data, sitemap and robots.txt'],
+ ['Fast','static HTML, CSS and JS, no heavy framework'],
+ ['Real proof','doctor profiles and genuine Google reviews'],
+ ['Gallery, FAQ','plus about, contact and booking pages']].map(([b,t])=>`<div><b>${b}</b><span>${t}</span></div>`).join('');
+$('#lm-contrib').innerHTML=[
+ ['Built with AI','Directed AI to design and code the whole site end to end, then reviewed and refined every page.'],
+ ['Bilingual by design','English and Arabic on every page, with a full right-to-left layout for Arabic readers.'],
+ ['Site structure','Planned 25 pages, including a dedicated page for each of 16 treatments, so each one can rank on its own.'],
+ ['SEO foundations','Added structured data, a sitemap and robots.txt, and kept the site static for top page speed.'],
+ ['Built to book','Put WhatsApp booking and consultation calls to action throughout the site.'],
+ ['Trust and content','Featured the clinic\'s doctors and real Google reviews to build confidence before a visit.']].map(([h,p])=>`<div><b>${h}</b><p>${p}</p></div>`).join('');
+let lmT=[];const lmClear=()=>{lmT.forEach(clearTimeout);lmT=[]};
+const runLm=()=>{const win=$('#lm-win'),ty=$('#lm-type'),H=$('#lm-h'),C=$('#lm-cta'),cards=[...win.querySelectorAll('.lm-cards span')];lmClear();
+ const prompt='Build a premium, bilingual website for a skin and aesthetics clinic in Doha, with WhatsApp booking.';
+ const EN={h:'Confidence, revealed through care.',c:'Book consultation',k:['Skin','Hair','Body']},AR={h:'الثقة، تتجلى بالعناية.',c:'احجز استشارة',k:['البشرة','الشعر','الجسم']};
+ const lang=L=>{win.classList.toggle('ar',L===AR);H.textContent=L.h;C.textContent=L.c;cards.forEach((c,i)=>c.textContent=L.k[i])};
+ if(reduce){ty.textContent=prompt;win.className='lm-win s1 s2 s3';lang(EN);return}
+ const cycle=()=>{if(!openPage)return;win.className='lm-win';lang(EN);ty.textContent='';let k=0;
+  const type=()=>{if(!openPage)return;ty.textContent=prompt.slice(0,++k);if(k<prompt.length)lmT.push(setTimeout(type,22));else build()};
+  const build=()=>{['s1','s2','s3'].forEach((c,i)=>lmT.push(setTimeout(()=>win.classList.add(c),300+i*500)));
+   lmT.push(setTimeout(()=>{win.style.opacity=0;lmT.push(setTimeout(()=>{lang(AR);win.style.opacity=1},250))},2600));
+   lmT.push(setTimeout(()=>{win.style.opacity=0;lmT.push(setTimeout(()=>{lang(EN);win.style.opacity=1},250))},5000));
+   lmT.push(setTimeout(cycle,6800))};
+  type()};cycle()};
+const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood'),insquad:$('#sp-insquad'),lamsa:$('#sp-lamsa')};let openPage=null,lastY=0;
 const route=()=>{const h=location.hash.slice(1),pg=pages[h];
- if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();if(h==='insquad')runIq();pg.querySelector('[data-close]').focus({preventScroll:true})}
+ if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();if(h==='insquad')runIq();if(h==='lamsa')runLm();pg.querySelector('[data-close]').focus({preventScroll:true})}
  else if(!pg&&openPage){const p=openPage;openPage=null;p.classList.remove('open');document.body.style.overflow='';clearInterval(fxTimer);setTimeout(()=>{p.hidden=true},reduce?0:800);const t=h&&document.getElementById(h);if(t)t.scrollIntoView({behavior:'auto'})}};
 document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',e=>{const r=a.getBoundingClientRect(),pg=pages[a.dataset.open];pg.style.setProperty('--cx',r.left+r.width/2+'px');pg.style.setProperty('--cy',r.top+r.height/2+'px')}));
 addEventListener('hashchange',route);addEventListener('keydown',e=>{if(e.key==='Escape'&&openPage)location.hash='brands'});route();
