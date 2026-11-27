@@ -498,7 +498,65 @@ a{color:inherit}
 .nf-courses{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px}
 .nf-courses span{padding:10px 6px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1px #eee;font-size:11px;font-weight:700;text-align:center}
 
+/* design page */
+.dz-mini{margin-inline:auto;display:inline-flex;align-items:center;gap:8px;font:800 18px Syne,sans-serif;color:var(--ink);white-space:nowrap}
+.dz-mini i{width:24px;height:24px;display:block}.dz-mini i svg{width:100%;height:100%;display:block}
+@media(max-width:600px){.dz-mini{font-size:14px;flex:1 1 0;justify-content:center}}
+.dz-jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.dz-anim{display:grid;justify-items:center;gap:12px}
+.dz-board{position:relative;width:min(100%,380px);aspect-ratio:4/5;border-radius:22px;background:#fff7ef;box-shadow:0 30px 60px -30px rgba(40,0,0,.8);overflow:hidden;transition:background-color .6s ease}
+.dz-board>span{position:absolute;opacity:0;transition:transform .8s cubic-bezier(.34,1.3,.64,1),opacity .4s ease,background-color .6s ease}
+.dz-photo{left:8%;top:7%;width:84%;height:48%;border-radius:16px;background:linear-gradient(135deg,#ffb36b,#e8480e);transform:translate(-120%,-10%) rotate(-8deg)}
+.dz-h1{left:8%;top:60%;width:70%;height:7%;border-radius:8px;background:#1c0a06;transform:translateX(130%)}
+.dz-h2{left:8%;top:70%;width:50%;height:4%;border-radius:6px;background:#a8877c;transform:translateX(150%)}
+.dz-logo{right:8%;top:62%;width:15%;aspect-ratio:1;border-radius:50%;background:#e02d02;transform:scale(0) rotate(-90deg)}
+.dz-cta{left:8%;top:81%;padding:8px 16px;border-radius:999px;background:#1c0a06;color:#fff;font:700 13px Manrope,sans-serif;transform:translateY(160%)}
+.dz-sel{inset:4%;border:2px dashed #7b61ff;border-radius:18px;transform:scale(1.05)}
+.dz-board.s1 .dz-photo,.dz-board.s2 .dz-h1,.dz-board.s2 .dz-h2,.dz-board.s3 .dz-logo,.dz-board.s3 .dz-cta{opacity:1;transform:none}
+.dz-board.s4 .dz-sel{opacity:1;transform:none}
+.dz-board.alt{background:#eef4ff}.dz-board.alt .dz-photo{background:linear-gradient(135deg,#7cc4ff,#1f5fd6)}.dz-board.alt .dz-logo{background:#1f5fd6}
+.dz-tools{display:flex;align-items:center;gap:10px}
+.dz-chip{width:46px;height:46px;border-radius:14px;background:#fff;display:grid;place-items:center;box-shadow:0 12px 24px -14px rgba(40,0,0,.7)}
+.dz-chip svg{width:26px;height:26px}
+.dz-sw{display:flex;gap:6px;padding:10px 12px;border-radius:14px;background:#fff;box-shadow:0 12px 24px -14px rgba(40,0,0,.7)}
+.dz-sw i{width:18px;height:18px;border-radius:50%}
+.dz-sw i:nth-child(1){background:#e02d02}.dz-sw i:nth-child(2){background:#ffb36b}.dz-sw i:nth-child(3){background:#1f5fd6}.dz-sw i:nth-child(4){background:#1c0a06}
+.dz-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.dz-count{font-weight:700;color:var(--accent)}
+.dz-grid{columns:3 240px;column-gap:16px;margin-top:24px}
+.dz-item{display:block;width:100%;margin:0 0 16px;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid;border-radius:18px;overflow:hidden;box-shadow:0 0 0 1px var(--hair),0 20px 40px -30px rgba(100,10,0,.5);transition:transform .4s var(--ease-out)}
+.dz-item img{display:block;width:100%;height:auto;min-height:180px;background:var(--chip)}
+.dz-item img.ld{min-height:0}
+@media(hover:hover){.dz-item:hover{transform:translateY(-4px)}}
+.dz-cars,.dz-profs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:18px;margin-top:24px}
+.dz-car{border-radius:22px;padding:10px}
+.dz-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:14px;scrollbar-width:none}
+.dz-strip::-webkit-scrollbar{display:none}
+.dz-strip button{flex:0 0 100%;min-width:0;scroll-snap-align:start;padding:0;border:0;background:none;cursor:zoom-in}
+.dz-strip img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.dz-cbar{display:flex;align-items:center;gap:8px;padding:12px 6px 4px}
+.dz-cbar b{font-size:16px;margin-inline-end:auto}
+.dz-cbar small{color:var(--mute);font-weight:600}
+.dz-cbar button{width:40px;height:40px;border-radius:50%;border:1px solid var(--chipline);background:var(--chip);color:var(--text);cursor:pointer}
+.dz-prof{display:block;text-align:start;border:0;cursor:zoom-in;font:inherit;color:inherit;border-radius:22px;padding:10px}
+.dz-prof .cov{position:relative;border-radius:14px;overflow:hidden}
+.dz-prof .cov img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.dz-prof .cov span{position:absolute;right:10px;bottom:10px;font-size:12px;font-weight:700;color:#fff;background:rgba(28,10,6,.75);padding:5px 10px;border-radius:999px}
+.dz-prof b{display:block;margin:12px 6px 2px;font-size:17px}
+.dz-prof small{display:block;margin:0 6px 4px;color:var(--mute)}
+.dz-empty{border:2px dashed var(--chipline);border-radius:22px;padding:34px;text-align:center;color:var(--mute);margin-top:24px}
+.dz-empty b{display:block;color:var(--text);font-size:18px;margin-bottom:4px}
+.lb{position:fixed;inset:0;z-index:120;background:rgba(12,4,2,.92);display:grid;grid-template-columns:64px minmax(0,1fr) 64px;align-items:center;padding:24px 12px}
+.lb[hidden]{display:none}
+.lb-fig{margin:0;display:grid;justify-items:center;gap:10px;max-height:100%}
+.lb-fig img{max-width:100%;max-height:calc(100vh - 110px);border-radius:12px;box-shadow:0 30px 80px -20px #000}
+.lb-fig figcaption{color:#f3d9cf;font-size:14px;font-weight:600;text-align:center}
+.lb-nav,.lb-x{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;font-size:20px;cursor:pointer;justify-self:center}
+.lb-x{position:absolute;top:16px;right:16px;display:grid;place-items:center}
+@media(max-width:600px){.lb{grid-template-columns:minmax(0,1fr);padding:64px 10px 80px}.lb-nav{position:absolute;bottom:18px}.lb-p{left:calc(50% - 60px)}.lb-n{right:calc(50% - 60px)}}
+
 /* timeline */
+
 
 
 
@@ -1189,6 +1247,83 @@ footer .ico{width:42px;height:42px}
   </section>
 </div>
 
+<!-- Design work page (opens at #design) -->
+<div class="subpage" id="sp-design" hidden role="dialog" aria-modal="true" aria-labelledby="dz-title">
+  <div class="sp-top">
+    <a class="btn gl" href="#expertise" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to portfolio</a>
+    <span class="dz-mini"><i id="dz-l1"></i><i id="dz-l2"></i>Design work</span>
+    <a class="btn pri" href="#contact">Hire<span class="dom">&nbsp;me</span></a>
+  </div>
+
+  <header class="band hot sp-hero">
+    <div class="wrap sp-hgrid">
+      <div class="sp-in">
+        <span class="kicker"><b></b>Graphic design: Canva and Adobe</span>
+        <h1 id="dz-title">Design work</h1>
+        <p class="lede">Social media creatives, carousels and company profiles I design in Canva and Adobe, for brands across FMCG, SaaS, real estate, manufacturing and more.</p>
+        <div class="dz-jump">
+          <a class="btn pri mag" href="#dz-static" data-jump>Static images</a>
+          <a class="btn gl mag" href="#dz-carousels" data-jump>Carousels</a>
+          <a class="btn gl mag" href="#dz-profiles" data-jump>Company profiles</a>
+        </div>
+      </div>
+      <div class="dz-anim" aria-hidden="true">
+        <div class="dz-board" id="dz-board">
+          <span class="dz-photo"></span>
+          <span class="dz-h1"></span><span class="dz-h2"></span>
+          <span class="dz-logo"></span>
+          <span class="dz-cta">Shop now</span>
+          <span class="dz-sel"></span>
+        </div>
+        <div class="dz-tools"><span class="dz-chip" id="dz-c1"></span><span class="dz-sw"><i></i><i></i><i></i><i></i></span><span class="dz-chip" id="dz-c2"></span></div>
+        <p class="px-cap">Illustration: a post coming together on the artboard</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="band dz-sec" id="dz-static">
+    <div class="wrap">
+      <div class="dz-head"><h2>Static images</h2><span class="dz-count" id="dz-n-static"></span></div>
+      <p class="sp-p">Single-image posts and ads for social media.</p>
+      <div class="dz-grid" id="dz-g-static"></div>
+    </div>
+  </section>
+
+  <section class="band dz-sec" id="dz-carousels" style="padding-top:0">
+    <div class="wrap">
+      <div class="dz-head"><h2>Carousels</h2><span class="dz-count" id="dz-n-carousels"></span></div>
+      <p class="sp-p">Multi-slide posts that tell a story one swipe at a time.</p>
+      <div class="dz-cars" id="dz-g-carousels"></div>
+    </div>
+  </section>
+
+  <section class="band dz-sec" id="dz-profiles" style="padding-top:0">
+    <div class="wrap">
+      <div class="dz-head"><h2>Company profiles</h2><span class="dz-count" id="dz-n-profiles"></span></div>
+      <p class="sp-p">Brand and company profile documents, page by page.</p>
+      <div class="dz-profs" id="dz-g-profiles"></div>
+    </div>
+  </section>
+
+  <section class="band hot sp-cta">
+    <div class="wrap">
+      <h2>Need creatives like these?</h2>
+      <div class="ctas">
+        <a class="btn pri mag" href="#contact">Get in touch</a>
+        <a class="btn gl" href="#expertise" data-close>Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- lightbox for design work -->
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Design viewer">
+  <button class="lb-x" id="lb-x" aria-label="Close viewer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb-nav lb-p" id="lb-p" aria-label="Previous">&larr;</button>
+  <figure class="lb-fig"><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button class="lb-nav lb-n" id="lb-n" aria-label="Next">&rarr;</button>
+</div>
+
 <script>
 {
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1200,6 +1335,7 @@ const services=[
  ['Paid media (PPC)','Google Ads Search, Display and Performance Max, plus Meta Ads, built around lead generation, audience segmentation, A/B testing and ROAS.'],
  ['SEO','Technical, on-page, off-page and local SEO, keyword research and audits that grew organic traffic 20–50%.'],
  ['Website development','WordPress and Shopify websites, e-commerce stores and landing pages, built faster with AI tools and designed to convert.'],
+ ['Graphic design','Social media creatives, carousels and company profiles, designed in Canva and Adobe.<span id="dz-rowlink"></span>'],
  ['Social media and content','Social strategy, content calendars, copywriting and influencer marketing that grow brands organically.'],
  ['SaaS and product marketing','B2B SaaS marketing, go-to-market, partner programs, and turning marketer feedback into product roadmaps.'],
  ['Affiliate marketing','Designing affiliate programs from scratch: commission tiers, attribution, payouts, partner policy and real-time tracking dashboards, as I did for four SaaS platforms at Nextoria.'],
@@ -1257,7 +1393,7 @@ const RXSOC={"Instagram": "<svg viewBox=\"0 0 264.583 264.583\" aria-hidden=\"tr
 let fxTimer=null;
 const runMock=()=>{const rows=[...document.querySelectorAll('#fx-rows li')];if(reduce){rows.forEach(r=>{r.dataset.s=2;r.querySelector('em').textContent=states[2]});return}
  const set=(r,v)=>{r.dataset.s=v;r.querySelector('em').textContent=states[v]};
- rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();iqClear();lmClear();nfClear();
+ rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();iqClear();lmClear();nfClear();dzClear();
  fxTimer=setInterval(()=>{const ri=Math.floor(i/2);
   if(ri>=rows.length){if(i>=rows.length*2+4){rows.forEach(r=>set(r,0));i=0}else i++;return}
   const r=rows[ri];set(r,i%2+1);r.classList.remove('pulse');void r.offsetWidth;r.classList.add('pulse');i++},850)};
@@ -1399,12 +1535,50 @@ const runNf=()=>{const f=$('#nf-field'),h=$('#nf-h'),sv=$('#nf-save');nfClear();
   const type=()=>{if(!openPage)return;f.textContent=txt.slice(0,++k);if(k<txt.length)nfT.push(setTimeout(type,40));else nfT.push(setTimeout(()=>{sv.classList.add('on');show(t);h.classList.remove('flash');void h.offsetWidth;h.classList.add('flash');n++;nfT.push(setTimeout(cycle,2600))},500))};
   nfT.push(setTimeout(type,600))};
  show(heads[0]);cycle()};
-const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood'),insquad:$('#sp-insquad'),lamsa:$('#sp-lamsa'),nfta:$('#sp-nfta')};let openPage=null,lastY=0;
+/* design work: add creatives here. Files go in img/design/ */
+const DESIGN={
+ statics:[],      // {src:'img/design/x.jpg', alt:'', brand:''}
+ carousels:[],    // {title:'', brand:'', slides:['img/design/a1.jpg', ...]}
+ profiles:[]      // {title:'', brand:'', pages:['img/design/p1.jpg', ...]}
+};
+const DZL={"canva": "<svg viewBox=\"0 0 128 128\" aria-hidden=\"true\"><g fill=\"#00c4cc\"><path d=\"M59.39.152c-.484.051-1.995.23-3.328.387c-5.374.613-11.468 2.227-16.816 4.48C19.891 13.106 5.324 30.849 1.305 51.2C.359 56.04.129 58.418.129 64c0 7.195.715 12.16 2.61 18.434c6.195 20.53 22.323 36.632 42.906 42.851c6.195 1.871 11.187 2.586 18.355 2.586c7.195 0 12.16-.715 18.434-2.61c20.53-6.195 36.632-22.323 42.851-42.906c1.871-6.195 2.586-11.187 2.586-18.355c0-3.047-.152-6.527-.332-7.809c-2.074-14.796-8.168-27.238-18.328-37.402C99.07 8.703 86.68 2.586 72.19.512c-1.996-.282-11.238-.54-12.8-.36m-20.863 40.32c1.36.41 1.996.794 2.918 1.715c1.793 1.82 2.203 2.817 2.203 5.555c0 2.051-.078 2.434-.691 3.508c-1.18 1.996-3.918 3.84-5.812 3.89c-1.333.028-1.278-.562.18-2.097c1.945-2.023 2.226-2.79 2.226-5.813c-.024-2.917-.383-3.914-1.739-4.734c-1.128-.691-2.355-.64-4.148.203c-4.66 2.23-9.703 9.653-11.672 17.258c-2.613 10.137 2.02 18.25 9.649 16.867c2.226-.41 6.425-2.558 8.246-4.25c1.508-1.379 1.508-1.406 1.66-3.12c.336-3.587 2.867-7.169 6.25-8.833c1.558-.77 1.945-.844 4.043-.844c1.996 0 2.457.102 3.43.637c3.097 1.77 2.457 5.89-.895 5.89c-1.945 0-2.945-1-1.535-1.534c1.383-.512.867-2.434-.742-2.868c-1.895-.488-4.047.793-5.403 3.25c-1.64 2.97-1.715 6.504-.156 8.114c1.512 1.613 3.406.336 4.867-3.329c.766-1.867 1.867-2.867 3.149-2.867c1.125 0 1.332.692.843 2.793c-.718 3.25-.23 4.094 1.793 3.098c.664-.309 1.766-1.023 2.43-1.535l1.254-1l.848-4.43c.922-4.965 1.277-5.633 3.172-5.988c1.82-.336 2.23.562 1.562 3.402l-.36 1.59l1.333-1.36c3.148-3.226 7.015-4.812 8.347-3.48c.715.715.637 1.613-.386 4.785c-.485 1.512-1.153 3.895-1.457 5.25c-.461 2.047-.489 2.535-.23 2.868c.82.972 3.327-.028 5.554-2.204l1.305-1.277l.156-2.844c.152-3.277.457-4.453 1.328-5.504c.82-.972 2.305-1.687 3.098-1.484c.793.207.793.973.078 3.227c-1 3.097-.895 10.238.129 10.238c.41 0 2.507-2.2 3.84-4.043l.996-1.36l-.793-.816c-1.383-1.46-1.715-2.406-1.715-4.789c0-1.738.129-2.379.562-3.227c.719-1.328 1.844-2.3 3.176-2.687c1.406-.434 3.148.281 3.863 1.562c.719 1.305.54 4.223-.383 6.223l-.664 1.457h.895c1.23 0 1.715-.305 3.918-2.379c1.152-1.101 2.484-2.05 3.48-2.511c3.918-1.84 8.528-.895 9.293 1.921c.64 2.254-.765 3.84-3.226 3.66c-1.766-.128-2.098-.59-1.074-1.456c1.843-1.54 0-3.508-2.637-2.793c-1.434.386-3.047 1.996-3.89 3.867c-1.692 3.738-.794 8.14 1.636 8.14c.973 0 2.691-1.921 3.355-3.789c.793-2.152 2.457-3.507 3.711-3.02c.692.255.743.946.309 3.122c-.488 2.383-.563 4.61-.18 5.633c.153.382.614 1.101 1.051 1.586c.816.921.844 1.254.152 1.691c-.332.23-.77.129-1.843-.46c-1.485-.77-2.766-2.153-3.227-3.458l-.281-.766l-1.024.766c-.59.41-1.511.871-2.047 1.023c-2.125.563-4.738-.894-5.964-3.351c-.489-.95-.641-3.738-.282-4.813c.204-.59.204-.59-.617-.18c-.433.231-1.355.485-2.07.563c-1.18.13-1.36.258-2.535 1.742c-1.664 2.07-4.61 4.864-5.813 5.454c-2.558 1.277-3.402.918-4.07-1.72l-.461-1.765l-1.102.973c-1.406 1.23-4.222 2.715-5.836 3.074c-1.535.332-3.175-.156-3.84-1.18c-.995-1.535-.663-4.785.922-9.164c1.176-3.25.333-3.3-2.636-.203c-2.203 2.328-3.149 3.992-3.762 6.578c-.64 2.688-1.41 3.66-3.148 4.07c-1.051.231-1.54-.41-1.332-1.816l.152-1.129l-.973.668c-1.383.946-3.125 1.817-4.328 2.149s-2.789-.024-3.172-.692c-.691-1.175-.691-1.175-1.765-.332c-2.332 1.895-5.66 1.356-7.348-1.152l-.54-.793l-1.687 1.562c-4.867 4.454-10.957 6.45-15.464 5.067c-5.735-1.738-8.907-6.656-8.856-13.746c.024-7.117 3.172-14.617 8.473-20.172c2.996-3.125 5.812-4.969 8.68-5.66c2.07-.512 3.328-.485 5.296.129zm0 0\"/><path d=\"M90.418 58.676c-.563.562-.356 2.816.36 4.25c.359.742.742 1.332.87 1.332c.102 0 .332-.59.512-1.309c.64-2.66-.512-5.504-1.742-4.273m0 0\"/></g></svg>", "adobe": "<svg viewBox=\"0 0 256 227\" aria-hidden=\"true\"><path fill=\"#fa0f00\" d=\"m128.024 83.527l60.288 143.042h-39.513l-18.038-45.554H86.642zM256 0v226.54L161.353 0zM94.684 0L0 226.54V0z\"/></svg>"};
+$('#dz-l1').innerHTML=DZL.canva;$('#dz-l2').innerHTML=DZL.adobe;$('#dz-c1').innerHTML=DZL.canva;$('#dz-c2').innerHTML=DZL.adobe;
+const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dzCount=DESIGN.statics.length+DESIGN.carousels.length+DESIGN.profiles.length;
+const empty=w=>`<div class="dz-empty"><b>New ${w} coming soon</b>Fresh work is being added to this section.</div>`;
+const pl=(n,w)=>n?n+' '+w+(n>1?'s':''):'';
+$('#dz-n-static').textContent=pl(DESIGN.statics.length,'design');
+$('#dz-n-carousels').textContent=pl(DESIGN.carousels.length,'carousel');
+$('#dz-n-profiles').textContent=pl(DESIGN.profiles.length,'profile');
+$('#dz-g-static').outerHTML=DESIGN.statics.length?`<div class="dz-grid" id="dz-g-static">${DESIGN.statics.map((d,i)=>`<button class="dz-item" data-lb="s" data-i="${i}" aria-label="View ${esc(d.alt||'design')}"><img src="${esc(d.src)}" alt="${esc(d.alt)}" loading="lazy" onload="this.classList.add('ld')"></button>`).join('')}</div>`:empty('static designs');
+$('#dz-g-carousels').innerHTML=DESIGN.carousels.length?DESIGN.carousels.map((c,i)=>`<div class="dz-car glass"><div class="dz-strip">${c.slides.map((sl,j)=>`<button data-lb="c" data-i="${i}" data-j="${j}" aria-label="View slide ${j+1}"><img src="${esc(sl)}" alt="${esc(c.title)} slide ${j+1}" loading="lazy"></button>`).join('')}</div><div class="dz-cbar"><b>${esc(c.title)}</b><small>${c.slides.length} slides</small><button data-cs="-1" aria-label="Previous slide">&larr;</button><button data-cs="1" aria-label="Next slide">&rarr;</button></div></div>`).join(''):'';
+if(!DESIGN.carousels.length)$('#dz-g-carousels').outerHTML=empty('carousels');
+$('#dz-g-profiles').innerHTML=DESIGN.profiles.length?DESIGN.profiles.map((pf,i)=>`<button class="dz-prof glass" data-lb="p" data-i="${i}"><span class="cov"><img src="${esc(pf.pages[0])}" alt="${esc(pf.title)} cover" loading="lazy"><span>${pf.pages.length} pages</span></span><b>${esc(pf.title)}</b><small>${esc(pf.brand)}</small></button>`).join(''):'';
+if(!DESIGN.profiles.length)$('#dz-g-profiles').outerHTML=empty('company profiles');
+setTimeout(()=>{if(dzCount){const rl=$('#dz-rowlink');if(rl)rl.innerHTML=' <a class="rowlink" href="#design" data-open="design">View my designs &rarr;</a>';const nl=$('#links');if(nl&&!nl.querySelector('[href="#design"]'))nl.querySelector('[href="#brands"]').insertAdjacentHTML('afterend','<a href="#design">Design</a>')}},0);
+document.querySelectorAll('[data-cs]').forEach(b=>b.addEventListener('click',()=>{const st=b.closest('.dz-car').querySelector('.dz-strip');st.scrollBy({left:st.clientWidth*b.dataset.cs,behavior:reduce?'auto':'smooth'})}));
+document.querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));t&&t.scrollIntoView({behavior:reduce?'auto':'smooth'})}));
+/* lightbox */
+let lbList=[],lbI=0,lbCap='';const lb=$('#lb'),lbImg=$('#lb-img');
+const lbShow=()=>{lbImg.src=lbList[lbI].src;lbImg.alt=lbList[lbI].alt||'';$('#lb-cap').textContent=(lbList[lbI].cap||'')+(lbList.length>1?`  ${lbI+1} / ${lbList.length}`:'');$('#lb-p').hidden=$('#lb-n').hidden=lbList.length<2};
+const lbOpen=(list,i)=>{lbList=list;lbI=i;lbShow();lb.hidden=false;$('#lb-x').focus()};
+const lbClose=()=>{lb.hidden=true;lbImg.removeAttribute('src')};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-lb]');if(!b)return;const i=+b.dataset.i;
+ if(b.dataset.lb==='s')lbOpen(DESIGN.statics.map(d=>({src:d.src,alt:d.alt,cap:d.brand})),i);
+ if(b.dataset.lb==='c'){const c=DESIGN.carousels[i];lbOpen(c.slides.map(sl=>({src:sl,alt:c.title,cap:c.title})),+b.dataset.j)}
+ if(b.dataset.lb==='p'){const pf=DESIGN.profiles[i];lbOpen(pf.pages.map(pg=>({src:pg,alt:pf.title,cap:pf.title})),0)}});
+$('#lb-x').addEventListener('click',lbClose);$('#lb-p').addEventListener('click',()=>{lbI=(lbI-1+lbList.length)%lbList.length;lbShow()});$('#lb-n').addEventListener('click',()=>{lbI=(lbI+1)%lbList.length;lbShow()});
+lb.addEventListener('click',e=>{if(e.target===lb)lbClose()});
+addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape'){lbClose();e.stopImmediatePropagation()}if(e.key==='ArrowRight')$('#lb-n').click();if(e.key==='ArrowLeft')$('#lb-p').click()},true);
+let dzT=[];const dzClear=()=>{dzT.forEach(clearTimeout);dzT=[]};
+const runDz=()=>{const bd=$('#dz-board');dzClear();if(reduce){bd.className='dz-board s1 s2 s3 s4';return}
+ const cycle=(alt)=>{if(!openPage)return;bd.className='dz-board'+(alt?' alt':'');['s1','s2','s3','s4'].forEach((c,i)=>dzT.push(setTimeout(()=>bd.classList.add(c),400+i*650)));dzT.push(setTimeout(()=>cycle(!alt),5200))};cycle(false)};
+const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood'),insquad:$('#sp-insquad'),lamsa:$('#sp-lamsa'),nfta:$('#sp-nfta'),design:$('#sp-design')};let openPage=null,lastY=0;
 const route=()=>{const h=location.hash.slice(1),pg=pages[h];
- if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();if(h==='insquad')runIq();if(h==='lamsa')runLm();if(h==='nfta')runNf();pg.querySelector('[data-close]').focus({preventScroll:true})}
+ if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();if(h==='insquad')runIq();if(h==='lamsa')runLm();if(h==='nfta')runNf();if(h==='design')runDz();pg.querySelector('[data-close]').focus({preventScroll:true})}
  else if(!pg&&openPage){const p=openPage;openPage=null;p.classList.remove('open');document.body.style.overflow='';clearInterval(fxTimer);setTimeout(()=>{p.hidden=true},reduce?0:800);const t=h&&document.getElementById(h);if(t)t.scrollIntoView({behavior:'auto'})}};
 document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',e=>{const r=a.getBoundingClientRect(),pg=pages[a.dataset.open];pg.style.setProperty('--cx',r.left+r.width/2+'px');pg.style.setProperty('--cy',r.top+r.height/2+'px')}));
-addEventListener('hashchange',route);addEventListener('keydown',e=>{if(e.key==='Escape'&&openPage)location.hash='brands'});route();
+addEventListener('hashchange',route);addEventListener('keydown',e=>{if(e.key==='Escape'&&openPage){const c=openPage.querySelector('[data-close]');location.hash=c?c.getAttribute('href').slice(1):'brands'}});route();
 const journey=[
  ['Jul 2026 – Present','Marketing Specialist, Nextoria Information Technology, Dubai','AI-driven Google and Meta ads for 8 brands, an affiliate program across 4 SaaS platforms, product roadmap input, SEO for PersonaXpand and Findxpand, and social calendars for every Nextoria brand.','nextoria'],
  ['Jan 2025 – Nov 2025','Digital Marketing Executive, Vaishno Ventures, Hyderabad','Google and Meta Ads for premium real estate with AED 22,000–31,000 monthly spend and 500–700 qualified leads a month, 20–50% organic traffic growth, and 25+ influencer partnerships.','vaishno'],
