@@ -1596,7 +1596,7 @@ const MF_SHOTS=[['mf12','Papy Snacks product shot'],['mf05','Chipstix product sh
 const mfGal=(list,g)=>list.map(([k,a],i)=>`<button class="dz-item" data-lb="m" data-g="${g}" data-i="${i}" aria-label="View ${a}"><img src="img/mf/${k}-s.webp" alt="${a}" loading="lazy" onload="this.classList.add('ld')"></button>`).join('');
 $('#mf-g-ads').innerHTML=mfGal(MF_ADS,'a');$('#mf-g-shots').innerHTML=mfGal(MF_SHOTS,'s');
 /* Modern Food videos: add entries as [file-stem, title, length, aspect] — files live in img/mf/video/ (stem.mp4 + stem-poster.webp) */
-const MF_VIDEOS=[['dubai-pofak-ad','Dubai Pofak ad','35s','16/9']];
+const MF_VIDEOS=[['dubai-pofak-ad','Dubai Pofak ad','35s','16/9'],['dubai-pofak-short-ad','Dubai Pofak, cheesy crunch','18s','16/9'],['chipstix-ad','Chipstix ad','13s','16/9'],['dubai-bites-ad','Dubai Bites ad','12s','16/9']];
 (()=>{const g=$('#mf-g-videos');if(!g)return;
 g.classList.toggle('two',MF_VIDEOS.length>1);
 g.innerHTML=MF_VIDEOS.map(([k,t,d,ar])=>`<figure class="mfv-card" style="--ar:${ar}"><video controls playsinline preload="none" poster="img/mf/video/${k}-poster.webp" aria-label="${t}"><source src="img/mf/video/${k}.mp4" type="video/mp4"></video><figcaption>${t}<span>${d}</span></figcaption></figure>`).join('');
