@@ -1037,6 +1037,17 @@ footer .ico{width:42px;height:42px}
     </div>
   </section>
 
+  <section class="band" style="padding-top:0" id="mf-creatives">
+    <div class="wrap">
+      <div class="dz-head"><h2>Creatives</h2><span class="dz-count">17 designs</span></div>
+      <p class="sp-p">Static creatives I made for Modern Food using AI tools: social and B2B ads, a print banner, and product shots for every range.</p>
+      <h3 class="mf-sub">Ads and banners</h3>
+      <div class="dz-grid" id="mf-g-ads"></div>
+      <h3 class="mf-sub">Product shots</h3>
+      <div class="dz-grid" id="mf-g-shots"></div>
+    </div>
+  </section>
+
   <section class="band" style="padding-top:0">
     <div class="wrap glass panel">
       <h2>My contribution</h2>
@@ -1447,7 +1458,7 @@ const card=([h,p])=>`<div><b>${h}</b><p>${p}</p></div>`;
 $('#mf-c1').innerHTML=[
  ['Meta ads, every day','Run lead-generation campaigns on Meta (Facebook and Instagram) that bring in new leads daily.'],
  ['Social media management','Manage Modern Food\'s social media: planning content, publishing posts and growing the brand\'s pages.'],
- ['Videos and creatives','Create the videos and creatives for ads and social media.'],
+ ['Videos and creatives','Create the videos and creatives for ads and social media, using AI tools.'],
  ['Lead handling','Manage incoming leads and pass them to the right people quickly.'],
  ['Working with sales','Collaborate with the sales department to turn leads into orders.'],
  ['Monthly reporting','Report lead quality and the sales they produce every month, and track the trend over time.']].map(card).join('');
@@ -1558,6 +1569,10 @@ if(!DESIGN.profiles.length)$('#dz-g-profiles').outerHTML=empty('company profiles
 setTimeout(()=>{if(dzCount){const rl=$('#dz-rowlink');if(rl)rl.innerHTML=' <a class="rowlink" href="#design" data-open="design">View my designs &rarr;</a>';const nl=$('#links');if(nl&&!nl.querySelector('[href="#design"]'))nl.querySelector('[href="#brands"]').insertAdjacentHTML('afterend','<a href="#design">Design</a>')}},0);
 document.querySelectorAll('[data-cs]').forEach(b=>b.addEventListener('click',()=>{const st=b.closest('.dz-car').querySelector('.dz-strip');st.scrollBy({left:st.clientWidth*b.dataset.cs,behavior:reduce?'auto':'smooth'})}));
 document.querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));t&&t.scrollIntoView({behavior:reduce?'auto':'smooth'})}));
+const MF_ADS=[['mf04','Dubai Pofak ad: Make every bite extraordinary'],['mf16','Heritage snacks trial offer for retailers'],['mf17','B2B ad: What if snacks sold themselves?'],['mf14','The Dubai snack people remember'],['mf15','Papy Snacks: trusted by retail and foodservice'],['mf03','Timeless Crunch print banner, 140 x 130 cm']];
+const MF_SHOTS=[['mf12','Papy Snacks product shot'],['mf05','Chipstix product shot'],['mf08','Dubai Bites product shot'],['mf09','Dubai Pofak outdoor shot'],['mf02','Dubai Pofak lifestyle shot'],['mf11','Papy Snacks pour shot'],['mf06','Chipstix pour shot'],['mf07','Dubai Bites pour shot'],['mf13','The full Modern Food range'],['mf01','Dubai Pofak kitchen scene'],['mf10','Dubai Pofak kitchen scene, wide']];
+const mfGal=(list,g)=>list.map(([k,a],i)=>`<button class="dz-item" data-lb="m" data-g="${g}" data-i="${i}" aria-label="View ${a}"><img src="img/mf/${k}-s.webp" alt="${a}" loading="lazy" onload="this.classList.add('ld')"></button>`).join('');
+$('#mf-g-ads').innerHTML=mfGal(MF_ADS,'a');$('#mf-g-shots').innerHTML=mfGal(MF_SHOTS,'s');
 /* lightbox */
 let lbList=[],lbI=0,lbCap='';const lb=$('#lb'),lbImg=$('#lb-img');
 const lbShow=()=>{lbImg.src=lbList[lbI].src;lbImg.alt=lbList[lbI].alt||'';$('#lb-cap').textContent=(lbList[lbI].cap||'')+(lbList.length>1?`  ${lbI+1} / ${lbList.length}`:'');$('#lb-p').hidden=$('#lb-n').hidden=lbList.length<2};
@@ -1566,6 +1581,7 @@ const lbClose=()=>{lb.hidden=true;lbImg.removeAttribute('src')};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lb]');if(!b)return;const i=+b.dataset.i;
  if(b.dataset.lb==='s')lbOpen(DESIGN.statics.map(d=>({src:d.src,alt:d.alt,cap:d.brand})),i);
  if(b.dataset.lb==='c'){const c=DESIGN.carousels[i];lbOpen(c.slides.map(sl=>({src:sl,alt:c.title,cap:c.title})),+b.dataset.j)}
+ if(b.dataset.lb==='m'){const L=b.dataset.g==='a'?MF_ADS:MF_SHOTS;lbOpen(L.map(([k,a])=>({src:`img/mf/${k}-l.webp`,alt:a,cap:a})),i)}
  if(b.dataset.lb==='p'){const pf=DESIGN.profiles[i];lbOpen(pf.pages.map(pg=>({src:pg,alt:pf.title,cap:pf.title})),0)}});
 $('#lb-x').addEventListener('click',lbClose);$('#lb-p').addEventListener('click',()=>{lbI=(lbI-1+lbList.length)%lbList.length;lbShow()});$('#lb-n').addEventListener('click',()=>{lbI=(lbI+1)%lbList.length;lbShow()});
 lb.addEventListener('click',e=>{if(e.target===lb)lbClose()});
