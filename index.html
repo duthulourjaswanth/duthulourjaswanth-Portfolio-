@@ -547,7 +547,31 @@ a{color:inherit}
 .dz-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:14px;scrollbar-width:none}
 .dz-strip::-webkit-scrollbar{display:none}
 .dz-strip button{flex:0 0 100%;min-width:0;scroll-snap-align:start;padding:0;border:0;background:none;cursor:zoom-in}
-.dz-strip img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.dz-strip img{display:block;width:100%;aspect-ratio:var(--sr,4/5);object-fit:cover}
+.dz-car.multi .dz-strip{gap:12px}
+.dz-car.multi .dz-strip button{flex:0 0 calc((100% - 24px)/3);border-radius:12px;overflow:hidden}
+@media(max-width:760px){.dz-car.multi .dz-strip button{flex:0 0 82%}}
+.dz-dots{display:flex;gap:6px;margin-inline-end:auto}.dz-dots i{width:7px;height:7px;border-radius:50%;background:var(--chipline);transition:background .3s,width .3s}.dz-dots i.on{background:var(--hot);width:18px;border-radius:4px}
+.vk-logo{height:40px;width:auto;margin-inline:auto}@media(max-width:600px){.vk-logo{height:30px;flex:1 1 0;width:0;object-fit:contain}}
+.vk-anim{display:grid;justify-items:center;gap:12px}
+.vk-phone{position:relative;width:min(100%,320px);padding:12px;border-radius:38px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 40px 70px -35px rgba(60,10,0,.8)}
+.vk-ig{display:flex;align-items:center;gap:8px;padding:4px 6px 10px;font-size:13px;font-weight:700;color:#262626}
+.vk-ig i{width:30px;height:30px;border-radius:50%;background:#1065a0 url(img/vooki/wordmark.webp) center/70% no-repeat;filter:none;box-shadow:0 0 0 2px #fff,0 0 0 4px #ff8a3d}
+.vk-ig i{background:#fff url(img/vooki/wordmark.webp) center/78% no-repeat}
+.vk-ig small{font-weight:500;color:#8e8e8e;font-size:11px;display:block}
+.vk-ig .n{margin-inline-start:auto;font-size:11px;color:#fff;background:rgba(0,0,0,.55);padding:3px 8px;border-radius:999px}
+.vk-view{position:relative;overflow:hidden;border-radius:6px;aspect-ratio:1}
+.vk-track{display:flex;height:100%;transition:transform .7s cubic-bezier(.65,0,.25,1)}
+.vk-track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;display:block}
+.vk-heart{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px;opacity:0;transform:scale(.3);pointer-events:none}
+.vk-heart.pop{animation:vkh 1s cubic-bezier(.34,1.56,.64,1)}
+@keyframes vkh{30%{opacity:1;transform:scale(1.1)}60%{opacity:1;transform:scale(.95)}100%{opacity:0;transform:scale(1)}}
+.vk-bar{display:flex;align-items:center;gap:12px;padding:10px 6px 4px;color:#262626}
+.vk-bar svg{width:22px;height:22px}
+.vk-bar .lk.on path{fill:#ed4956;stroke:#ed4956}
+.vk-dots{display:flex;gap:4px;margin-inline:auto;transform:translateX(-22px)}
+.vk-dots i{width:6px;height:6px;border-radius:50%;background:#c7c7c7;transition:background .3s}.vk-dots i.on{background:#0095f6}
+.vk-likes{padding:2px 6px 4px;font-size:12px;font-weight:700;color:#262626}
 .dz-cbar{display:flex;align-items:center;gap:8px;padding:12px 6px 4px}
 .dz-cbar b{font-size:16px;margin-inline-end:auto}
 .dz-cbar small{color:var(--mute);font-weight:600}
@@ -1177,6 +1201,66 @@ footer .ico{width:42px;height:42px}
   </section>
 </div>
 
+<!-- Vooki project (opens at #vooki) -->
+<div class="subpage" id="sp-vooki" hidden role="dialog" aria-modal="true" aria-labelledby="vk-title">
+  <div class="sp-top">
+    <a class="btn gl" href="#brands" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to portfolio</a>
+    <img class="vk-logo" src="img/vooki/wordmark.webp" alt="Vooki" width="600" height="193">
+    <a class="btn pri" href="https://www.vooki.in">Visit<span class="dom">&nbsp;vooki.in</span></a>
+  </div>
+
+  <header class="band hot sp-hero">
+    <div class="wrap sp-hgrid">
+      <div class="sp-in">
+        <span class="kicker"><b></b>FMCG: social media content</span>
+        <h1 id="vk-title">Vooki</h1>
+        <p class="lede">Vooki makes eco-friendly home cleaning products, from surface sprays and disinfectants to glass, floor and toilet cleaners. I created social media creatives, GIFs, static images and carousels for the brand.</p>
+        <div class="ctas">
+          <a class="btn pri mag" href="#vk-carousels" data-jump>See the carousel</a>
+          <a class="btn gl mag" href="#contact">Work with me</a>
+        </div>
+      </div>
+      <div class="vk-anim" aria-hidden="true">
+        <div class="vk-phone">
+          <div class="vk-ig"><i></i><span>vooki.in<small>Sponsored</small></span><span class="n" id="vk-n">1/7</span></div>
+          <div class="vk-view"><div class="vk-track" id="vk-track"></div>
+            <svg class="vk-heart" id="vk-heart" viewBox="0 0 24 24"><path fill="#fff" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+          </div>
+          <div class="vk-bar"><svg class="lk" id="vk-lk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8.5 8.5 0 0 1-12.4 7.6L3 21l1.4-5.4A8.5 8.5 0 1 1 21 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3L11 13M22 3l-7 18-4-8-8-4z"/></svg><span class="vk-dots" id="vk-dots"></span></div>
+          <div class="vk-likes" id="vk-likes">Liked by your team and others</div>
+        </div>
+        <p class="px-cap">Illustration: the carousel as it appears in the feed</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="band" id="vk-carousels">
+    <div class="wrap">
+      <div class="dz-head"><h2>Carousel</h2><span class="dz-count">7 slides</span></div>
+      <p class="sp-p">"5 Cleaning Tips for Busy Offices &amp; Hotels": a swipeable post that pairs each tip with the right Vooki product, from disinfecting high-touch spots to keeping floors shining, and ends with where to buy.</p>
+      <div id="vk-g-car"></div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="wrap glass panel">
+      <h2>My contribution</h2>
+      <p class="sp-p">I created social media content for Vooki across formats, keeping every piece on brand and tied back to a product.</p>
+      <div class="contrib" id="vk-contrib"></div>
+    </div>
+  </section>
+
+  <section class="band hot sp-cta">
+    <div class="wrap">
+      <h2>See the Vooki range</h2>
+      <div class="ctas">
+        <a class="btn pri mag" href="https://www.vooki.in">Visit www.vooki.in</a>
+        <a class="btn gl" href="#brands" data-close>Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- Lamsa Clinic website project (opens at #lamsa) -->
 <div class="subpage" id="sp-lamsa" hidden role="dialog" aria-modal="true" aria-labelledby="lm-title">
   <div class="sp-top">
@@ -1412,7 +1496,7 @@ const cases=[
 const JLOGO={nextoria:'<img src="img/nextoria.jpg" alt="" width="480" height="202">',vaishno:'<img src="img/vaishno.png" alt="" width="440" height="107">',siena:'<img src="img/siena.png" alt="" width="300" height="300">',zipzapcart:'<img src="img/zipzapcart.png" alt="" width="420" height="121">',accenture:"<svg viewBox=\"0 0 24 24\"><path fill=\"#a100ff\" d=\"m.66 16.95l13.242-4.926L.66 6.852V0l22.68 9.132v5.682L.66 24Z\"/></svg>",wipro:"<svg viewBox=\"0 0 24 24\"><path fill=\"#341c53\" d=\"M15.542 12.035c0-.875-.69-1.585-1.542-1.585c-.85 0-1.541.71-1.541 1.585c0 .876.69 1.585 1.542 1.585c.85 0 1.54-.71 1.54-1.585zM14 12.872c-.437 0-.792-.375-.792-.837c0-.46.355-.836.793-.836c.437 0 .792.375.792.836c0 .462-.355.837-.792.837m-9.584-2.208l-.927 2.873a.13.13 0 0 1-.115.084H3.29a.16.16 0 0 1-.129-.078l-.95-1.825l-.95 1.825a.16.16 0 0 1-.128.078h-.085a.13.13 0 0 1-.115-.084l-.927-2.873c-.022-.07.019-.126.092-.126h.567c.048 0 .1.038.115.084l.469 1.452l.805-1.546a.16.16 0 0 1 .129-.078h.057a.16.16 0 0 1 .129.078l.805 1.546l.468-1.452a.13.13 0 0 1 .116-.084h.567c.073 0 .114.057.091.126M5.784 13.4a.13.13 0 0 1-.132.133H5.08a.13.13 0 0 1-.132-.133v-2.73c0-.073.059-.132.132-.132h.572a.13.13 0 0 1 .132.132zm.741-2.73v4.315c0 .074.06.133.132.133h.573a.13.13 0 0 0 .132-.133v-1.497c.242.085.51.132.792.132c.803 0 1.454-.71 1.454-1.585s-.651-1.585-1.454-1.585c-.394 0-.75.171-1.012.449l-.102-.278a.14.14 0 0 0-.119-.083h-.264a.13.13 0 0 0-.132.132m.837.9a.75.75 0 0 1 .637-.371c.424 0 .767.374.767.836s-.344.837-.767.837c-.24 0-.46-.063-.637-.17zm3.575 1.963h-.572a.13.13 0 0 1-.132-.132V10.67c0-.073.059-.132.132-.132h.264c.048 0 .102.037.118.083l.102.277s.32-.448.87-.448s.617.19.571.295l-.197.445c-.025.058-.09.1-.177.066a.73.73 0 0 0-.847.233V13.4a.13.13 0 0 1-.132.132m4.69-10.343a.704.704 0 0 1 .862-.497a.704.704 0 1 1-.364 1.36a.705.705 0 0 1-.498-.863m1.846 2.79a.53.53 0 0 1 .194.722a.53.53 0 0 1-.722.193a.53.53 0 0 1-.194-.722a.53.53 0 0 1 .722-.193m.664 10.968a.573.573 0 0 1 0-.81a.57.57 0 0 1 .81 0a.573.573 0 0 1 0 .81a.573.573 0 0 1-.81 0M15.68 9.571a.242.242 0 0 1-.42-.242a.242.242 0 1 1 .42.242m-.42 5.1a.242.242 0 0 1 .42-.242a.243.243 0 0 1-.088.331a.243.243 0 0 1-.331-.089m3.73-2.67a.517.517 0 1 1-.516-.518a.517.517 0 0 1 .517.517m-1.173-8.112a.749.749 0 1 1 1.296.75a.749.749 0 0 1-1.296-.75m-5.43 10.575a.154.154 0 1 1 .267.153a.154.154 0 0 1-.267-.154m2.804-8.792a.484.484 0 1 1 .935.25a.484.484 0 0 1-.593.343a.484.484 0 0 1-.342-.593m-1.2 2.18a.308.308 0 1 1 0-.617a.308.308 0 1 1 0 .617m0 1.013a.198.198 0 1 1 0 .396a.198.198 0 0 1 0-.396m0-2.84a.44.44 0 1 1 0-.882a.44.44 0 0 1 0 .881m-1.607 3.515a.154.154 0 1 1 .21.056a.154.154 0 0 1-.21-.056m1.607 5.602a.198.198 0 1 1 0-.396a.198.198 0 0 1 0 .396m0 1.013a.308.308 0 0 1 0 .616a.308.308 0 1 1 0-.616m3.494-2.139a.44.44 0 0 1 .602-.16a.44.44 0 0 1 .16.6a.44.44 0 0 1-.762-.44m-3.494 3.966a.44.44 0 1 1 0 .88a.44.44 0 0 1 0-.88m9.577-8.543a.968.968 0 1 1-1.87.502a.968.968 0 0 1 1.87-.502m-6.694 6.002a.396.396 0 0 1 .56-.56a.396.396 0 0 1 0 .56a.396.396 0 0 1-.56 0m.974-4.47a.484.484 0 0 1 .342-.592a.484.484 0 1 1 .25.935a.484.484 0 0 1-.592-.342m1.407-2.715a.617.617 0 0 1 .617 1.068a.617.617 0 0 1-.617-1.068m-.31-.391a.57.57 0 0 1-.81 0a.573.573 0 0 1 0-.81a.57.57 0 0 1 .81 0a.573.573 0 0 1 0 .81M17.85 13.03a.484.484 0 0 1 .935.25a.484.484 0 1 1-.935-.25m-3.02-5.425a.33.33 0 0 1 .404-.234a.33.33 0 0 1-.17.638a.33.33 0 0 1-.234-.404m6.47-.835a.88.88 0 0 1 1.203.321a.88.88 0 1 1-1.525.881a.88.88 0 0 1 .322-1.202m-3.05 2.777a.44.44 0 1 1-.762.44a.44.44 0 1 1 .763-.44m1.324.96a.66.66 0 0 1 .466-.808a.66.66 0 0 1 .342 1.275a.66.66 0 0 1-.808-.467m0 2.986a.66.66 0 1 1 1.275.341a.66.66 0 1 1-1.275-.341m.859-.736a.757.757 0 1 1 0-1.514a.757.757 0 0 1 0 1.514m-.676-6.514a.79.79 0 0 1 0-1.121a.79.79 0 0 1 1.121 0a.793.793 0 0 1-1.12 1.12M16.534 8.31a.352.352 0 1 1-.61-.353a.352.352 0 0 1 .61.352m-.639 5.586a.264.264 0 0 1 .374 0a.265.265 0 0 1 0 .373a.264.264 0 0 1-.374 0a.264.264 0 0 1 0-.373m0-4.167a.264.264 0 0 1 .374 0a.264.264 0 1 1-.374 0m.515 3.992a.287.287 0 0 1-.105-.391a.286.286 0 0 1 .391-.105a.286.286 0 0 1-.286.496m-.486 2.32a.35.35 0 0 1 .129-.48a.35.35 0 0 1 .481.128a.35.35 0 0 1-.129.481a.35.35 0 0 1-.481-.129m.877-5.659a.286.286 0 0 1-.105.391a.287.287 0 0 1-.391-.105a.286.286 0 0 1 .496-.286m-.249.934a.308.308 0 1 1 .596-.16a.308.308 0 0 1-.596.16m0 1.366a.308.308 0 1 1 .596.16a.308.308 0 0 1-.596-.16m.401-.346a.337.337 0 1 1 0-.673a.337.337 0 0 1 0 .673m.483-3.775a.396.396 0 1 1-.56.561a.396.396 0 0 1 .56-.56M10.02 20.013a.573.573 0 0 1-.782.21a.573.573 0 0 1 .573-.992a.573.573 0 0 1 .21.782m4.794-11.068a.22.22 0 1 1-.114.425a.22.22 0 0 1 .114-.425m-2.539 11.837a.616.616 0 1 1-1.19-.32a.616.616 0 0 1 1.19.32m2.539-5.726a.22.22 0 0 1-.114-.426a.22.22 0 1 1 .114.426m-.16 5.874a.66.66 0 0 1-.66.66a.66.66 0 0 1-.661-.66a.66.66 0 0 1 1.32 0m-1.47-5.922a.177.177 0 0 1-.124-.216a.177.177 0 0 1 .216-.124a.176.176 0 0 1-.092.34m-.07 1.371a.286.286 0 1 1-.553-.148a.286.286 0 0 1 .552.148m-2.796-2.273a.22.22 0 0 1-.381.22a.22.22 0 0 1 .08-.3a.22.22 0 0 1 .301.08m1.67 1.882a.264.264 0 1 1-.457-.264a.264.264 0 0 1 .458.264m.015-1.825a.132.132 0 1 1-.187-.187a.133.133 0 0 1 .187 0a.133.133 0 0 1 0 .187m-.996.81a.242.242 0 1 1-.343.342a.24.24 0 0 1 0-.342a.24.24 0 0 1 .343 0m.078 2.756a.35.35 0 0 1-.481.129a.352.352 0 1 1 .481-.129m9.792.029a.793.793 0 0 1 0 1.12a.793.793 0 0 1-1.12-1.12a.793.793 0 0 1 1.12 0m-1.62-2.01a.617.617 0 0 1-.225-.843a.617.617 0 0 1 .842-.225a.617.617 0 0 1-.617 1.067m3.245 1.16a.88.88 0 1 1-1.525-.88a.88.88 0 0 1 1.525.88m-7.267-.28a.33.33 0 1 1-.17-.637a.33.33 0 0 1 .17.638M24 12a1.058 1.058 0 1 1-2.116 0A1.058 1.058 0 0 1 24 12m-.43 2.564a.97.97 0 1 1-1.872-.502a.97.97 0 0 1 1.872.502m-6.583 5.881a.704.704 0 1 1-1.36.364a.704.704 0 0 1 .498-.862a.704.704 0 0 1 .862.498m2.125-1.082a.75.75 0 0 1-.274 1.022a.75.75 0 0 1-1.022-.274a.75.75 0 0 1 .274-1.023a.75.75 0 0 1 1.022.274zm-3.922-1.035a.484.484 0 1 1 .935-.25a.484.484 0 0 1-.935.25m2.283-.308a.528.528 0 1 1-.528-.915a.528.528 0 0 1 .528.915m-4.76.28a.396.396 0 0 1-.766-.205a.396.396 0 0 1 .485-.28a.396.396 0 0 1 .28.485m-.897-8.276a.132.132 0 1 1 .187-.187a.132.132 0 0 1-.187.187m.076-1.651a.264.264 0 0 1-.265-.458a.264.264 0 0 1 .265.458m-.807-4.835a.616.616 0 1 1 1.19-.32a.616.616 0 0 1-1.19.32m-.848 6.055a.22.22 0 1 1-.22.381a.22.22 0 0 1-.08-.3a.22.22 0 0 1 .3-.081m.77-.908a.242.242 0 0 1-.343.343a.242.242 0 0 1 .343-.343m-.532-2.062a.352.352 0 0 1 .61-.352a.352.352 0 0 1-.61.352m2.858-3.552a.66.66 0 0 1 1.32 0a.66.66 0 0 1-.66.66a.66.66 0 0 1-.66-.66m-.149 5.922a.176.176 0 1 1 .091.34a.176.176 0 0 1-.09-.34m-.957-3.573a.396.396 0 0 1 .205.765a.396.396 0 0 1-.485-.28a.397.397 0 0 1 .28-.485m.535 1.999a.286.286 0 1 1 .148.553a.286.286 0 0 1-.148-.553M9.03 4.559a.57.57 0 0 1 .21-.781a.573.573 0 0 1 .572.991a.57.57 0 0 1-.782-.21m-.37 10.505a.264.264 0 1 1-.458.264a.264.264 0 0 1 .458-.264M4.92 9.46a.46.46 0 0 1 .566-.327a.46.46 0 0 1 .327.566a.46.46 0 0 1-.566.327a.46.46 0 0 1-.327-.567m.9-2.17a.484.484 0 1 1 .178.662a.485.485 0 0 1-.178-.662m2.23 10.642a.53.53 0 0 1 0 .747a.53.53 0 0 1-.748 0a.53.53 0 0 1 0-.747a.53.53 0 0 1 .748 0m-1.373-1.722a.484.484 0 1 1-.839.485a.484.484 0 0 1 .839-.485m.626-10.14a.53.53 0 0 1 0-.746a.53.53 0 0 1 .747 0a.53.53 0 0 1 0 .747a.53.53 0 0 1-.747 0m2.366 1.62a.31.31 0 0 1-.436 0a.31.31 0 0 1 0-.436a.31.31 0 0 1 .436 0a.31.31 0 0 1 0 .436m0 8.623a.308.308 0 1 1-.436.435a.308.308 0 0 1 .436-.436m-1.466-7.64a.264.264 0 1 1 .457.264a.264.264 0 0 1-.458-.264\"/></svg>"};
 const brandLogos=[
  ['modernfood','Modern Food','#ffffff','Oven-baked snacks made in Dubai since 1981. I run Meta ads for daily leads, manage social media, create the videos and creatives, report lead quality and sales with the sales team, and did end-to-end SEO that took the website into Google\'s top 5.','modernfood','Ads, SEO, social and strategy','FMCG'],
- ['vooki','Vooki','#ebebeb','An eco-friendly home cleaning range, from surface sprays to disinfectants. I created its social media creatives, GIFs and static images.','','Creatives, GIFs and statics','FMCG','img/logo-vooki.webp','full'],
+ ['vooki','Vooki','#ebebeb','An eco-friendly home cleaning range, from surface sprays to disinfectants. I created its social media creatives, GIFs, static images and carousels.','vooki','Creatives, GIFs and carousels','FMCG','img/logo-vooki.webp','full'],
  ['findxpand','Findxpand','#ffffff','An AI-powered SEO tool where AI fixes errors and specialists approve them. I led the ideation, guided the developers end to end and designed the logo.','findxpand','Product and logo','SaaS, IT'],
  ['reachxpand','ReachXpand','#ffffff','An AI social media management tool for businesses, organisations, small businesses and vendors. I run quality checks, share social media expertise, propose new features, and use it daily to post for every company in the Hassan Bin Al Shaikh Group.','reachxpand','Product','SaaS, IT'],
  ['personaxpand','PersonaXpand','#ffffff','A social media management tool for personal branding, for influencers and everyday people. I run quality checks, share social media expertise, propose new features and lead its SEO and website content.','personaxpand','Product','SaaS, IT'],
@@ -1444,7 +1528,7 @@ const RXSOC={"Instagram": "<svg viewBox=\"0 0 264.583 264.583\" aria-hidden=\"tr
 let fxTimer=null;
 const runMock=()=>{const rows=[...document.querySelectorAll('#fx-rows li')];if(reduce){rows.forEach(r=>{r.dataset.s=2;r.querySelector('em').textContent=states[2]});return}
  const set=(r,v)=>{r.dataset.s=v;r.querySelector('em').textContent=states[v]};
- rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();iqClear();lmClear();nfClear();dzClear();
+ rows.forEach(r=>set(r,0));let i=0;clearInterval(fxTimer);clearTimeout(rxHero);pxClear();mfClear();iqClear();lmClear();nfClear();dzClear();vkClear();
  fxTimer=setInterval(()=>{const ri=Math.floor(i/2);
   if(ri>=rows.length){if(i>=rows.length*2+4){rows.forEach(r=>set(r,0));i=0}else i++;return}
   const r=rows[ri];set(r,i%2+1);r.classList.remove('pulse');void r.offsetWidth;r.classList.add('pulse');i++},850)};
@@ -1590,7 +1674,9 @@ const runNf=()=>{const f=$('#nf-field'),h=$('#nf-h'),sv=$('#nf-save');nfClear();
 /* design work: add creatives here. Files go in img/design/ */
 const DESIGN={
  statics:[],      // {src:'img/design/x.jpg', alt:'', brand:''}
- carousels:[],    // {title:'', brand:'', slides:['img/design/a1.jpg', ...]}
+ carousels:[    // {title:'', brand:'', slides:['img/design/a1.jpg', ...], ratio:'1/1'}
+  {title:'5 Cleaning Tips for Busy Offices & Hotels',brand:'Vooki, FMCG',ratio:'1/1',slides:Array.from({length:7},(_,i)=>`img/vooki/tips-${i+1}.webp`)}
+ ],
  profiles:[      // {title:'', brand:'', pages:['img/design/p1.jpg', ...], pdf:'optional.pdf', ratio:'16/9'}
   {title:'Modern Food company profile',brand:'Modern Food, FMCG',note:'Built on product vectors I created myself, not the ad photos.',ratio:'16/9',pages:Array.from({length:18},(_,i)=>`img/design/mf-profile/p${String(i+1).padStart(2,'0')}.webp`),pdf:'img/design/mf-profile/Modern-Food-Company-Profile.pdf'}
  ]
@@ -1605,14 +1691,17 @@ $('#dz-n-static').textContent=pl(DESIGN.statics.length,'design');
 $('#dz-n-carousels').textContent=pl(DESIGN.carousels.length,'carousel');
 $('#dz-n-profiles').textContent=pl(DESIGN.profiles.length,'profile');
 $('#dz-g-static').outerHTML=DESIGN.statics.length?`<div class="dz-grid" id="dz-g-static">${DESIGN.statics.map((d,i)=>`<button class="dz-item" data-lb="s" data-i="${i}" aria-label="View ${esc(d.alt||'design')}"><img src="${esc(d.src)}" alt="${esc(d.alt)}" loading="lazy" onload="this.classList.add('ld')"></button>`).join('')}</div>`:empty('static designs');
-$('#dz-g-carousels').innerHTML=DESIGN.carousels.length?DESIGN.carousels.map((c,i)=>`<div class="dz-car glass"><div class="dz-strip">${c.slides.map((sl,j)=>`<button data-lb="c" data-i="${i}" data-j="${j}" aria-label="View slide ${j+1}"><img src="${esc(sl)}" alt="${esc(c.title)} slide ${j+1}" loading="lazy"></button>`).join('')}</div><div class="dz-cbar"><b>${esc(c.title)}</b><small>${c.slides.length} slides</small><button data-cs="-1" aria-label="Previous slide">&larr;</button><button data-cs="1" aria-label="Next slide">&rarr;</button></div></div>`).join(''):'';
+const carCard=(c,i,multi)=>`<div class="dz-car glass${multi?' multi':''}" style="--sr:${esc(c.ratio||'4/5')}"><div class="dz-strip">${c.slides.map((sl,j)=>`<button data-lb="c" data-i="${i}" data-j="${j}" aria-label="View slide ${j+1}"><img src="${esc(sl)}" alt="${esc(c.title)} slide ${j+1}" loading="lazy"></button>`).join('')}</div><div class="dz-cbar">${multi?`<span class="dz-dots">${c.slides.map((_,j)=>`<i${j?'':' class="on"'}></i>`).join('')}</span>`:`<b>${esc(c.title)}</b>`}<small>${c.slides.length} slides</small><button data-cs="-1" aria-label="Previous slide">&larr;</button><button data-cs="1" aria-label="Next slide">&rarr;</button></div></div>`;
+$('#dz-g-carousels').innerHTML=DESIGN.carousels.length?DESIGN.carousels.map((c,i)=>carCard(c,i)).join(''):'';
+{const m=$('#vk-g-car'),i=DESIGN.carousels.findIndex(c=>/vooki/i.test(c.brand));if(m&&i>-1)m.innerHTML=carCard(DESIGN.carousels[i],i,true)}
+document.querySelectorAll('.dz-car.multi .dz-strip').forEach(st=>st.addEventListener('scroll',()=>{const b=st.children,dots=st.parentNode.querySelectorAll('.dz-dots i');let k=0,best=1e9;[...b].forEach((x,j)=>{const d=Math.abs(x.offsetLeft-st.offsetLeft-st.scrollLeft);if(d<best){best=d;k=j}});if(st.scrollLeft+st.clientWidth>=st.scrollWidth-4)k=b.length-1;dots.forEach((d,j)=>d.classList.toggle('on',j===k))},{passive:true}));
 if(!DESIGN.carousels.length)$('#dz-g-carousels').outerHTML=empty('carousels');
 const profCard=(pf,i)=>`<div class="dz-pwrap"><button class="dz-prof glass" data-lb="p" data-i="${i}" style="--car:${esc(pf.ratio||'3/4')}"><span class="cov"><img src="${esc(pf.pages[0])}" alt="${esc(pf.title)} cover" loading="lazy"><span>${pf.pages.length} pages</span></span><b>${esc(pf.title)}</b><small>${esc(pf.brand)}</small>${pf.note?`<small class="pn">${esc(pf.note)}</small>`:''}</button>${pf.pdf&&/github\.io$/.test(location.hostname)?`<a class="dz-pdf" href="${esc(pf.pdf)}" download target="_blank" rel="noopener">Download PDF &darr;</a>`:''}</div>`;
 $('#dz-g-profiles').innerHTML=DESIGN.profiles.length?DESIGN.profiles.map(profCard).join(''):'';
 {const mp=$('#mf-g-profile');if(mp){const i=DESIGN.profiles.findIndex(p=>/modern food/i.test(p.brand));if(i>-1)mp.innerHTML=profCard(DESIGN.profiles[i],i)}}
 if(!DESIGN.profiles.length)$('#dz-g-profiles').outerHTML=empty('company profiles');
 setTimeout(()=>{if(dzCount){const rl=$('#dz-rowlink');if(rl)rl.innerHTML=' <a class="rowlink" href="#design" data-open="design">View my designs &rarr;</a>';const nl=$('#links');if(nl&&!nl.querySelector('[href="#design"]'))nl.querySelector('[href="#brands"]').insertAdjacentHTML('afterend','<a href="#design">Design</a>')}},0);
-document.querySelectorAll('[data-cs]').forEach(b=>b.addEventListener('click',()=>{const st=b.closest('.dz-car').querySelector('.dz-strip');st.scrollBy({left:st.clientWidth*b.dataset.cs,behavior:reduce?'auto':'smooth'})}));
+document.querySelectorAll('[data-cs]').forEach(b=>b.addEventListener('click',()=>{const st=b.closest('.dz-car').querySelector('.dz-strip');st.scrollBy({left:(st.closest('.multi')?st.firstElementChild.offsetWidth+12:st.clientWidth)*b.dataset.cs,behavior:reduce?'auto':'smooth'})}));
 document.querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));t&&t.scrollIntoView({behavior:reduce?'auto':'smooth'})}));
 const MF_ADS=[['mf04','Dubai Pofak ad: Make every bite extraordinary'],['mf16','Heritage snacks trial offer for retailers'],['mf17','B2B ad: What if snacks sold themselves?'],['mf14','The Dubai snack people remember'],['mf15','Papy Snacks: trusted by retail and foodservice'],['mf03','Timeless Crunch print banner, 140 x 130 cm']];
 const MF_SHOTS=[['mf12','Papy Snacks product shot'],['mf05','Chipstix product shot'],['mf08','Dubai Bites product shot'],['mf09','Dubai Pofak outdoor shot'],['mf02','Dubai Pofak lifestyle shot'],['mf11','Papy Snacks pour shot'],['mf06','Chipstix pour shot'],['mf07','Dubai Bites pour shot'],['mf13','The full Modern Food range'],['mf01','Dubai Pofak kitchen scene'],['mf10','Dubai Pofak kitchen scene, wide']];
@@ -1638,12 +1727,26 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lb]');if(!
 $('#lb-x').addEventListener('click',lbClose);$('#lb-p').addEventListener('click',()=>{lbI=(lbI-1+lbList.length)%lbList.length;lbShow()});$('#lb-n').addEventListener('click',()=>{lbI=(lbI+1)%lbList.length;lbShow()});
 lb.addEventListener('click',e=>{if(e.target===lb)lbClose()});
 addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape'){lbClose();e.stopImmediatePropagation()}if(e.key==='ArrowRight')$('#lb-n').click();if(e.key==='ArrowLeft')$('#lb-p').click()},true);
+$('#vk-contrib').innerHTML=[
+ ['Carousels','Designed swipeable carousels like "5 Cleaning Tips for Busy Offices & Hotels", pairing useful tips with the right product.'],
+ ['Static images','Created static social posts that showcase the Vooki range with clear, on-brand visuals.'],
+ ['GIFs','Made animated GIFs to bring products to life in the feed and stories.'],
+ ['On-brand creatives','Kept every piece in Vooki\'s colours and eco-friendly message, with a link back to vooki.in.']].map(card).join('');
+{const tr=$('#vk-track'),dots=$('#vk-dots');const N=7;tr.innerHTML=Array.from({length:N},(_,i)=>`<img src="img/vooki/tips-${i+1}.webp" alt="" loading="lazy">`).join('');dots.innerHTML='<i class="on"></i>'+'<i></i>'.repeat(N-1)}
+let vkT=[];const vkClear=()=>{vkT.forEach(clearTimeout);vkT=[]};
+const runVk=()=>{vkClear();const tr=$('#vk-track'),dots=[...$('#vk-dots').children],n=$('#vk-n'),h=$('#vk-heart'),lk=$('#vk-lk'),N=dots.length;
+ const go=k=>{tr.style.transform=`translateX(${-k*100}%)`;dots.forEach((d,j)=>d.classList.toggle('on',j===k));n.textContent=`${k+1}/${N}`};
+ go(0);lk.classList.remove('on');if(reduce)return;
+ const step=k=>{if(openPage!==pages.vooki)return;go(k);
+  if(k===N-1){vkT.push(setTimeout(()=>{h.classList.remove('pop');void h.offsetWidth;h.classList.add('pop');lk.classList.add('on')},700));vkT.push(setTimeout(()=>{lk.classList.remove('on');step(0)},3200))}
+  else vkT.push(setTimeout(()=>step(k+1),k?1900:2600))};
+ vkT.push(setTimeout(()=>step(1),2600))};
 let dzT=[];const dzClear=()=>{dzT.forEach(clearTimeout);dzT=[]};
 const runDz=()=>{const bd=$('#dz-board');dzClear();if(reduce){bd.className='dz-board s1 s2 s3 s4';return}
  const cycle=(alt)=>{if(!openPage)return;bd.className='dz-board'+(alt?' alt':'');['s1','s2','s3','s4'].forEach((c,i)=>dzT.push(setTimeout(()=>bd.classList.add(c),400+i*650)));dzT.push(setTimeout(()=>cycle(!alt),5200))};cycle(false)};
-const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood'),insquad:$('#sp-insquad'),lamsa:$('#sp-lamsa'),nfta:$('#sp-nfta'),design:$('#sp-design')};let openPage=null,lastY=0;
+const pages={findxpand:$('#sp-findxpand'),reachxpand:$('#sp-reachxpand'),personaxpand:$('#sp-personaxpand'),modernfood:$('#sp-modernfood'),insquad:$('#sp-insquad'),lamsa:$('#sp-lamsa'),nfta:$('#sp-nfta'),design:$('#sp-design'),vooki:$('#sp-vooki')};let openPage=null,lastY=0;
 const route=()=>{const h=location.hash.slice(1),pg=pages[h];
- if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();if(h==='insquad')runIq();if(h==='lamsa')runLm();if(h==='nfta')runNf();if(h==='design')runDz();pg.querySelector('[data-close]').focus({preventScroll:true})}
+ if(pg&&openPage!==pg){lastY=scrollY;pg.hidden=false;pg.scrollTop=0;document.body.style.overflow='hidden';requestAnimationFrame(()=>requestAnimationFrame(()=>pg.classList.add('open')));openPage=pg;fitAll();if(h==='findxpand')runMock();if(h==='reachxpand')runRxHero();if(h==='personaxpand')runPx();if(h==='modernfood')runMf();if(h==='insquad')runIq();if(h==='lamsa')runLm();if(h==='nfta')runNf();if(h==='design')runDz();if(h==='vooki')runVk();pg.querySelector('[data-close]').focus({preventScroll:true})}
  else if(!pg&&openPage){const p=openPage;openPage=null;p.classList.remove('open');document.body.style.overflow='';clearInterval(fxTimer);setTimeout(()=>{p.hidden=true},reduce?0:800);const t=h&&document.getElementById(h);if(t)t.scrollIntoView({behavior:'auto'})}};
 document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',e=>{const r=a.getBoundingClientRect(),pg=pages[a.dataset.open];pg.style.setProperty('--cx',r.left+r.width/2+'px');pg.style.setProperty('--cy',r.top+r.height/2+'px')}));
 addEventListener('hashchange',route);addEventListener('keydown',e=>{if(e.key==='Escape'&&openPage){const c=openPage.querySelector('[data-close]');location.hash=c?c.getAttribute('href').slice(1):'brands'}});route();
