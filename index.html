@@ -571,6 +571,18 @@ a{color:inherit}
 .vk-bar .lk.on path{fill:#ed4956;stroke:#ed4956}
 .vk-dots{display:flex;gap:4px;margin-inline:auto;transform:translateX(-22px)}
 .vk-dots i{width:6px;height:6px;border-radius:50%;background:#c7c7c7;transition:background .3s}.vk-dots i.on{background:#0095f6}
+.vk-posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
+@media(max-width:860px){.vk-posts{grid-template-columns:1fr 1fr}.vk-posts .vk-post:first-child{grid-column:1/-1;max-width:520px}}
+@media(max-width:520px){.vk-posts{grid-template-columns:1fr}}
+.vk-post{margin:0;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:var(--chip);box-shadow:0 0 0 1px var(--hair),0 22px 44px -30px rgba(100,10,0,.5)}
+.vk-post .m{position:relative;display:block;width:100%;aspect-ratio:1;padding:0;border:0;background:#eee;cursor:zoom-in;overflow:hidden}
+.vk-post .m img,.vk-post .m video{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease-out)}
+@media(hover:hover){.vk-post button.m:hover img{transform:scale(1.04)}}
+.vk-post .m.gif{cursor:default}
+.vk-badge{position:absolute;right:10px;top:10px;font:800 12px/1 Syne,sans-serif;letter-spacing:.06em;color:#fff;background:var(--hot);padding:6px 9px;border-radius:8px;box-shadow:0 6px 14px -6px rgba(0,0,0,.5)}
+.vk-post figcaption{padding:12px 16px 14px}
+.vk-post figcaption b{display:block;font-size:16px}
+.vk-post figcaption span{display:block;margin-top:3px;font-size:14px;color:var(--mute)}
 .vk-likes{padding:2px 6px 4px;font-size:12px;font-weight:700;color:#262626}
 .dz-cbar{display:flex;align-items:center;gap:8px;padding:12px 6px 4px}
 .dz-cbar b{font-size:16px;margin-inline-end:auto}
@@ -1242,6 +1254,14 @@ footer .ico{width:42px;height:42px}
     </div>
   </section>
 
+  <section class="band" style="padding-top:0" id="vk-posts">
+    <div class="wrap">
+      <div class="dz-head"><h2>GIF and static posts</h2><span class="dz-count">3 posts</span></div>
+      <p class="sp-p">Part of a 7-day content plan for Vooki: a funny toddler GIF, a product spotlight on safety for little ones, and an interactive poll to get followers talking.</p>
+      <div class="vk-posts" id="vk-g-posts"></div>
+    </div>
+  </section>
+
   <section class="band" style="padding-top:0">
     <div class="wrap glass panel">
       <h2>My contribution</h2>
@@ -1673,7 +1693,10 @@ const runNf=()=>{const f=$('#nf-field'),h=$('#nf-h'),sv=$('#nf-save');nfClear();
  show(heads[0]);cycle()};
 /* design work: add creatives here. Files go in img/design/ */
 const DESIGN={
- statics:[],      // {src:'img/design/x.jpg', alt:'', brand:''}
+ statics:[      // {src:'img/design/x.jpg', alt:'', brand:''}
+  {src:'img/vooki/toddler-spotlight.webp',alt:'Vooki product spotlight post',brand:'Vooki, product spotlight'},
+  {src:'img/vooki/poll-time.webp',alt:'Vooki poll post',brand:'Vooki, poll post'}
+ ],
  carousels:[    // {title:'', brand:'', slides:['img/design/a1.jpg', ...], ratio:'1/1'}
   {title:'5 Cleaning Tips for Busy Offices & Hotels',brand:'Vooki, FMCG',ratio:'1/1',slides:Array.from({length:7},(_,i)=>`img/vooki/tips-${i+1}.webp`)}
  ],
@@ -1723,6 +1746,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lb]');if(!
  if(b.dataset.lb==='s')lbOpen(DESIGN.statics.map(d=>({src:d.src,alt:d.alt,cap:d.brand})),i);
  if(b.dataset.lb==='c'){const c=DESIGN.carousels[i];lbOpen(c.slides.map(sl=>({src:sl,alt:c.title,cap:c.title})),+b.dataset.j)}
  if(b.dataset.lb==='m'){const L=b.dataset.g==='a'?MF_ADS:MF_SHOTS;lbOpen(L.map(([k,a])=>({src:`img/mf/${k}-l.webp`,alt:a,cap:a})),i)}
+ if(b.dataset.lb==='v')lbOpen(VK_STATICS.map(([k,t])=>({src:`img/vooki/${k}.webp`,alt:'Vooki '+t,cap:'Vooki, '+t})),i);
  if(b.dataset.lb==='p'){const pf=DESIGN.profiles[i];lbOpen(pf.pages.map(pg=>({src:pg,alt:pf.title,cap:pf.title})),0)}});
 $('#lb-x').addEventListener('click',lbClose);$('#lb-p').addEventListener('click',()=>{lbI=(lbI-1+lbList.length)%lbList.length;lbShow()});$('#lb-n').addEventListener('click',()=>{lbI=(lbI+1)%lbList.length;lbShow()});
 lb.addEventListener('click',e=>{if(e.target===lb)lbClose()});
@@ -1733,7 +1757,10 @@ $('#vk-contrib').innerHTML=[
  ['GIFs','Made animated GIFs to bring products to life in the feed and stories.'],
  ['On-brand creatives','Kept every piece in Vooki\'s colours and eco-friendly message, with a link back to vooki.in.']].map(card).join('');
 {const tr=$('#vk-track'),dots=$('#vk-dots');const N=7;tr.innerHTML=Array.from({length:N},(_,i)=>`<img src="img/vooki/tips-${i+1}.webp" alt="" loading="lazy">`).join('');dots.innerHTML='<i class="on"></i>'+'<i></i>'.repeat(N-1)}
-let vkT=[];const vkClear=()=>{vkT.forEach(clearTimeout);vkT=[]};
+const VK_STATICS=[['toddler-spotlight','Product spotlight','Your toddler\'s safety, our priority: chemical-free, organic and eco-friendly cleaning.'],['poll-time','Poll post','An interactive poll asking followers what matters most when choosing cleaning products.']];
+$('#vk-g-posts').innerHTML=`<figure class="vk-post"><div class="m gif"><video src="img/vooki/toddler-gif.mp4" poster="img/vooki/toddler-gif-poster.webp" muted loop playsinline preload="none" aria-label="Toddler vs Vooki GIF"></video><span class="vk-badge">GIF</span></div><figcaption><b>Toddler vs Vooki</b><span>A relatable meme GIF: the toddler's wall art, the panicked parent, and Vooki to the rescue.</span></figcaption></figure>`+VK_STATICS.map(([k,t,d],i)=>`<figure class="vk-post"><button class="m" data-lb="v" data-i="${i}" aria-label="View ${t}"><img src="img/vooki/${k}.webp" alt="Vooki ${t}" loading="lazy"><span class="vk-badge">STATIC</span></button><figcaption><b>${t}</b><span>${d}</span></figcaption></figure>`).join('');
+{const v=$('#vk-g-posts video');new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&openPage===pages.vooki){v.preload='auto';v.play().catch(()=>{})}else v.pause()}),{threshold:.35}).observe(v)}
+let vkT=[];const vkClear=()=>{vkT.forEach(clearTimeout);vkT=[];const v=document.querySelector('#vk-g-posts video');v&&v.pause()};
 const runVk=()=>{vkClear();const tr=$('#vk-track'),dots=[...$('#vk-dots').children],n=$('#vk-n'),h=$('#vk-heart'),lk=$('#vk-lk'),N=dots.length;
  const go=k=>{tr.style.transform=`translateX(${-k*100}%)`;dots.forEach((d,j)=>d.classList.toggle('on',j===k));n.textContent=`${k+1}/${N}`};
  go(0);lk.classList.remove('on');if(reduce)return;
